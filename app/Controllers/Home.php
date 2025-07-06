@@ -12,7 +12,7 @@ class Home extends BaseController
             . view('templates/footer');
     }
 
-    public function old_result()
+    public function old_results()
     {
         $passToView['title'] = 'Old Results - Meghalaya State Lotteries';
         return view('templates/header', $passToView)
