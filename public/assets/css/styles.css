@@ -1,0 +1,523 @@
+:root {
+  --bs-primary-rgb: 255, 0, 0;
+  --padding-inline: 20px;
+  --spacing: 30px;
+  --primary700: #ff0000;
+  --para-color: rgb(80, 85, 92);
+  --bs-primary-dark: #330000;
+}
+
+/* ======================
+   Global Typography
+====================== */
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+/* ======================
+   Navbar Styles
+====================== */
+.inline-gap {
+  padding-inline: var(--padding-inline);
+}
+.padding-main {
+  padding: var(--padding-inline);
+}
+.icon-main {
+  width: 60px;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+}
+.main-width {
+  min-height: calc(-259.65px + 100vh);
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff;
+  font-family: "Martel Sans", sans-serif;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #ffe0e0;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: 700;
+}
+
+.navbar-nav .nav-link.disabled {
+  opacity: 0.6;
+}
+
+/* ======================
+   Utility Font Classes
+====================== */
+.font-martel {
+  font-family: "Martel Sans", sans-serif;
+}
+.font-open-sans {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* ======================
+   Oswald Styles
+====================== */
+#mainBody-content.font-body-oswald .font-body {
+  font-family: "Oswald", sans-serif;
+}
+#mainBody-content.font-body-oswald .font-body:lang(ja) {
+  font-family: "Oswald", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+    Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+#mainBody-content.font-body-oswald .font-body:lang(zh-cn),
+#mainBody-content.font-body-oswald .font-body:lang(sxl),
+#mainBody-content.font-body-oswald .font-body:lang(zh) {
+  font-family: "Oswald", "PingFang SC", "Microsoft YaHei", "微软雅黑", STXihei,
+    "华文细黑", sans-serif;
+}
+#mainBody-content.font-body-oswald .font-body:lang(zh-tw) {
+  font-family: "Oswald", "Lisong Pro", "PMingLiU", "PingFang TC",
+    "Microsoft JhengHei", "微軟正黑體", STXihei, sans-serif;
+}
+
+/* ======================
+   Bebas Neue - Title
+====================== */
+#mainBody-content.font-title-bebas-neue .font-title {
+  font-family: "Bebas Neue", bebas, helvetica, sans-serif;
+}
+#mainBody-content.font-title-bebas-neue .font-title:lang(ja) {
+  font-family: "Bebas Neue", bebas, helvetica, "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+}
+#mainBody-content.font-title-bebas-neue .font-title:lang(zh-cn),
+#mainBody-content.font-title-bebas-neue .font-title:lang(sxl),
+#mainBody-content.font-title-bebas-neue .font-title:lang(zh) {
+  font-family: "Bebas Neue", bebas, helvetica, "PingFang SC", "Microsoft YaHei",
+    "微软雅黑", STXihei, "华文细黑", sans-serif;
+}
+#mainBody-content.font-title-bebas-neue .font-title:lang(zh-tw) {
+  font-family: "Bebas Neue", bebas, helvetica, "Lisong Pro", "PMingLiU",
+    "PingFang TC", "Microsoft JhengHei", "微軟正黑體", STXihei, sans-serif;
+}
+
+/* ======================
+   Bebas Neue - Heading
+====================== */
+#mainBody-content.font-heading-bebas-neue .font-heading {
+  font-family: "Bebas Neue", bebas, helvetica, sans-serif;
+}
+#mainBody-content.font-heading-bebas-neue .font-heading:lang(ja) {
+  font-family: "Bebas Neue", bebas, helvetica, "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+}
+#mainBody-content.font-heading-bebas-neue .font-heading:lang(zh-cn),
+#mainBody-content.font-heading-bebas-neue .font-heading:lang(sxl),
+#mainBody-content.font-heading-bebas-neue .font-heading:lang(zh) {
+  font-family: "Bebas Neue", bebas, helvetica, "PingFang SC", "Microsoft YaHei",
+    "微软雅黑", STXihei, "华文细黑", sans-serif;
+}
+#mainBody-content.font-heading-bebas-neue .font-heading:lang(zh-tw) {
+  font-family: "Bebas Neue", bebas, helvetica, "Lisong Pro", "PMingLiU",
+    "PingFang TC", "Microsoft JhengHei", "微軟正黑體", STXihei, sans-serif;
+}
+
+/* ======================
+   Bebas Neue - Button
+====================== */
+#mainBody-content.font-button-bebas-neue .font-button {
+  font-family: "Bebas Neue", bebas, helvetica, sans-serif;
+}
+#mainBody-content.font-button-bebas-neue .font-button:lang(ja) {
+  font-family: "Bebas Neue", bebas, helvetica, "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+}
+#mainBody-content.font-button-bebas-neue .font-button:lang(zh-cn),
+#mainBody-content.font-button-bebas-neue .font-button:lang(sxl),
+#mainBody-content.font-button-bebas-neue .font-button:lang(zh) {
+  font-family: "Bebas Neue", bebas, helvetica, "PingFang SC", "Microsoft YaHei",
+    "微软雅黑", STXihei, "华文细黑", sans-serif;
+}
+#mainBody-content.font-button-bebas-neue .font-button:lang(zh-tw) {
+  font-family: "Bebas Neue", bebas, helvetica, "Lisong Pro", "PMingLiU",
+    "PingFang TC", "Microsoft JhengHei", "微軟正黑體", STXihei, sans-serif;
+}
+
+/* ======================
+   Montserrat - Nav Item
+====================== */
+#mainBody-content.font-nav_item-montserrat .font-nav_item {
+  font-family: "Montserrat", helvetica, sans-serif;
+}
+#mainBody-content.font-nav_item-montserrat .font-nav_item:lang(ja) {
+  font-family: "Montserrat", helvetica, "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+}
+#mainBody-content.font-nav_item-montserrat .font-nav_item:lang(zh-cn),
+#mainBody-content.font-nav_item-montserrat .font-nav_item:lang(sxl),
+#mainBody-content.font-nav_item-montserrat .font-nav_item:lang(zh) {
+  font-family: "Montserrat", helvetica, "PingFang SC", "Microsoft YaHei",
+    "微软雅黑", STXihei, "华文细黑", sans-serif;
+}
+#mainBody-content.font-nav_item-montserrat .font-nav_item:lang(zh-tw) {
+  font-family: "Montserrat", helvetica, "Lisong Pro", "PMingLiU", "PingFang TC",
+    "Microsoft JhengHei", "微軟正黑體", STXihei, sans-serif;
+}
+
+/* ======================
+   Oswald - Nav Dropdown
+====================== */
+#mainBody-content.font-nav_dropdown-oswald .font-nav_dropdown {
+  font-family: "Oswald", sans-serif;
+}
+#mainBody-content.font-nav_dropdown-oswald .font-nav_dropdown:lang(ja) {
+  font-family: "Oswald", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+    Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+#mainBody-content.font-nav_dropdown-oswald .font-nav_dropdown:lang(zh-cn),
+#mainBody-content.font-nav_dropdown-oswald .font-nav_dropdown:lang(sxl),
+#mainBody-content.font-nav_dropdown-oswald .font-nav_dropdown:lang(zh) {
+  font-family: "Oswald", "PingFang SC", "Microsoft YaHei", "微软雅黑", STXihei,
+    "华文细黑", sans-serif;
+}
+#mainBody-content.font-nav_dropdown-oswald .font-nav_dropdown:lang(zh-tw) {
+  font-family: "Oswald", "Lisong Pro", "PMingLiU", "PingFang TC",
+    "Microsoft JhengHei", "微軟正黑體", STXihei, sans-serif;
+}
+
+.tnc-btn,
+.custom-btn {
+  color: #fff !important;
+  background: #ff0000;
+  border: none;
+  background-clip: border-box;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 12px 18px;
+  margin-top: 0;
+  word-break: keep-all;
+  white-space: nowrap;
+  box-shadow: 0 0 1px hsla(0, 0%, 100%, 0.5);
+
+  border-radius: 1000px;
+  border: none;
+
+  color: #fff;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
+.tnc-main-btn {
+  display: block;
+
+  width: 100%;
+  font-size: 20px;
+  padding: 14px 28px;
+  box-sizing: border-box;
+  max-width: 250px;
+  margin-inline: auto;
+  text-align: center;
+}
+.brand-name {
+  font-size: 20px;
+  color: #fff;
+
+  max-width: 70%;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.body-container {
+  margin-inline: auto;
+  max-width: 94%;
+  box-sizing: border-box;
+  width: 1200px !important;
+}
+.heading-wrapper,
+.content-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: all 0.2s ease-in;
+}
+.heading-wrapper:first-child,
+.content-wrapper.first-sib:first-child {
+  margin-top: 10px;
+}
+.heading-1,
+.heading-2 {
+  padding: 0;
+  border: 0;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.5;
+}
+.heading-1,
+.heading-3,
+.heading-4,
+.heading-5,
+.heading-6 {
+  padding: 0;
+  border: 0;
+  font-weight: 700;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.heading-2 {
+  color: var(--primary700);
+  margin: 0;
+  font-size: 75px;
+  line-height: 0.9;
+  white-space: pre-wrap;
+  text-align: center;
+  word-wrap: break-word;
+}
+.heading-3 {
+  font-size: 24px;
+}
+.heading-4 {
+  font-size: 30px;
+}
+.heading-5 {
+  color: var(--primary700);
+  font-size: 50px;
+}
+.heading-6 {
+  font-size: 48px;
+  color: var(--para-color);
+}
+.para-color {
+  color: var(--para-color);
+}
+.para-align {
+  text-align: center;
+}
+.draw-terms-para {
+  font-size: 17px;
+}
+.divider {
+  max-width: 250px;
+  background-color: rgba(178, 178, 178, 0.5);
+  height: 3px;
+  margin-inline: auto;
+  margin-top: var(--spacing);
+  margin-bottom: var(--spacing);
+  line-height: 1.5;
+}
+.download-option-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--padding-inline);
+}
+.custom-btn,
+.custom-dark-btn {
+  color: #fff;
+  background: #ff0000;
+  border: none;
+  background-clip: border-box;
+}
+.custom-dark-btn {
+  background: var(--bs-primary-dark);
+}
+.download-btn-78asbcabc {
+  font-size: 20px;
+  font-weight: 700;
+}
+.menubar-toggle[aria-expanded="false"] .closed {
+  display: block;
+}
+.menubar-toggle[aria-expanded="false"] .opened {
+  display: none;
+}
+
+.menubar-toggle[aria-expanded="true"] .closed {
+  display: none;
+}
+.menubar-toggle[aria-expanded="true"] .opened {
+  display: block;
+}
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: unset !important;
+}
+.menu-backdrop {
+  display: none;
+}
+/* .site-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+} */
+.section-container {
+  max-width: 1170px;
+  margin: 60px auto;
+  margin-bottom: 35px;
+  background: linear-gradient(135deg, #8e0000, #ff0000);
+  border-radius: 20px;
+  color: white;
+  padding: 50px 30px;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+.ad-heading {
+  font-size: 30px;
+}
+.buy-tickets-btn {
+  font-weight: 600;
+  color: #990000;
+}
+@media only screen and (max-width: 767px) {
+  .body-container {
+    width: 97.8166666%;
+  }
+  .brand-name {
+    display: none;
+  }
+  .icon-main {
+    margin-inline: auto;
+  }
+  .navbar-wraper.padding-main {
+    padding: 5px;
+  }
+  .navbar-wraper {
+    flex-direction: row-reverse;
+  }
+  .menubar-toggle {
+    position: fixed;
+    border-radius: 100%;
+    background-color: var(--primary700);
+    aspect-ratio: 1;
+    left: var(--padding-inline);
+    top: calc(var(--padding-inline) + -10px);
+    z-index: 10;
+  }
+
+  .navbar-menu-md {
+    position: absolute;
+    width: 100%;
+    padding: var(--padding-inline);
+  }
+  .tnc-btn {
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  .tnc-main-btn {
+    display: block;
+    text-align: center;
+  }
+  .menubar-toggle[aria-expanded="false"] + .navbar-menu-md {
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -700px;
+    background: #fff;
+    color: #000 !important;
+    transition: 0.2s all ease-in;
+  }
+  .menubar-toggle + .navbar-menu-md .font-nav_item {
+    color: var(--para-color) !important;
+    font-weight: 500;
+    text-align: start;
+  }
+  .menubar-toggle + .navbar-menu-md .nav-item {
+    border-bottom: 1px solid #ffb6b6;
+  }
+  .navbar-nav .nav-item:first {
+    margin-top: var(--spacing);
+  }
+  .menubar-toggle + .navbar-menu-md .font-nav_item {
+    padding-inline: var(--padding-inline);
+  }
+  .contain-body.toggle-show .menu-backdrop {
+    display: block;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+  }
+  .font-nav_item {
+    text-align: center;
+  }
+  .navbar-nav {
+    padding-top: calc(var(--spacing) * 2);
+  }
+  .menu-backdrop {
+    display: none;
+  }
+
+  .navbar-menu-md {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: #fff;
+    z-index: 9;
+    color: #000 !important;
+  }
+  .navbar-nav .nav-link {
+    color: (var(--bs-primary-rgb));
+    font-family: "Martel Sans", sans-serif;
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: #ffe0e0;
+  }
+  .heading-2,
+  .heading-5,
+  .heading-6 {
+    font-size: 40px;
+  }
+  .download-btn-78asbcabc {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  .draw-terms-para {
+    line-height: 1.45;
+  }
+  .body-container {
+    max-width: 100%;
+  }
+  .tnc-main-btn {
+    max-width: 100%;
+  }
+  .ad-heading {
+    font-size: 25px;
+  }
+}
