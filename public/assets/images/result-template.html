@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A4 Print Template</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #333;
+        background: #f5f5f5;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 20px auto;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 1mm;
+        position: relative;
+        border-radius: 5px;
+      }
+
+      .header-image {
+        width: 100%;
+        height: auto;
+        max-height: 80mm;
+        object-fit: cover;
+        display: block;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      .header-wrapper{
+        position: relative;
+      }
+      .first-number {
+        color: #007434;
+        font-family: 'Arial Black', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 32pt;
+        position: absolute;
+        top: 195px;
+        right: 130px;
+      }
+      .draw-number-count {
+        color: #ff0d0d;
+        font-family: 'Arial Black', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+        position: absolute;
+        top: 150px;
+        right: 43.5%;
+      }
+      .draw-date-top {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 30pt;
+        position: absolute;
+        top: 138px;
+        right: 18%;
+      }
+      .draw-date-top.draw-8pm {
+        font-size: 27pt;
+        top: 140px;
+        right: 18%;
+      }
+      .draw-number-count.draw-8pm{
+        font-size: 17pt;
+        position: absolute;
+        top: 145px;
+        right: 42%;
+      }
+
+      .content {
+        padding: 0;
+      }
+
+      .section {
+        border-bottom: 2px solid gray;
+      }
+
+      .section {
+        margin-bottom: 0px;
+        padding: 8px;
+        background: #f9f9f9;
+      }
+
+      .section-title {
+        font-size: 16pt;
+        font-weight: bold;
+        color: #007acc;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+      }
+
+      .top-seller-text {
+        color: #060;
+        font-family: "Arial Black", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12px;
+      }
+      .const-prize-head {
+        color: #3a5e8c;
+        font-family: "Arial Black", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12px;
+        margin: 0;
+        line-height: 0.5;
+        padding: 0;
+      }
+      .two-column {
+        display: flex;
+        gap: 20px;
+      }
+
+      .fifth-numbre-wrapper{
+        display: flex;
+      }
+
+      .fifth-numbre-wrapper .fifth-section  {
+        width: calc(100% / 10);
+        border-right: 1px solid #333;
+        text-align: center;
+      }
+
+      .fifth-numbre-wrapper .fifth-section:last-child  {
+        border-right: unset;
+      }
+
+      .fifth-section .draw-number {
+        font-weight: 600;
+        display: block;
+        color: black;
+        font-family: "Arial Rounded MT Bold", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.1;
+        text-decoration: none;
+        font-size: 14pt;
+        width: 100%;
+      }
+
+      .top-number-text {
+        color: black;
+        font-family: "Arial Rounded MT Bold", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 19pt;
+        margin: 0pt;
+      }
+      
+      .section-inner {
+        border: 2px solid rgb(149, 149, 255);
+        border-radius: 14px;
+        margin-top: 10px;
+        position: relative;
+        min-height: 17mm;
+      }
+      .section-inner.green {
+        min-height: 16mm;
+      }
+      .section-img {
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        z-index: 10;
+        width: 74mm;
+      }
+      .green .section-img {
+        top: -1px;
+      }
+      .section-img img {
+        height: 18mm;
+      }
+      .green .section-img img {
+        height: 15.5mm;
+      }
+      .section-img-block {
+        position: absolute;
+        background-color: #FAAF3A;
+        height: 14mm;
+        top: 2px;
+        left: 60px;
+        z-index: 5;
+        width: 45mm;
+      }
+      .section-img-block-main {
+        position: absolute;
+        border-bottom: 13mm solid #d51717;
+        border-left: 0px solid transparent;
+        border-right: 15px solid transparent;
+        height: 0;
+        top: 7px;
+        left: 60px;
+        z-index: 5;
+        width: 55mm;
+      }
+      .green .section-img-block {
+        top: 2px;
+      }
+      .green .section-img-block-main {
+        border-bottom: 13mm solid #d51717;
+        width: 55mm;
+        top: 6px;
+      }
+
+      .numbers-wrapper{
+        float: right;
+        width: calc(100% - 70mm);
+        line-height: 1.1;
+        margin-top: -1.4mm;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .green .numbers-wrapper{
+       margin-top: -2mm;
+      }
+
+      .draw-number {
+        width: calc((60mm * 2) / 5);
+      }
+
+      .ad-image-wrapper {
+        margin-bottom: -5px;
+      }
+
+      .ad-image {
+        width: 100%;
+        height: 75mm;
+      }
+      .fifth-price-header {
+        text-align: center;
+        background: #4447f8;
+        color: #fff;
+        font-size: 16pt;
+        font-weight: 1000;
+        padding-bottom: 2px;
+      }
+
+      .footer {
+         position: relative;
+      }
+      .footer-image {
+        width: 100%;
+        height: 12mm;
+      }
+      .footer-middle {
+        position: absolute;
+        color: #001F5F;
+        font-family: "Arial Black", sans-serif;
+        font-size: 25pt;
+        left: 50%;
+        translate: -50%;
+        top: 0;
+      }
+      .footer-middle-element {
+        position: absolute;
+        border: 1px solid #ddd329;;
+        z-index: 1;
+        width: 45mm;
+        height: 10mm;
+        border-radius: 8px;
+        left: 40mm;
+        top: 1mm;
+      }
+
+      .footer-middle-element::before {
+        content: "";
+        position: absolute;
+        height: 9mm;
+        width: 1mm;
+        background: #ddd329;;
+        top: 0px;
+        left: -10px;
+        display: block;
+      }
+
+      .footer-middle-element.right {
+        right: 40mm;
+        top: 1mm;
+        left: unset;
+      }
+
+      .footer-middle-element.right::before {
+        content: unset;
+      }
+      .footer-middle-element.right::after {
+        content: "";
+        height: 9mm;
+        width: 1mm;
+        background: #ddd329;;
+        top: 0px;
+        right: -10px;
+        display: block;
+        position: absolute;
+      }
+
+      .footer-middle-element .text {
+        color: #fff;
+        font-family: "Arial Black", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 6.5pt;
+        line-height: 1.3;
+        text-align: center;
+      }
+
+      .draw-date {
+        position: absolute;
+        color: #fff;
+        font-family: "Arial Black", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 22pt;
+        line-height: 1.3;
+        text-align: center;
+        top: 0;
+        padding: 3px;
+        left: 0;
+      }
+      .draw-date.right {
+        position: absolute;
+        right: 0;
+        left: unset;
+      }
+
+      /* Print Styles */
+    /* Print Styles - Updated */
+      @media print {
+        body {
+          background: white;
+          font-size: 11pt;
+          margin: 0;
+          padding: 0;
+        }
+
+        .page {
+          width: 210mm;
+          height: 297mm;
+          margin: 0;
+          box-shadow: none;
+          page-break-after: always;
+          padding: 1mm;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .header-image {
+          max-height: 80mm;
+        }
+
+        .content {
+          padding: 0;
+          flex: 1;
+        }
+
+        .section-img-block {
+          background: #FAAF3A !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .section-img-block-main {
+          border-bottom: 13mm solid #d51717 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .green .section-img-block-main {
+          border-bottom: 13mm solid #d51717 !important;
+          width: 55mm;
+          top: 6px;
+        }
+
+        .fifth-price-header {
+          background: #4447f8 !important;
+          color: #fff !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .section:first-child {
+          border-bottom: 2px solid gray;
+        }
+
+        .section {
+          page-break-inside: avoid;
+          background: white;
+          margin-bottom: 0px;
+          padding: 5px;
+        }
+
+        .section-inner {
+          border: 2px solid rgb(149, 149, 255);
+          border-radius: 8px;
+          margin-top: 10px;
+          position: relative;
+          min-height: 17mm;
+        }
+
+        .section-inner.green {
+          min-height: 16mm;
+        }
+
+        .two-column {
+          display: block;
+        }
+
+        .column {
+          margin-bottom: 15px;
+        }
+
+        .highlight-box {
+          background: #f0f0f0;
+          border: 1px solid #ccc;
+        }
+
+        .footer {
+          position: relative;
+          margin-top: auto;
+          width: 100%;
+        }
+
+        .footer-image {
+          width: 100%;
+          height: 12mm;
+          display: block;
+        }
+
+        .footer-middle-element {
+          background: transparent;
+          border: 1px solid #ddd329;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .footer-middle-element::before {
+          background: #ddd329 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .footer-middle-element.right::after {
+          background: #ddd329 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        /* Force all colors to print */
+        * {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        /* Remove any fixed positioning that might cause issues */
+        .footer {
+          position: relative !important;
+          bottom: auto !important;
+          left: auto !important;
+          right: auto !important;
+        }
+
+        @page {
+          size: A4;
+          margin: 0;
+        }
+      }
+      /* Responsive adjustments */
+      @media screen and (max-width: 800px) {
+        .page {
+          width: 95%;
+          margin: 10px auto;
+        }
+
+        .two-column {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Header Image Section -->
+       <div class="header-wrapper">
+         <span class="first-number">{1st Number}</span>
+         <!-- 8pm header <span class="draw-number-count draw-8pm">001</span>
+         <span class="draw-date-top draw-8pm">30/12/25</span>
+         <img
+          src="assets/images/main-header-8pm.jpg"
+          alt="Header Image"
+          class="header-image"
+        /> -->
+         <span class="draw-number-count">001</span>
+         <span class="draw-date-top">30/12/25</span>
+        <img
+          src="assets/images/main-header-1pm.jpg"
+          alt="Header Image"
+          class="header-image"
+        />
+
+       </div>
+
+      <div class="content">
+        <!-- Section 1: Main Content -->
+        <div class="section">
+          <h2 class="top-seller-text">
+            Sold by : SELLER - KRISHNAPADA GHOSH - SWARUPDHA & SUB STOCKIST -
+            SOUVIK LOTTERY CENTRE - BITHARI
+          </h2>
+        </div>
+        <div class="section">
+          <div class="section-content">
+            <h3 class="const-prize-head">
+              Cons. Prize Amount for Winner ₹
+              <span
+                style="
+                  color: rgb(203, 27, 115);
+                  font-size: 20px;
+                  font-weight: 800;
+                "
+                >1000/-</span
+              >  <span style="margin-inline: 5px;">for</span>  <span style="
+                  color: rgb(203, 27, 27);
+                  font-size: 15px;
+                "
+                >Seller</span>
+                 ₹<span style="
+                  color: rgb(203, 27, 27);
+                  font-size: 15px;
+                  font-weight: 800;
+                "
+                > 500/-</span>
+                <span style="
+                  color: rgb(17, 130, 53);
+                  font-size: 15px;
+                  font-weight: 800;
+                  margin-inline: 5px;
+                ">{1st Num}</span>(All Remaining Series Of 1st Prize No.)
+            </h3>
+          </div>
+          <div class="section section-inner">
+            <div class="section-img">
+              <img src="assets/images/2nd-price-label.png" alt="">
+            </div>
+            <div class="section-img-block"></div>
+            <div class="section-img-block-main"></div>
+            <div class="numbers-wrapper">
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+              <span class="top-number-text draw-number">12345</span>
+            </div>
+          </div>
+          <div class="section section-inner green">
+            <div class="section-img">
+              <img src="assets/images/3rd-price-label.png" alt="">
+            </div>
+            <div class="section-img-block"></div>
+            <div class="section-img-block-main"></div>
+            <div class="numbers-wrapper">
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+            </div>
+          </div>
+          <div class="section section-inner green">
+            <div class="section-img">
+              <img src="assets/images/4th-price-label.png" alt="">
+            </div>
+            <div class="section-img-block"></div>
+            <div class="section-img-block-main"></div>
+            <div class="numbers-wrapper">
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+              <span class="top-number-text draw-number">1234</span>
+            </div>
+          </div>
+        </div>
+        <div class="ad-image-wrapper">
+          <img class="ad-image" src="assets/images/img20.jpg" alt="">
+        </div>
+        <h3 class="fifth-price-header">5th Prize Amount for Winner ₹120/- for Seller ₹10/- </h3>
+        <div class="section">
+          <di class="fifth-numbre-wrapper">
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+            <div class="fifth-section">
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+              <span class="draw-number">1234</span>
+            </div>
+          </di>
+        </div>
+        <div class="footer">
+          <div>
+            <div class="draw-date">30/12/25</div>
+            <div class="footer-middle-element">
+              <p class="text">TDS 2% Under Section 194G shall be deducted on Sellers Prize Amount w.e.f. 1st October</p>
+            </div>
+            <div class="footer-middle time-on">1 PM</div>
+            <div class="footer-middle-element right">
+              <p class="text">Please check the results <br>with relevent Official Government<br> Gazatte</p>
+            </div>
+            <div class="draw-date right">30/12/25</div>
+          </div>
+
+          <img class="footer-image" src="assets/images/image(3).png" alt="">
+        </div>
+    </div>
+  </body>
+</html>
