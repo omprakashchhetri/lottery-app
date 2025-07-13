@@ -257,7 +257,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <form action="<?= url_to('logout') ?>" method="post"
+                                                        <form action="<?= url_to('logout') ?>" method="get"
                                                             style="display: inline;">
                                                             <?= csrf_field() ?>
                                                             <button type="submit"
