@@ -17,7 +17,7 @@
     <title><?= $this->renderSection('title') ?></title>
 
     <!--font-awesome-css-->
-    <link href="<?= base_url('assets/vendor/fontawesome/css/all.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/vendor-assets/fontawesome/css/all.css') ?>" rel="stylesheet" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -26,13 +26,14 @@
         rel="stylesheet" />
 
     <!-- iconoir icon css  -->
-    <link href="<?= base_url('assets/vendor/ionio-icon/css/iconoir.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/vendor-assets/ionio-icon/css/iconoir.css') ?>" rel="stylesheet" />
 
     <!-- tabler icons-->
-    <link href="<?= base_url('assets/vendor/tabler-icons/tabler-icons.css') ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url('assets/vendor-assets/tabler-icons/tabler-icons.css') ?>" rel="stylesheet"
+        type="text/css" />
 
     <!-- Bootstrap css-->
-    <link href="<?= base_url('assets/vendor/bootstrap/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url('assets/vendor-assets/bootstrap/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
 
     <!-- App css-->
     <link href="<?= base_url('assets/css/main-style.css') ?>" rel="stylesheet" type="text/css" />
@@ -52,7 +53,7 @@
     <script src="<?= base_url('assets/js/jquery-3.6.3.min.js') ?>"></script>
 
     <!-- Bootstrap js-->
-    <script src="<?= base_url('assets/vendor/bootstrap/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor-assets/bootstrap/bootstrap.bundle.min.js') ?>"></script>
 
     <?= $this->renderSection('pageScripts') ?>
 </body>

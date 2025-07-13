@@ -6,7 +6,7 @@
             </h4>
         </div>
         <div class="heading-wrapper">
-            <h2 class="heading-2 font-body"><strong>BHAGYASHREE</strong></h2>
+            <h2 class="heading-2 font-body"><strong>SINGHAM</strong></h2>
         </div>
         <div class="heading-wrapper p-0">
             <h4 class="bg-primary text-center font-body heading-3">
@@ -22,8 +22,8 @@
         </div>
         <div class="content-wrapper">
             <div class="download-option-btns">
-                <a href="#" class="download-btn-78asbcabc custom-btn font-body">02:00 P.M</a>
-                <a href="#" class="download-btn-78asbcabc custom-btn font-body">09:00 P.M</a>
+                <a href="#" class="download-btn-78asbcabc custom-btn font-body">01:00 P.M</a>
+                <a href="#" class="download-btn-78asbcabc custom-btn font-body">08:00 P.M</a>
                 <a href="#" class="download-btn-78asbcabc custom-btn custom-dark-btn font-body">OLD RESULTS</a>
             </div>
             <div class="divider"></div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="heading-wrapper">
                     <h2 class="text-center font-body heading-5">
-                        <strong>MORNING (2:00 P.M)</strong>
+                        <strong>MORNING (01:00 P.M)</strong>
                     </h2>
                 </div>
                 <div class="result-content">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="heading-wrapper">
                     <h2 class="text-center font-body heading-5">
-                        <strong>MORNING (2:00 P.M)</strong>
+                        <strong>MORNING (01:00 P.M)</strong>
                     </h2>
                 </div>
                 <div class="result-content">
@@ -74,23 +74,23 @@
                     in the table below.
                 </p>
                 <p class="draw-terms-para para-color font-body">
-                    Meghalaya Lottery on , at precisely 2:00 PM. This famous website
+                    Meghalaya Lottery on , at precisely 1:00 PM. This famous website
                     called the Meghalaya Lottery, has built a reputation for quickly
                     publishing
                 </p>
                 <p class="draw-terms-para para-color font-body">
                     the most current lottery results. So, respected customers,
                     please accept these results for the Meghalaya State Lottery’s
-                    2.00 PM Morning Result.
+                    1:00 PM Morning Result.
                 </p>
                 <p class="draw-terms-para para-color font-body">
-                    Check Today Result 2 PM today Meghalaya State Lottery , Bhagya
-                    Shree Lottery Result 2:00 PM. As you know lottery draw (2:00 PM)
-                    has been rescheduled and now being updated at 2:00 PM. You may
-                    check Bhagya Shree Lottery morning result here at 2:00 PM. Today
+                    Check Today Result 1 PM today Meghalaya State Lottery , Bhagya
+                    Shree Lottery Result 1:00 PM. As you know lottery draw (1:00 PM)
+                    has been rescheduled and now being updated at 1:00 PM. You may
+                    check Bhagya Shree Lottery morning result here at 1:00 PM. Today
                     result will also be updated here on this page. Stay connected
                     with us to check your today’s draw result of the day. Those who
-                    have tickets for the draw (2:00 PM) stay connected with us.
+                    have tickets for the draw (1:00 PM) stay connected with us.
                     Result will be updated soon here on this page. Stay tuned to
                     check more results of the day.
                 </p>

@@ -17,7 +17,7 @@
     <title><?=$title?></title>
 
     <!--font-awesome-css-->
-    <link href="<?=base_url()?>assets/vendor/fontawesome/css/all.css" rel="stylesheet" />
+    <link href="<?=base_url()?>assets/vendor-assets/fontawesome/css/all.css" rel="stylesheet" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -26,25 +26,26 @@
         rel="stylesheet" />
 
     <!-- iconoir icon css  -->
-    <link href="<?=base_url()?>assets/vendor/ionio-icon/css/iconoir.css" rel="stylesheet" />
+    <link href="<?=base_url()?>assets/vendor-assets/ionio-icon/css/iconoir.css" rel="stylesheet" />
 
     <!-- Data Table css-->
-    <link href="<?=base_url()?>assets/vendor/datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/vendor-assets/datatable/jquery.dataTables.min.css" rel="stylesheet"
+        type="text/css" />
 
     <!-- tabler icons-->
-    <link href="<?=base_url()?>assets/vendor/tabler-icons/tabler-icons.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/vendor-assets/tabler-icons/tabler-icons.css" rel="stylesheet" type="text/css" />
 
     <!--animation-css-->
-    <link href="<?=base_url()?>assets/vendor/animation/animate.min.css" rel="stylesheet" />
+    <link href="<?=base_url()?>assets/vendor-assets/animation/animate.min.css" rel="stylesheet" />
 
     <!--flag Icon css-->
-    <link href="<?=base_url()?>assets/vendor/flag-icons-master/flag-icon.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/vendor-assets/flag-icons-master/flag-icon.css" rel="stylesheet" type="text/css" />
 
     <!-- Bootstrap css-->
-    <link href="<?=base_url()?>assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/vendor-assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- simplebar css-->
-    <link href="<?=base_url()?>assets/vendor/simplebar/simplebar.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/vendor-assets/simplebar/simplebar.css" rel="stylesheet" type="text/css" />
 
     <!-- App css-->
     <link href="<?=base_url()?>assets/css/main-style.css" rel="stylesheet" type="text/css" />

@@ -40,11 +40,11 @@
                <script src="<?=base_url()?>assets/js/jquery-3.6.3.min.js"></script>
 
                <!-- Simple bar js-->
-               <script src="<?=base_url()?>assets/vendor/simplebar/simplebar.js"></script>
+               <script src="<?=base_url()?>assets/vendor-assets/simplebar/simplebar.js"></script>
                <!-- phosphor js -->
-               <script src="<?=base_url()?>assets/vendor/phosphor/phosphor.js"></script>
+               <script src="<?=base_url()?>assets/vendor-assets/phosphor/phosphor.js"></script>
                <!-- latest jquery-->
-               <script src="<?=base_url()?>assets/vendor/datatable/jquery.dataTables.min.js"></script>
+               <script src="<?=base_url()?>assets/vendor-assets/datatable/jquery.dataTables.min.js"></script>
                <!-- data table js-->
                <script>
 jQuery(function() {
@@ -53,7 +53,7 @@ jQuery(function() {
                </script>
 
                <!-- Bootstrap js-->
-               <script src="<?=base_url()?>assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+               <script src="<?=base_url()?>assets/vendor-assets/bootstrap/bootstrap.bundle.min.js"></script>
 
                <!-- App js-->
                <script src="<?=base_url()?>assets/js/script.js"></script>
@@ -89,6 +89,7 @@ function getFormattedDate() {
 }
 
 document.getElementById("date-display").innerHTML = getFormattedDate();
+<?php if($title == 'Admin Dashboard') { ?>
 
 function updateClock() {
     const now = new Date();
@@ -112,6 +113,7 @@ function updateClock() {
 // Update clock every second
 setInterval(updateClock, 1000);
 updateClock();
+<?php } ?>
                </script>
                </body>
 
