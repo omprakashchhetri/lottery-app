@@ -8,7 +8,13 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/old-results', 'Home::old_results');
 
-service('auth')->routes($routes);
-$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login']);
-$routes->get('/admin-dashboard', 'Dashboard::admin_dashboard',['filter' => 'login']);
-$routes->get('/add-result', 'Dashboard::add_result', ['filter' => 'login']);
+$routes->group('admin', function ($routes) {
+
+    // Load all other Shield routes
+    service('auth')->routes($routes);
+
+    $routes->get('dashboard', 'Dashboard::index', ['filter' => 'login']);
+    $routes->get('admin-dashboard', 'Dashboard::admin_dashboard',['filter' => 'login']);
+    $routes->get('add-result', 'Dashboard::add_result', ['filter' => 'login']);
+
+});
