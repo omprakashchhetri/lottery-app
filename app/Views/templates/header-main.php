@@ -69,7 +69,7 @@
         <!-- Menu Navigation starts -->
         <nav>
             <div class="app-logo">
-                <a class="logo d-inline-block" href="index.html">
+                <a class="logo d-inline-block" href="<?=base_url('admin/admin-dashboard')?>">
                     <h3 class="text-primary fw-bold">Admin</h3>
                 </a>
                 <span class="bg-light-primary toggle-semi-nav">
@@ -82,13 +82,13 @@
                         <span>Dashboard</span>
                     </li>
                     <li class="no-sub">
-                        <a href="<?=base_url()?>admin-dashboard">
+                        <a href="<?=base_url('admin/admin-dashboard')?>">
                             <i class="iconoir-home-alt"></i>
                             dashboard
                         </a>
                     </li>
                     <li class="no-sub">
-                        <a href="<?=base_url()?>add-result">
+                        <a href="<?=base_url('admin/add-result')?>">
                             <i class="iconoir-keyframes-couple"></i>
                             Add Result
                         </a>

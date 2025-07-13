@@ -17,11 +17,11 @@
                                 </a>
                             </li>
                             <li class="active">
-                                <a class="f-s-14 f-w-500" href="#">Dashboard</a>
+                                <a class="f-s-14 f-w-500" href="<?=base_url('admin/admin-dashboard')?>">Dashboard</a>
                             </li>
                         </ul>
                     </div>
-                    <a href="<?=base_url()?>add-result" class="btn btn-primary d-flex align-items-center gap-1">
+                    <a href="<?=base_url('admin/add-result')?>" class="btn btn-primary d-flex align-items-center gap-1">
                         <i class="ti ti-playlist-add fs-5"></i>Add Result
                     </a>
                 </div>

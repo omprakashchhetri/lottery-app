@@ -27,9 +27,10 @@
 
                         <!-- Display validation errors -->
                         <?php if (session('error') !== null) : ?>
-                        <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
+                        <div class="alert alert-danger bg-light-danger text-center p-2 rounded-1" role="alert">
+                            <?= session('error') ?></div>
                         <?php elseif (session('errors') !== null) : ?>
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger bg-light-danger text-center p-2 rounded-1" role="alert">
                             <?php if (is_array(session('errors'))) : ?>
                             <?php foreach (session('errors') as $error) : ?>
                             <?= $error ?><br>
@@ -42,7 +43,8 @@
 
                         <!-- Display success message -->
                         <?php if (session('message') !== null) : ?>
-                        <div class="alert alert-success" role="alert"><?= session('message') ?></div>
+                        <div class="alert alert-success bg-light-success text-center p-2 rounded-1" role="alert">
+                            <?= session('message') ?></div>
                         <?php endif ?>
 
                         <form action="<?= url_to('login') ?>" method="post" class="app-form rounded-control">

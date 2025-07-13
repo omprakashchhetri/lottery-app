@@ -9,7 +9,7 @@
                                         <h4 class="main-title">Add Result</h4>
                                         <ul class="app-line-breadcrumbs mb-3">
                                             <li class="">
-                                                <a class="f-s-14 f-w-500" href="<?=base_url()?>admin-dashboard">
+                                                <a class="f-s-14 f-w-500" href="<?=base_url('admin/admin-dashboard')?>">
                                                     <span>
                                                         <i class="ph-duotone ph-briefcase-metal f-s-16"></i>
                                                         Dashboard
@@ -21,6 +21,7 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    <button class="btn btn-lg btn-primary" id="saveLotteryResultBtn">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -59,8 +60,10 @@
                             <!-- Sections 1st Prize start -->
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header d-flex justify-content-between">
                                         <h5>1st Prize Section</h5>
+                                        <button class="btn btn-sm btn-light-info text-info" id="generateSection1"><i
+                                                class="iconoir-refresh-double"></i></button>
                                     </div>
                                     <div class="card-body">
                                         <div class="col-md-5">
@@ -68,8 +71,8 @@
                                                 <span class="input-group-text b-r-left text-bg-primary"
                                                     id="basic-addon1"><i class="iconoir-component"></i></span>
                                                 <input aria-describedby="basic-addon1" aria-label="12A 12345"
-                                                    class="form-control b-r-right py-3" placeholder="12A 12345"
-                                                    type="text" />
+                                                    class="form-control b-r-right py-3 section1-input"
+                                                    placeholder="12A 12345" type="text" />
                                             </div>
                                         </div>
                                     </div>
@@ -80,8 +83,10 @@
                             <!-- Sections 2nd Prize start -->
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header d-flex justify-content-between">
                                         <h5>2nd Prize Section</h5>
+                                        <button class="btn btn-sm btn-light-info text-info" id="generateSection2"><i
+                                                class="iconoir-refresh-double"></i></button>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
@@ -90,8 +95,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">1</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -99,8 +104,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">2</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -108,8 +113,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">3</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -117,8 +122,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">4</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -126,8 +131,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">5</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -135,8 +140,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">6</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -144,8 +149,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">7</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -153,8 +158,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">8</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -162,8 +167,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">9</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -171,8 +176,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">10</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right" placeholder="12345"
-                                                        type="text" />
+                                                        class="form-control b-r-right section2-input"
+                                                        placeholder="12345" type="text" />
                                                 </div>
                                             </div>
                                         </div>
@@ -184,8 +189,10 @@
                             <!-- Sections 3rd Prize start -->
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header d-flex justify-content-between">
                                         <h5>3rd Prize Section</h5>
+                                        <button class="btn btn-sm btn-light-info text-info" id="generateSection3"><i
+                                                class="iconoir-refresh-double"></i></button>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
@@ -194,7 +201,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">1</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -202,7 +210,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">2</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -210,7 +219,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">3</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -218,7 +228,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">4</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -226,7 +237,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">5</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -234,7 +246,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">6</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -242,7 +255,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">7</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -250,7 +264,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">8</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -258,7 +273,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">9</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -266,7 +282,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">10</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section3-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                         </div>
@@ -278,8 +295,10 @@
                             <!-- Sections 4th Prize start -->
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header d-flex justify-content-between">
                                         <h5>4th Prize Section</h5>
+                                        <button class="btn btn-sm btn-light-info text-info" id="generateSection4"><i
+                                                class="iconoir-refresh-double"></i></button>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
@@ -288,7 +307,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">1</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -296,7 +316,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">2</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -304,7 +325,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">3</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -312,7 +334,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">4</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -320,7 +343,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">5</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -328,7 +352,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">6</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -336,7 +361,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">7</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -344,7 +370,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">8</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -352,7 +379,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">9</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -360,7 +388,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1">10</i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section4-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                         </div>
@@ -372,8 +401,10 @@
                             <!-- Sections 5th Prize start -->
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header d-flex justify-content-between">
                                         <h5>5th Prize Section</h5>
+                                        <button class="btn btn-sm btn-light-info text-info" id="generateSection5"><i
+                                                class="iconoir-refresh-double"></i></button>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
@@ -383,7 +414,8 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon1"><?=$i?></i></span>
                                                     <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right" placeholder="1234" type="text" />
+                                                        class="form-control b-r-right section5-input" placeholder="1234"
+                                                        type="text" />
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -392,6 +424,12 @@
                                 </div>
                             </div>
                             <!-- Sections 5th Prize end -->
+
+                            <div class="col-12">
+                                <div class="text-center">
+                                    <button class="btn btn-lg btn-primary" id="saveLotteryResultBtnBottom">Save</button>
+                                </div>
+                            </div>
 
                             <!-- Default Card end -->
                         </div>
