@@ -8,6 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/old-results', 'Home::old_results');
 
+$routes->get('download-pdf/(:any)', 'PdfGenerator::download/$1');
+
 $routes->group('admin', function ($routes) {
 
     // Load all other Shield routes
@@ -17,4 +19,5 @@ $routes->group('admin', function ($routes) {
     $routes->get('admin-dashboard', 'Dashboard::admin_dashboard',['filter' => 'login']);
     $routes->get('add-result', 'Dashboard::add_result', ['filter' => 'login']);
 
+    $routes->get('generate-pdf', 'PdfGenerator::generateLotteryResult');
 });
