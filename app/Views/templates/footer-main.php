@@ -6,30 +6,29 @@
                </div>
 
                <!-- Footer Section starts-->
-               <footer>
+               <footer class="py-1">
                    <div class="container-fluid">
                        <div class="row">
                            <div class="col-md-9 col-12">
                                <ul class="footer-text">
                                    <li>
-                                       <!-- <p class="mb-0">
-                        Copyright © 2025 Dev Hunter. All rights reserved 💖
-                      </p> -->
+                                       <small class="mb-0">
+                                           Copyright © 2025. All rights reserved.
+                                       </small>
                                    </li>
                                    <!-- <li><a href="blank.html#"> V1.0.0 </a></li> -->
                                </ul>
                            </div>
-                           <div class="col-md-3">
+                           <!-- <div class="col-md-3">
                                <ul class="footer-text text-end">
                                    <li>
-                                       <!-- <a href="mailto:teqlathemes@gmail.com.">
-                        Need Help <i class="ti ti-help"></i
-                      ></a> -->
+                                       <a href="#">
+                                           Need Help <i class="ti ti-help"></i></a>
                                    </li>
                                </ul>
                            </div>
+                       </div> -->
                        </div>
-                   </div>
                </footer>
                <!-- Footer Section ends-->
                </div>

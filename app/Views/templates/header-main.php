@@ -54,7 +54,7 @@
     <link href="<?=base_url()?>assets/css/responsive.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body class="dark">
     <div class="app-wrapper">
         <div class="loader-wrapper">
             <div class="app-loader">
@@ -70,7 +70,8 @@
         <nav>
             <div class="app-logo">
                 <a class="logo d-inline-block" href="<?=base_url('admin/admin-dashboard')?>">
-                    <h3 class="text-primary fw-bold">Admin</h3>
+                    <img class="logo-light" src="<?=base_url('assets/images/admin-logo.png ')?>" alt="">
+                    <img class="logo-dark" src="<?=base_url('assets/images/admin-logo-dark.png ')?>" alt="">
                 </a>
                 <span class="bg-light-primary toggle-semi-nav">
                     <i class="ti ti-chevrons-right f-s-20"></i>
@@ -79,7 +80,7 @@
             <div class="app-nav" id="app-simple-bar">
                 <ul class="main-nav p-0 mt-2">
                     <li class="menu-title">
-                        <span>Dashboard</span>
+                        <span>My Pages</span>
                     </li>
                     <li class="no-sub">
                         <a href="<?=base_url('admin/admin-dashboard')?>">
@@ -227,7 +228,7 @@
 
                                         <div aria-labelledby="profilecanvasRight"
                                             class="offcanvas offcanvas-end header-profile-canvas h-auto"
-                                            id="profilecanvasRight" tabindex="-1" style="max-height: 200px">
+                                            id="profilecanvasRight" tabindex="-1" style="max-height: 170px">
                                             <div class="offcanvas-body app-scroll">
                                                 <ul class="">
                                                     <li class="d-flex gap-3 mb-3">
@@ -245,17 +246,17 @@
                                                                     src="<?=base_url()?>assets/images/check.png" />
                                                             </h6>
                                                             <p class="f-s-12 mb-0 text-secondary">
-                                                                lauradesign@gmail.com
+                                                                admin@gmail.com
                                                             </p>
                                                         </div>
                                                     </li>
 
-                                                    <li>
+                                                    <!-- <li>
                                                         <a class="f-w-500" href="profile" target="_blank">
                                                             <i class="iconoir-user-love pe-1 f-s-20"></i>
                                                             Profile Details
                                                         </a>
-                                                    </li>
+                                                    </li> -->
                                                     <li>
                                                         <form action="<?= url_to('logout') ?>" method="get"
                                                             style="display: inline;">

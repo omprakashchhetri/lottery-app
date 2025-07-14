@@ -17693,6 +17693,15 @@ nav .app-logo .logo img {
   width: 140px;
   float: left;
 }
+nav .app-logo .logo img.logo-dark {
+  display: none;
+}
+.dark nav .app-logo .logo img.logo-dark {
+  display: inline-block;
+}
+.dark nav .app-logo .logo img.logo-light {
+ display: none
+}
 nav .app-nav {
   height: calc(100% - 65px);
   overflow: auto;

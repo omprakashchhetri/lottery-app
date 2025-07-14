@@ -11,7 +11,6 @@
                             <li class="">
                                 <a class="f-s-14 f-w-500" href="#">
                                     <span>
-                                        <i class="ph-duotone ph-briefcase-metal f-s-16"></i>
                                         Login
                                     </span>
                                 </a>
@@ -21,7 +20,8 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="<?=base_url('admin/add-result')?>" class="btn btn-primary d-flex align-items-center gap-1">
+                    <a href="<?=base_url('admin/add-result')?>"
+                        class="btn btn-primary d-flex align-items-center gap-1 px-2">
                         <i class="ti ti-playlist-add fs-5"></i>Add Result
                     </a>
                 </div>

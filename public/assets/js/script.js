@@ -1,11 +1,6 @@
 //  -----------------------------------------------------------------------------------
 
-//     Template Name: axelit Admin
-//     Template URI: http://admin.la-themes.com/axelit/theme
-//     Description: This is Admin theme
-//     Author: la-themes
-//     Author URI: https://themeforest.net/user/la-themes
-
+//     Template Name: Admin
 // -----------------------------------------------------------------------------------
 
 // 01. Horizontal Nav js
@@ -252,13 +247,13 @@ document.querySelector(".header-dark").addEventListener("click", () => {
     setLocalStorageItem("theme-mode", "dark");
   }
 });
-function appendHtml() {
-  var div = document.getElementsByClassName("app-wrapper");
-  div.innerHTML += "<p>This is some HTML code</p>";
-}
-window.onload = function () {
-  appendHtml();
-};
+// function appendHtml() {
+//   var div = document.getElementsByClassName("app-wrapper");
+//   div.innerHTML += "<p>This is some HTML code</p>";
+// }
+// window.onload = function () {
+//   appendHtml();
+// };
 
 // >>-- 12 Close on click js --<<
 
@@ -326,6 +321,6 @@ closeCollaps.forEach(function (element) {
 
 // >>-- 15  Modal js --<<
 
-$(function () {
-  $("#welcomeCard").modal("show");
-});
+// $(function () {
+//   $("#welcomeCard").modal("show");
+// });

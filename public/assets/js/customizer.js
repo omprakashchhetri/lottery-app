@@ -113,7 +113,8 @@ function loadConfiguration() {
   $("body").attr("text", textOption);
   $(".offcanvas-body > ul").find(`.${textOption}`).addClass("selected");
   let layoutOption = getLocalStorageItem("layout-option", "ltr");
-  $("body").attr("class", layoutOption);
+  let themeOption = getLocalStorageItem("theme-mode") || "light";
+  $("body").attr("class", layoutOption + " " + themeOption);
   $("html").attr("dir", layoutOption);
   $(".offcanvas-body > ul").find(`.${layoutOption}`).addClass("selected");
   let colorOption = getLocalStorageItem("color-option", "default");
