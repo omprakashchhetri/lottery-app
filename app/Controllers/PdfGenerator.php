@@ -2,14 +2,13 @@
 
 namespace App\Controllers;
 
-use Dompdf\Dompdf;
-use Dompdf\Options;
 use CodeIgniter\Controller;
 
 class PdfGenerator extends Controller
 {
     public function generateLotteryResult()
     {
+        // Step 1: Prepare data (can come from DB or form)
         // Dynamic data – can come from DB or form
         $data = [
             'first_number' => '569821',
@@ -54,40 +53,41 @@ class PdfGenerator extends Controller
                 '4096', '4097', '4098', '4099', '4100'
             ]
         ];
-        
 
-        // Load view and pass data
+         // Step 2: Render HTML
         $html = view('lottery_templates/lottery_template1', $data);
 
-        // Setup Dompdf
-        $options = new Options();
-        // $options->set('defaultFont', 'DejaVu Sans'); // UTF-8 + Indic font support
+        // Step 3: Save HTML to public/temp
+        $htmlFilename = 'lottery_template_' . date('YmdHis') . '.html';
+        $htmlPath     = FCPATH . 'temp/' . $htmlFilename;
 
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
+        if (!is_dir(FCPATH . 'temp')) {
+            mkdir(FCPATH . 'temp', 0777, true);
+        }
 
-         // 📂 File save path
-         $filename = 'lottery_result_' . date('Y-m-d-H') . '.pdf';
-         $savePath = WRITEPATH . 'pdfs/' . $filename;
- 
-         // Ensure directory exists
-         if (!is_dir(WRITEPATH . 'pdfs')) {
-             mkdir(WRITEPATH . 'pdfs', 0777, true);
-         }
- 
-         // Save to server
-         file_put_contents($savePath, $dompdf->output());
- 
-         // Optional: return response to confirm or send link
-         return $this->response->setJSON([
-             'status'   => 'success',
-             'message'  => 'PDF saved successfully',
-             'filename' => $filename,
-             'path'     => $savePath,
-             'url'      => base_url('writable/pdfs/' . $filename),
-         ]);
+        file_put_contents($htmlPath, $html);
+
+        // Step 4: Generate PDF file path
+        $pdfFilename = 'lottery_result_' . date('YmdHis') . '.pdf';
+        $pdfPath     = WRITEPATH . 'pdfs/' . $pdfFilename;
+
+        if (!is_dir(WRITEPATH . 'pdfs')) {
+            mkdir(WRITEPATH . 'pdfs', 0777, true);
+        }
+
+        $htmlUrl = 'file:///' . str_replace('\\', '/', realpath($htmlPath));
+
+        $chromePath = 'C:\Program Files\Google\Chrome\Application\chrome.exe';
+
+        $command = "\"$chromePath\" --headless --disable-gpu --no-margins --print-to-pdf=\"$pdfPath\" \"$htmlUrl\"";
+
+        exec($command, $output, $status);
+
+        log_message('debug', 'Chrome command: ' . $command);
+        log_message('debug', 'Chrome output: ' . implode("\n", $output));
+        log_message('debug', 'Chrome status: ' . $status);
+
+
     }
 
     public function download($filename)
@@ -103,5 +103,4 @@ class PdfGenerator extends Controller
                     ->setHeader('Content-Disposition', 'inline; filename="' . $filename . '"')
                     ->setBody(file_get_contents($path));
     }
-
 }
