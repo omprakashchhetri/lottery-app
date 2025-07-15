@@ -56,52 +56,71 @@ class PdfGenerator extends Controller
         ];
         
 
-        // Load view and pass data
+         // Step 2: Load the view and get HTML content
         $html = view('lottery_templates/lottery_template1', $data);
 
-        // Setup Dompdf
-        $options = new Options();
-        // $options->set('defaultFont', 'DejaVu Sans'); // UTF-8 + Indic font support
+        // Step 3: Setup save path and filename
+        $filename = 'lottery_result_' . date('Y-m-d-H') . '.html';
+        $savePath = WRITEPATH . 'html/' . $filename;
 
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
+        // Ensure directory exists
+        if (!is_dir(WRITEPATH . 'html')) {
+            mkdir(WRITEPATH . 'html', 0777, true);
+        }
 
-         // 📂 File save path
-         $filename = 'lottery_result_' . date('Y-m-d-H') . '.pdf';
-         $savePath = WRITEPATH . 'pdfs/' . $filename;
- 
-         // Ensure directory exists
-         if (!is_dir(WRITEPATH . 'pdfs')) {
-             mkdir(WRITEPATH . 'pdfs', 0777, true);
-         }
- 
-         // Save to server
-         file_put_contents($savePath, $dompdf->output());
- 
-         // Optional: return response to confirm or send link
-         return $this->response->setJSON([
-             'status'   => 'success',
-             'message'  => 'PDF saved successfully',
-             'filename' => $filename,
-             'path'     => $savePath,
-             'url'      => base_url('writable/pdfs/' . $filename),
-         ]);
+        // Step 4: Save HTML content to file
+        file_put_contents($savePath, $html);
+
+        // Step 5: Return response with link to saved HTML
+        return $this->response->setJSON([
+            'status'   => 'success',
+            'message'  => 'HTML saved successfully',
+            'filename' => $filename,
+            'path'     => $savePath,
+            'url'      => base_url('writable/html/' . $filename),
+        ]);
     }
 
     public function download($filename)
-    {
-        $path = WRITEPATH . 'pdfs/' . $filename;
+{
+    $path = WRITEPATH . 'html/' . $filename;
 
-        if (!is_file($path)) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-        }
-
-        return $this->response
-                    ->setHeader('Content-Type', 'application/pdf')
-                    ->setHeader('Content-Disposition', 'inline; filename="' . $filename . '"')
-                    ->setBody(file_get_contents($path));
+    if (!is_file($path)) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
+
+    return $this->response
+                ->setHeader('Content-Type', 'text/html; charset=UTF-8')
+                ->setBody(file_get_contents($path));
+}
+
+
+
+public function uploadPdf()
+{
+    $file = $this->request->getFile('file');
+
+    if (!$file || !$file->isValid()) {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid PDF upload']);
+    }
+
+    $filename = 'lottery_result_' . date('Ymd_His') . '.pdf';
+    $savePath = WRITEPATH . 'pdfs/' . $filename;
+
+    // Ensure the directory exists
+    if (!is_dir(WRITEPATH . 'pdfs')) {
+        mkdir(WRITEPATH . 'pdfs', 0777, true);
+    }
+
+    // Move uploaded file to destination
+    $file->move(WRITEPATH . 'pdfs', $filename);
+
+    return $this->response->setJSON([
+        'status'   => 'success',
+        'message'  => 'PDF uploaded successfully',
+        'filename' => $filename,
+        'url'      => base_url('writable/pdfs/' . $filename)
+    ]);
+}
 
 }

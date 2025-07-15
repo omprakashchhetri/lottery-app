@@ -1,3 +1,4 @@
+<!-- DEBUG-VIEW START 1 APPPATH\Views\lottery_templates\lottery_template1.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -541,13 +542,13 @@
             <!-- 8pm header <span class="draw-number-count draw-8pm">001</span>
          <span class="draw-date-top draw-8pm">30/12/25</span>
          <img
-          src="<?=base_url()?>assets/images/main-header-8pm.jpg"
+          src="http://localhost:8080/assets/images/main-header-8pm.jpg"
           alt="Header Image"
           class="header-image"
         /> -->
             <span class="draw-number-count">001</span>
             <span class="draw-date-top">30/12/25</span>
-            <img src="<?=base_url()?>assets/images/main-header-1pm.jpg" alt="Header Image" class="header-image" />
+            <img src="http://localhost:8080/assets/images/main-header-1pm.jpg" alt="Header Image" class="header-image" />
 
         </div>
 
@@ -586,7 +587,7 @@
                 </div>
                 <div class="section section-inner">
                     <div class="section-img">
-                        <img src="<?=base_url()?>assets/images/2nd-price-label.png" alt="">
+                        <img src="http://localhost:8080/assets/images/2nd-price-label.png" alt="">
                     </div>
                     <div class="section-img-block"></div>
                     <div class="section-img-block-main"></div>
@@ -605,7 +606,7 @@
                 </div>
                 <div class="section section-inner green">
                     <div class="section-img">
-                        <img src="<?=base_url()?>assets/images/3rd-price-label.png" alt="">
+                        <img src="http://localhost:8080/assets/images/3rd-price-label.png" alt="">
                     </div>
                     <div class="section-img-block"></div>
                     <div class="section-img-block-main"></div>
@@ -624,7 +625,7 @@
                 </div>
                 <div class="section section-inner green">
                     <div class="section-img">
-                        <img src="<?=base_url()?>assets/images/4th-price-label.png" alt="">
+                        <img src="http://localhost:8080/assets/images/4th-price-label.png" alt="">
                     </div>
                     <div class="section-img-block"></div>
                     <div class="section-img-block-main"></div>
@@ -643,7 +644,7 @@
                 </div>
             </div>
             <div class="ad-image-wrapper">
-                <img class="ad-image" src="<?=base_url()?>assets/images/img20.jpg" alt="">
+                <img class="ad-image" src="http://localhost:8080/assets/images/img20.jpg" alt="">
             </div>
             <h3 class="fifth-price-header">5th Prize Amount for Winner ₹120/- for Seller ₹10/- </h3>
             <div class="section">
@@ -784,7 +785,7 @@
                     <div class="draw-date right">30/12/25</div>
                 </div>
 
-                <img class="footer-image" src="<?=base_url()?>assets/images/image(3).png" alt="">
+                <img class="footer-image" src="http://localhost:8080/assets/images/image(3).png" alt="">
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -802,7 +803,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData();
         formData.append('file', pdfBlob, 'lottery_result.pdf');
 
-        fetch('<?= base_url('pdf-upload-endpoint') ?>', {
+        fetch('http://localhost:8080/pdf-upload-endpoint', {
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(response => {
@@ -819,3 +820,4 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\Views\lottery_templates\lottery_template1.php -->
