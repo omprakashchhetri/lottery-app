@@ -18,6 +18,6 @@ $routes->group('admin', function ($routes) {
     $routes->get('dashboard', 'Dashboard::index', ['filter' => 'login']);
     $routes->get('admin-dashboard', 'Dashboard::admin_dashboard',['filter' => 'login']);
     $routes->get('add-result', 'Dashboard::add_result', ['filter' => 'login']);
-
+    $routes->post('add-edit-result', 'Dashboard::add_edit_result');
     $routes->get('generate-pdf', 'PdfGenerator::generateLotteryResult');
 });
