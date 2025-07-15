@@ -1,0 +1,31 @@
+.border-2 {
+  border-width: 2px;
+}
+.current-date-result {
+  min-height: 100px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.published-result {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.current-date-result:hover span {
+  color: #fff !important;
+}
+
+.pending-result {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.current-date-result:hover span {
+  color: #fff !important;
+}

@@ -1,5 +1,6 @@
 <!-- Body main section starts -->
 <main>
+    <?php //echo"<pre>";print_r($lottery_data)?>
     <div class="container-fluid">
         <!-- Breadcrumb start -->
         <div class="row m-1">
@@ -94,6 +95,56 @@
             </div>
         </div>
         <!-- Ticket end -->
+
+        <!-- Create Buttons Sections Starts -->
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-center mb-3 gap-3 flex-wrap">
+                    <?php if(!empty($resultArray['1pm-result'])) {?>
+                    <a href="<?=base_url('admin/add-result')?>"
+                        class="current-date-result p-3 bg-outline-primary b-r-22">
+                        <div class="pending-result">
+                            <small class="badge text-light-danger">Pending</small>
+                            <div class="text-primary fs-5"><span><i class="ti ti-plus"></i></span><span
+                                    class="ms-2">Create 1 PM</span></div>
+                        </div>
+                    </a>
+                    <?php } else { ?>
+                    <a href="<?=base_url('admin/add-result')?>"
+                        class="current-date-result p-3 bg-outline-primary b-r-22">
+                        <div class="published-result">
+                            <small class="badge text-light-success">Published</small>
+                            <div class="fs-5 text-primary"><span><i class="ti ti-edit"></i></span><span class="ms-2">1
+                                    PM
+                                    Result</span></div>
+                        </div>
+                    </a>
+                    <?php }?>
+                    <?php if(empty($resultArray['8pm-result'])) {?>
+
+                    <a href="<?=base_url('admin/add-result')?>"
+                        class="current-date-result p-3 bg-outline-primary b-r-22">
+                        <div class="pending-result">
+                            <small class="badge text-light-danger">Pending</small>
+                            <div class="text-primary fs-5"><span><i class="ti ti-plus"></i></span><span
+                                    class="ms-2">Create 8 PM</span></div>
+                        </div>
+                    </a>
+                    <?php } else { ?>
+                    <a href="<?=base_url('admin/add-result')?>"
+                        class="current-date-result p-3 bg-outline-primary b-r-22">
+                        <div class="published-result">
+                            <small class="badge text-light-success">Published</small>
+                            <div class="fs-5 text-primary"><span><i class="ti ti-edit"></i></span><span class="ms-2">8
+                                    PM
+                                    Result</span></div>
+                        </div>
+                    </a>
+                    <?php }?>
+                </div>
+            </div>
+        </div>
+        <!-- Create Buttons Sections Starts -->
 
         <!-- Blank start -->
         <div class="row">

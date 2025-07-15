@@ -4,9 +4,19 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\LotteryTemplatesModel;
+
 
 class Dashboard extends BaseController
 {
+
+    protected $templateModel;
+
+    public function __construct()
+    {
+        $this->templateModel = new LotteryTemplatesModel();
+    }
+
     public function index()
     {
         // Only logged-in users can access
@@ -28,7 +38,18 @@ class Dashboard extends BaseController
 
         $user = auth()->user(); // Get current logged-in user
 
-        $passToView = ['title'=> 'Admin Dashboard'];
+        $data = [
+            'templates' => $this->templateModel->getTemplatesWithTotalPrizes(),
+            'stats' => $this->templateModel->getTemplateStats(),
+            'lottery_types' => LotteryTemplatesModel::getLotteryTypes()
+        ];
+
+        $passToView = [
+            'title'=> 'Admin Dashboard',
+            'lottery_data' => $data,
+
+        ];
+
 
         return view('templates/header-main', $passToView)
         . view('pages/admin-dashboard', ['user' => $user])

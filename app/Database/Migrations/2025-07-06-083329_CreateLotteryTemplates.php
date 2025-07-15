@@ -10,7 +10,7 @@ class CreateLotteryTemplates extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'auto_increment' => true, 'unsigned' => true],
-            'name' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'templatefile' => ['type' => 'VARCHAR', 'constraint' => 100],
             'preview_image' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'first_prize_count' => ['type' => 'INT', 'unsigned' => true, 'default' => 1],
             'second_prize_count' => ['type' => 'INT', 'unsigned' => true, 'default' => 10],

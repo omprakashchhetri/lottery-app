@@ -52,6 +52,9 @@
 
     <!-- Responsive css-->
     <link href="<?=base_url()?>assets/css/responsive.css" rel="stylesheet" type="text/css" />
+
+    <!-- Common Styles -->
+    <link href="<?=base_url()?>assets/css/common.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="dark">
