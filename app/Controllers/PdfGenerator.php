@@ -2,13 +2,14 @@
 
 namespace App\Controllers;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use CodeIgniter\Controller;
 
 class PdfGenerator extends Controller
 {
     public function generateLotteryResult()
     {
-        // Step 1: Prepare data (can come from DB or form)
         // Dynamic data – can come from DB or form
         $data = [
             'first_number' => '569821',
@@ -53,54 +54,73 @@ class PdfGenerator extends Controller
                 '4096', '4097', '4098', '4099', '4100'
             ]
         ];
+        
 
-         // Step 2: Render HTML
+         // Step 2: Load the view and get HTML content
         $html = view('lottery_templates/lottery_template1', $data);
 
-        // Step 3: Save HTML to public/temp
-        $htmlFilename = 'lottery_template_' . date('YmdHis') . '.html';
-        $htmlPath     = FCPATH . 'temp/' . $htmlFilename;
+        // Step 3: Setup save path and filename
+        $filename = 'lottery_result_' . date('Y-m-d-H') . '.html';
+        $savePath = WRITEPATH . 'html/' . $filename;
 
-        if (!is_dir(FCPATH . 'temp')) {
-            mkdir(FCPATH . 'temp', 0777, true);
+        // Ensure directory exists
+        if (!is_dir(WRITEPATH . 'html')) {
+            mkdir(WRITEPATH . 'html', 0777, true);
         }
 
-        file_put_contents($htmlPath, $html);
+        // Step 4: Save HTML content to file
+        file_put_contents($savePath, $html);
 
-        // Step 4: Generate PDF file path
-        $pdfFilename = 'lottery_result_' . date('YmdHis') . '.pdf';
-        $pdfPath     = WRITEPATH . 'pdfs/' . $pdfFilename;
-
-        if (!is_dir(WRITEPATH . 'pdfs')) {
-            mkdir(WRITEPATH . 'pdfs', 0777, true);
-        }
-
-        $htmlUrl = 'file:///' . str_replace('\\', '/', realpath($htmlPath));
-
-        $chromePath = 'C:\Program Files\Google\Chrome\Application\chrome.exe';
-
-        $command = "\"$chromePath\" --headless --disable-gpu --no-margins --print-to-pdf=\"$pdfPath\" \"$htmlUrl\"";
-
-        exec($command, $output, $status);
-
-        log_message('debug', 'Chrome command: ' . $command);
-        log_message('debug', 'Chrome output: ' . implode("\n", $output));
-        log_message('debug', 'Chrome status: ' . $status);
-
-
+        // Step 5: Return response with link to saved HTML
+        return $this->response->setJSON([
+            'status'   => 'success',
+            'message'  => 'HTML saved successfully',
+            'filename' => $filename,
+            'path'     => $savePath,
+            'url'      => base_url('writable/html/' . $filename),
+        ]);
     }
 
     public function download($filename)
-    {
-        $path = WRITEPATH . 'pdfs/' . $filename;
+{
+    $path = WRITEPATH . 'html/' . $filename;
 
-        if (!is_file($path)) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-        }
-
-        return $this->response
-                    ->setHeader('Content-Type', 'application/pdf')
-                    ->setHeader('Content-Disposition', 'inline; filename="' . $filename . '"')
-                    ->setBody(file_get_contents($path));
+    if (!is_file($path)) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
+
+    return $this->response
+                ->setHeader('Content-Type', 'text/html; charset=UTF-8')
+                ->setBody(file_get_contents($path));
+}
+
+
+
+public function uploadPdf()
+{
+    $file = $this->request->getFile('file');
+
+    if (!$file || !$file->isValid()) {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid PDF upload']);
+    }
+
+    $filename = 'lottery_result_' . date('Ymd_His') . '.pdf';
+    $savePath = WRITEPATH . 'pdfs/' . $filename;
+
+    // Ensure the directory exists
+    if (!is_dir(WRITEPATH . 'pdfs')) {
+        mkdir(WRITEPATH . 'pdfs', 0777, true);
+    }
+
+    // Move uploaded file to destination
+    $file->move(WRITEPATH . 'pdfs', $filename);
+
+    return $this->response->setJSON([
+        'status'   => 'success',
+        'message'  => 'PDF uploaded successfully',
+        'filename' => $filename,
+        'url'      => base_url('writable/pdfs/' . $filename)
+    ]);
+}
+
 }
