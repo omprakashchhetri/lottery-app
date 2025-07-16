@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A4 Print Template</title>
     <style>
+    .desktop-capture * {
+        /* Reset mobile-specific styles for all children */
+        transform: none !important;
+        /* font-size: inherit !important; */
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -22,6 +28,8 @@
 
     .page {
         width: 210mm;
+        min-width: 210mm;
+        height: 297mm;
         min-height: 297mm;
         margin: 20px auto;
         background: white;
@@ -29,6 +37,12 @@
         padding: 1mm;
         position: relative;
         border-radius: 5px;
+        transform: none !important;
+        box-sizing: border-box;
+    }
+
+    #toolbarContainer {
+        display: none;
     }
 
     .header-image {
@@ -51,10 +65,10 @@
         font-style: normal;
         font-weight: normal;
         text-decoration: none;
-        font-size: 32pt;
+        font-size: 38pt;
         position: absolute;
-        top: 195px;
-        right: 130px;
+        top: 50.5mm;
+        right: 36mm;
     }
 
     .draw-number-count {
@@ -75,10 +89,10 @@
         font-style: normal;
         font-weight: normal;
         text-decoration: none;
-        font-size: 30pt;
+        font-size: 26pt;
         position: absolute;
-        top: 138px;
-        right: 18%;
+        top: 37.4mm;
+        right: 34mm;
     }
 
     .draw-date-top.draw-8pm {
@@ -158,15 +172,15 @@
     }
 
     .fifth-section .draw-number {
-        font-weight: 600;
+        font-weight: 600 !important;
         display: block;
         color: black;
         font-family: "Arial Rounded MT Bold", sans-serif;
         font-style: normal;
         font-weight: 500;
-        line-height: 1.1;
+        line-height: 1.2;
         text-decoration: none;
-        font-size: 14pt;
+        font-size: 16pt;
         width: 100%;
     }
 
@@ -174,7 +188,7 @@
         color: black;
         font-family: "Arial Rounded MT Bold", sans-serif;
         font-style: normal;
-        font-weight: normal;
+        font-weight: 600;
         text-decoration: none;
         font-size: 19pt;
         margin: 0pt;
@@ -248,14 +262,14 @@
         float: right;
         width: calc(100% - 70mm);
         line-height: 1.1;
-        margin-top: -1.4mm;
+        margin-top: -2.3mm;
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .green .numbers-wrapper {
-        margin-top: -2mm;
+        margin-top: -2.5mm;
     }
 
     .draw-number {
@@ -268,7 +282,7 @@
 
     .ad-image {
         width: 100%;
-        height: 75mm;
+        height: 66mm;
     }
 
     .fifth-price-header {
@@ -296,7 +310,7 @@
         font-size: 25pt;
         left: 50%;
         translate: -50%;
-        top: 0;
+        top: -1mm;
     }
 
     .footer-middle-element {
@@ -375,6 +389,24 @@
         position: absolute;
         right: 0;
         left: unset;
+    }
+
+    #downloadBtn {
+        position: fixed;
+        bottom: 10%;
+        left: 50%;
+        translate: -50%;
+        background-color: #f86e44ff;
+        padding: 10px 30px;
+        font-size: 18px;
+        font-weight: 500;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 5px;
     }
 
     /* Print Styles */
@@ -526,39 +558,72 @@
             margin: 10px auto;
         }
 
-        .two-column {
-            flex-direction: column;
+        #downloadBtn {
+            top: 100px;
+            bottom: unset;
+            left: 100px;
+            right: unset;
+        }
+
+        #editBtn {
+            top: 100px;
+            bottom: unset;
+            left: 100px;
+            right: 100px;
         }
     }
     </style>
 </head>
 
 <body>
+    <?php 
+    // print_r($lotteryData);
+        $first = $lotteryData['data']['lottery_data']['section1'][0];
+        $secondData = $lotteryData['data']['lottery_data']['section2'];
+        $thirdData = $lotteryData['data']['lottery_data']['section3'];
+        $forthData = $lotteryData['data']['lottery_data']['section4'];
+        $fifthData = $lotteryData['data']['lottery_data']['section5'];
+        $date_short = $lotteryData['data']['draw_date_short'];
+        $date_full = $lotteryData['data']['draw_date_full'];
+        $time = $lotteryData['data']['draw_time'];
+    ?>
+    <button id="downloadBtn" onclick="downloadBoth()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z">
+            </path>
+            <path fill-rule="evenodd"
+                d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z">
+            </path>
+        </svg>
+        <span>Download</span></button>
+
     <div class="page">
         <!-- Header Image Section -->
         <div class="header-wrapper">
-            <span class="first-number">{1st Number}</span>
-            <!-- 8pm header <span class="draw-number-count draw-8pm">001</span>
-         <span class="draw-date-top draw-8pm">30/12/25</span>
-         <img
-          src="<?=base_url()?>assets/images/main-header-8pm.jpg"
-          alt="Header Image"
-          class="header-image"
-        /> -->
+            <?php if($time == '1 PM'){ ?>
+            <span class="first-number"><?=$first?></span>
             <span class="draw-number-count">001</span>
-            <span class="draw-date-top">30/12/25</span>
+            <span class="draw-date-top"><?=$date_full?></span>
             <img src="<?=base_url()?>assets/images/main-header-1pm.jpg" alt="Header Image" class="header-image" />
-
+            <?php } else if($time == '8 PM') { ?>
+            <!-- 8pm header -->
+            <span class="first-number"><?=$first?></span>
+            <span class="draw-number-count draw-8pm">001</span>
+            <span class="draw-date-top draw-8pm">30/12/25</span>
+            <img src="<?=base_url()?>assets/images/main-header-8pm.jpg" alt="Header Image" class="header-image" />
+            <?php } ?>
         </div>
 
         <div class="content">
             <!-- Section 1: Main Content -->
-            <div class="section">
+            <!-- <div class="section">
                 <h2 class="top-seller-text">
                     Sold by : SELLER - KRISHNAPADA GHOSH - SWARUPDHA & SUB STOCKIST -
                     SOUVIK LOTTERY CENTRE - BITHARI
                 </h2>
-            </div>
+            </div> -->
             <div class="section">
                 <div class="section-content">
                     <h3 class="const-prize-head">
@@ -581,7 +646,7 @@
                   font-size: 15px;
                   font-weight: 800;
                   margin-inline: 5px;
-                ">{1st Num}</span>(All Remaining Series Of 1st Prize No.)
+                "><?=$first?></span>(All Remaining Series Of 1st Prize No.)
                     </h3>
                 </div>
                 <div class="section section-inner">
@@ -591,16 +656,9 @@
                     <div class="section-img-block"></div>
                     <div class="section-img-block-main"></div>
                     <div class="numbers-wrapper">
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
-                        <span class="top-number-text draw-number">12345</span>
+                        <?php foreach($secondData as $secondNum) { ?>
+                        <span class="top-number-text draw-number"><?=$secondNum?></span>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="section section-inner green">
@@ -610,16 +668,9 @@
                     <div class="section-img-block"></div>
                     <div class="section-img-block-main"></div>
                     <div class="numbers-wrapper">
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
+                        <?php foreach($thirdData as $thirdNum) { ?>
+                        <span class="top-number-text draw-number"><?=$thirdNum?></span>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="section section-inner green">
@@ -629,16 +680,9 @@
                     <div class="section-img-block"></div>
                     <div class="section-img-block-main"></div>
                     <div class="numbers-wrapper">
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
-                        <span class="top-number-text draw-number">1234</span>
+                        <?php foreach($forthData as $forthNum) { ?>
+                        <span class="top-number-text draw-number"><?=$forthNum?></span>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -647,184 +691,128 @@
             </div>
             <h3 class="fifth-price-header">5th Prize Amount for Winner ₹120/- for Seller ₹10/- </h3>
             <div class="section">
-                <di class="fifth-numbre-wrapper">
+                <div class="fifth-numbre-wrapper">
+                    <?php foreach ($fifthData as $index => $fifthNum): ?>
+                    <?php if ($index % 10 === 0): ?>
                     <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
+                        <?php endif; ?>
+
+                        <span class="draw-number"><?= htmlspecialchars($fifthNum) ?></span>
+
+                        <?php if (($index + 1) % 10 === 0 || $index + 1 === count($fifthData)): ?>
                     </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                    <div class="fifth-section">
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                        <span class="draw-number">1234</span>
-                    </div>
-                </di>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+
+
+                </div>
             </div>
             <div class="footer">
                 <div>
-                    <div class="draw-date">30/12/25</div>
+                    <div class="draw-date">
+                        <?=$date_short?>
+                    </div>
                     <div class="footer-middle-element">
                         <p class="text">TDS 2% Under Section 194G shall be deducted on Sellers Prize Amount w.e.f. 1st
                             October</p>
                     </div>
-                    <div class="footer-middle time-on">1 PM</div>
+                    <div class="footer-middle time-on"><?=$time?></div>
                     <div class="footer-middle-element right">
                         <p class="text">Please check the results <br>with relevent Official Government<br> Gazatte</p>
                     </div>
-                    <div class="draw-date right">30/12/25</div>
+                    <div class="draw-date right">
+                        <?=$date_short?>
+                    </div>
                 </div>
 
                 <img class="footer-image" src="<?=base_url()?>assets/images/image(3).png" alt="">
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const element = document.querySelector('.page');
+        // Function to download as image (targets .page element)
+        function downloadAsImage() {
+            const pageElement = document.querySelector('.page');
 
-            html2pdf().set({
-                margin: [-6, -4, 0, 0],
-                filename: 'lottery_result.pdf',
-                image: {
-                    type: 'jpeg',
-                    quality: 0.70
-                },
-                html2canvas: {
-                    scale: 1
-                },
-                jsPDF: {
-                    unit: 'mm',
-                    format: 'a4',
-                    orientation: 'portrait'
-                }
-            }).from(element).outputPdf('blob').then(function(pdfBlob) {
-                const formData = new FormData();
-                formData.append('file', pdfBlob, 'lottery_result.pdf');
+            if (!pageElement) {
+                alert('No element with class "page" found!');
+                return;
+            }
 
-                fetch('<?= base_url('pdf-upload-endpoint') ?>', {
-                    method: 'POST',
-                    body: formData
-                }).then(res => res.json()).then(response => {
-                    console.log('PDF saved:', response);
-                    alert('PDF saved successfully on server.');
-                }).catch(err => {
-                    console.error('Upload failed:', err);
-                    alert('Error uploading PDF to server.');
-                });
+            html2canvas(pageElement, {
+                useCORS: true,
+                scale: 2, // Higher quality
+                backgroundColor: '#ffffff',
+                width: pageElement.offsetWidth,
+                height: pageElement.offsetHeight
+            }).then(canvas => {
+                const link = document.createElement('a');
+                var time = "<?=$time?>";
+                var fileName = generateFileName(time);
+                link.download = fileName;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(error => {
+                console.error('Error generating image:', error);
             });
-        });
-        </script>
+        }
 
+        // Function to download as PDF (targets .page element)
+        function downloadAsPDF() {
+            const pageElement = document.querySelector('.page');
+
+            if (!pageElement) {
+                alert('No element with class "page" found!');
+                return;
+            }
+
+            html2canvas(pageElement, {
+                useCORS: true,
+                scale: 2,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const {
+                    jsPDF
+                } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+                var time = "<?=$time?>";
+                var fileName = generateFileName(time);
+                pdf.save(fileName);
+            }).catch(error => {
+                console.error('Error generating PDF:', error);
+            });
+        }
+
+        function generateFileName(timeString) {
+            const now = new Date();
+
+            // Get date in dd-mm-yyyy format
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const year = now.getFullYear();
+
+            // Clean and format the time string (optional: lowercase and no spaces)
+            const timeFormatted = timeString.toLowerCase().replace(/\s+/g, '');
+
+            // Combine all into the desired format
+            return `result-${day}-${month}-${year}_${timeFormatted}.png`;
+        }
+
+        // Function to download both at once
+        function downloadBoth() {
+            downloadAsImage();
+            setTimeout(() => {
+                downloadAsPDF();
+            }, 1000); // Small delay to prevent conflicts
+        }
+        </script>
 </body>
 
 </html>

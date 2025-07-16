@@ -82,45 +82,45 @@ class PdfGenerator extends Controller
     }
 
     public function download($filename)
-{
-    $path = WRITEPATH . 'html/' . $filename;
+    {
+        $path = WRITEPATH . 'html/' . $filename;
 
-    if (!is_file($path)) {
-        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        if (!is_file($path)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        return $this->response
+                    ->setHeader('Content-Type', 'text/html; charset=UTF-8')
+                    ->setBody(file_get_contents($path));
     }
 
-    return $this->response
-                ->setHeader('Content-Type', 'text/html; charset=UTF-8')
-                ->setBody(file_get_contents($path));
-}
 
 
+    public function uploadPdf()
+    {
+        $file = $this->request->getFile('file');
 
-public function uploadPdf()
-{
-    $file = $this->request->getFile('file');
+        if (!$file || !$file->isValid()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid PDF upload']);
+        }
 
-    if (!$file || !$file->isValid()) {
-        return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid PDF upload']);
+        $filename = 'lottery_result_' . date('Ymd_His') . '.pdf';
+        $savePath = WRITEPATH . 'pdfs/' . $filename;
+
+        // Ensure the directory exists
+        if (!is_dir(WRITEPATH . 'pdfs')) {
+            mkdir(WRITEPATH . 'pdfs', 0777, true);
+        }
+
+        // Move uploaded file to destination
+        $file->move(WRITEPATH . 'pdfs', $filename);
+
+        return $this->response->setJSON([
+            'status'   => 'success',
+            'message'  => 'PDF uploaded successfully',
+            'filename' => $filename,
+            'url'      => base_url('writable/pdfs/' . $filename)
+        ]);
     }
-
-    $filename = 'lottery_result_' . date('Ymd_His') . '.pdf';
-    $savePath = WRITEPATH . 'pdfs/' . $filename;
-
-    // Ensure the directory exists
-    if (!is_dir(WRITEPATH . 'pdfs')) {
-        mkdir(WRITEPATH . 'pdfs', 0777, true);
-    }
-
-    // Move uploaded file to destination
-    $file->move(WRITEPATH . 'pdfs', $filename);
-
-    return $this->response->setJSON([
-        'status'   => 'success',
-        'message'  => 'PDF uploaded successfully',
-        'filename' => $filename,
-        'url'      => base_url('writable/pdfs/' . $filename)
-    ]);
-}
 
 }

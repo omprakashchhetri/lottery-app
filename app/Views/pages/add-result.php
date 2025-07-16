@@ -94,96 +94,17 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
+                                            <?php for($i = 1; $i <= 10 ; $i++) { ?>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">1</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
+                                                        id="basic-addon-sec2<?=$i?>"><?=$i?></i></span>
+                                                    <input aria-describedby="basic-addon-sec2<?=$i?>" aria-label="12345"
                                                         class="form-control b-r-right section2-input"
                                                         placeholder="12345" type="text" />
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">2</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">3</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">4</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">5</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">6</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">7</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">8</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">9</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">10</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
-                                                        placeholder="12345" type="text" />
-                                                </div>
-                                            </div>
+                                            <?php }?>
                                         </div>
                                     </div>
                                 </div>
@@ -200,96 +121,17 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
+                                            <?php for($i=1; $i<=10;$i++) { ?>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">1</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
+                                                        id="basic-addon-sec3<?=$i?>"><?=$i?></i></span>
+                                                    <input aria-describedby="basic-addon-sec3<?=$i?>" aria-label="1234"
                                                         class="form-control b-r-right section3-input" placeholder="1234"
                                                         type="text" />
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">2</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">3</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">4</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">5</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">6</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">7</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">8</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">9</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">10</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -306,96 +148,17 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
+                                            <?php for($i=1; $i<=10;$i++) { ?>
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">1</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
+                                                        id="basic-addon-sec4<?=$i?>"><?=$i?></i></span>
+                                                    <input aria-describedby="basic-addon-sec4<?=$i?>" aria-label="1234"
                                                         class="form-control b-r-right section4-input" placeholder="1234"
                                                         type="text" />
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">2</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">3</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">4</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">5</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">6</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">7</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">8</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">9</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1">10</i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
-                                                        class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
-                                                </div>
-                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -416,8 +179,8 @@
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text b-r-left text-bg-primary"
-                                                        id="basic-addon1"><?=$i?></i></span>
-                                                    <input aria-describedby="basic-addon1" aria-label="1234"
+                                                        id="basic-addon-sec5<?=$i?>"><?=$i?></i></span>
+                                                    <input aria-describedby="basic-addon-sec5<?=$i?>" aria-label="1234"
                                                         class="form-control b-r-right section5-input" placeholder="1234"
                                                         type="text" />
                                                 </div>

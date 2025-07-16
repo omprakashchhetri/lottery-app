@@ -215,7 +215,79 @@ $(document).ready(function() {
         });
     });
 
-    // Function to get all values from each section as arrays
+    // Function to validate all fields are filled
+    function validateAllFields() {
+        let errors = [];
+
+        // Check Section 1 (should have 1 field)
+        let section1Count = 0;
+        $('.section1-input').each(function() {
+            if ($(this).val().trim() !== '') {
+                section1Count++;
+            }
+        });
+        if (section1Count === 0) {
+            errors.push('Section 1 (1st Prize) must have at least 1 value');
+        }
+
+        // Check Section 2 (should have 10 fields)
+        let section2Count = 0;
+        $('.section2-input').each(function() {
+            if ($(this).val().trim() !== '') {
+                section2Count++;
+            }
+        });
+        if (section2Count === 0) {
+            errors.push('Section 2 (2nd Prize) must have at least 1 value');
+        }
+
+        // Check Section 3 (should have 10 fields)
+        let section3Count = 0;
+        $('.section3-input').each(function() {
+            if ($(this).val().trim() !== '') {
+                section3Count++;
+            }
+        });
+        if (section3Count === 0) {
+            errors.push('Section 3 (3rd Prize) must have at least 1 value');
+        }
+
+        // Check Section 4 (should have 10 fields)
+        let section4Count = 0;
+        $('.section4-input').each(function() {
+            if ($(this).val().trim() !== '') {
+                section4Count++;
+            }
+        });
+        if (section4Count === 0) {
+            errors.push('Section 4 (4th Prize) must have at least 1 value');
+        }
+
+        // Check Section 5 (should have 100 fields)
+        let section5Count = 0;
+        $('.section5-input').each(function() {
+            if ($(this).val().trim() !== '') {
+                section5Count++;
+            }
+        });
+        if (section5Count === 0) {
+            errors.push('Section 5 (5th Prize) must have at least 1 value');
+        }
+
+        // Check if draw time is selected
+        if (!$('input[name="select-options"]:checked').length) {
+            errors.push('Please select a draw time');
+        }
+
+        // Check if date is available
+        if (!$('#date-display').text().trim()) {
+            errors.push('Draw date is not available');
+        }
+
+        return errors;
+    }
+
+    // Function to get all values from each section as arrays (only non-empty values)
     function getAllSectionValues() {
         let sectionData = {
             section1: [],
@@ -282,35 +354,69 @@ $(document).ready(function() {
 
     // Function to send data via AJAX
     function sendLotteryData() {
+        // First validate all fields
+        let validationErrors = validateAllFields();
+
+        if (validationErrors.length > 0) {
+            let errorMessage = 'Please fix the following errors:\n\n';
+            validationErrors.forEach(function(error, index) {
+                errorMessage += (index + 1) + '. ' + error + '\n';
+            });
+            alert(errorMessage);
+            return false; // Stop execution
+        }
+
         let allData = getAllSectionValues();
+
+        // Double check that we have data for all sections
+        if (allData.section1.length === 0 ||
+            allData.section2.length === 0 ||
+            allData.section3.length === 0 ||
+            allData.section4.length === 0 ||
+            allData.section5.length === 0) {
+            alert('All sections must have at least one value before saving!');
+            return false;
+        }
 
         let data = {
             lottery_data: allData,
-            draw_time: $('input[name="select-options"]:checked').next().text()
-                .trim(), // Get selected time
-            draw_date: $('#date-display').text() // Get current date
+            draw_time: $('input[name="select-options"]:checked').next().text().trim(),
+            draw_date: $('#date-display').text().trim()
         };
-        console.log(data);
 
-        // Example AJAX call
-        // $.ajax({
-        //     url: '<?=base_url()?>save-lottery-results', // Replace with your endpoint
-        //     type: 'POST',
-        //     data: {
-        //         lottery_data: allData,
-        //         draw_time: $('input[name="select-options"]:checked').next().text()
-        //     .trim(), // Get selected time
-        //         draw_date: $('#date-display').text() // Get current date
-        //     },
-        //     success: function(response) {
-        //         console.log('Success:', response);
-        //         alert('Lottery results saved successfully!');
-        //     },
-        //     error: function(xhr, status, error) {
-        //         console.log('Error:', error);
-        //         alert('Error saving lottery results!');
-        //     }
-        // });
+        console.log('Sending data:', data);
+
+        // Show loading message
+        $('#saveLotteryResultBtn, #saveLotteryResultBtnBottom').prop('disabled', true).text('Saving...');
+
+        // AJAX call
+        $.ajax({
+            url: '<?=base_url()?>save-lottery-results',
+            type: 'POST',
+            data: {
+                lottery_data: allData,
+                draw_time: $('input[name="select-options"]:checked').next().text().trim(),
+                draw_date: $('#date-display').text().trim()
+            },
+            success: function(response) {
+                console.log('Success:', response);
+                alert('Lottery results saved successfully!');
+                var resultId = response.data.result_id;
+                window.location.href = '<?= base_url() ?>' + 'admin/view-result/' + resultId;
+                // Optional: Clear form after successful save
+                // $('#clearAll').click();
+            },
+            error: function(xhr, status, error) {
+                console.log('Error:', error);
+                console.log('Response:', xhr.responseText);
+                alert('Error saving lottery results! Please try again.');
+            },
+            complete: function() {
+                // Re-enable save buttons
+                // $('#saveLotteryResultBtn, #saveLotteryResultBtnBottom').prop('disabled', false)
+                //     .text('Save Results');
+            }
+        });
     }
 
     // Update the save button to use the new function
@@ -320,12 +426,14 @@ $(document).ready(function() {
 
     // Optional: Clear all sections
     $('#clearAll').click(function() {
-        $('.section1-input, .section2-input, .section3-input, .section4-input, .section5-input').val(
-            '');
-        // Clear used numbers
-        Object.keys(usedNumbers).forEach(section => {
-            usedNumbers[section].clear();
-        });
+        if (confirm('Are you sure you want to clear all sections?')) {
+            $('.section1-input, .section2-input, .section3-input, .section4-input, .section5-input')
+                .val('');
+            // Clear used numbers
+            Object.keys(usedNumbers).forEach(section => {
+                usedNumbers[section].clear();
+            });
+        }
     });
 });
 <?php } ?>

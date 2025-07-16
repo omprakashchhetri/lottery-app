@@ -56,7 +56,7 @@ class Dashboard extends BaseController
         . view('templates/footer-main');
         
     }
-    function add_result() {
+   function add_result($resultId = 0) {
         // Only logged-in users can access
         if (!auth()->loggedIn()) {
             return redirect()->to('/login');
@@ -64,23 +64,35 @@ class Dashboard extends BaseController
 
         $user = auth()->user(); // Get current logged-in user
 
-        $passToView = ['title'=> 'Add Result'];
+        // Determine if this is add or edit mode
+        $isEditMode = $resultId > 0;
+        
+        // Prepare data for view
+        $passToView = [
+            'title' => $isEditMode ? 'Edit Result' : 'Add Result',
+            'isEditMode' => $isEditMode,
+            'resultId' => $resultId
+        ];
+
+        // If edit mode, you might want to validate that the result exists
+        if ($isEditMode) {
+            $db = \Config\Database::connect();
+            $result = $db->table('lottery_results')->where('id', $resultId)->get()->getRow();
+            
+            if (!$result) {
+                // Result not found, redirect or show error
+                return redirect()->back()->with('error', 'Lottery result not found');
+            }
+            
+            $passToView['result'] = $result;
+        }
 
         return view('templates/header-main', $passToView)
-        . view('pages/add-result', ['user' => $user])
-        . view('templates/footer-main');
+            . view('pages/add-result', [
+                'user' => $user,
+                'isEditMode' => $isEditMode,
+                'resultId' => $resultId
+            ])
+            . view('templates/footer-main');
     }
-
-     public function customLogout()
-    {
-        // Get the auth service
-        $auth = service('auth');
-        
-        // Logout the user
-        $auth->logout();
-        
-        // Redirect to login page or home
-        return redirect()->to('/login')->with('message', 'You have been logged out successfully.');
-    }
-
 }
