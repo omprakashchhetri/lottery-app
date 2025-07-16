@@ -331,7 +331,6 @@
         height: 9mm;
         width: 1mm;
         background: #ddd329;
-        ;
         top: 0px;
         left: -10px;
         display: block;
@@ -750,7 +749,7 @@
                 const link = document.createElement('a');
                 var time = "<?=$time?>";
                 var fileName = generateFileName(time);
-                link.download = fileName;
+                link.download = fileName + '.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             }).catch(error => {
@@ -784,7 +783,7 @@
                 pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
                 var time = "<?=$time?>";
                 var fileName = generateFileName(time);
-                pdf.save(fileName);
+                pdf.save(fileName + '.pdf');
             }).catch(error => {
                 console.error('Error generating PDF:', error);
             });
@@ -802,7 +801,7 @@
             const timeFormatted = timeString.toLowerCase().replace(/\s+/g, '');
 
             // Combine all into the desired format
-            return `result-${day}-${month}-${year}_${timeFormatted}.png`;
+            return `result-${day}-${month}-${year}_${timeFormatted}`;
         }
 
         // Function to download both at once
