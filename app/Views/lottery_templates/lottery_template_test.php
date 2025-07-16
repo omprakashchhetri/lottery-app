@@ -408,6 +408,24 @@
         gap: 5px;
     }
 
+    #generateBtn {
+        position: fixed;
+        bottom: 10%;
+        left: 30%;
+        translate: -30%;
+        background-color: #f86e44ff;
+        padding: 10px 30px;
+        font-size: 18px;
+        font-weight: 500;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
     /* Print Styles */
     /* Print Styles - Updated */
     @media print {
@@ -557,7 +575,8 @@
             margin: 10px auto;
         }
 
-        #downloadBtn {
+        #downloadBtn,
+        #generateBtn {
             top: 100px;
             bottom: unset;
             left: 100px;
@@ -598,6 +617,17 @@
             </path>
         </svg>
         <span>Download</span></button>
+    <button id="generateBtn" onclick="generateBoth()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z">
+            </path>
+            <path fill-rule="evenodd"
+                d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z">
+            </path>
+        </svg>
+        <span>Generate</span></button>
 
     <div class="page">
         <!-- Header Image Section -->
@@ -810,86 +840,92 @@
             downloadAsImage();
             setTimeout(() => {
                 downloadAsPDF();
-            }, 1000); // Small delay to prevent conflicts
+            }, 1000); // Small delay to prevent conflicts            
         }
-        </script>
-        <script>
-            const resultId = "<?=$resultId?>";
-            async function generateAndUpload() {
-                const pageElement = document.querySelector('.page');
 
-                if (!pageElement) {
-                    alert('No element with class "page" found!');
-                    return;
-                }
-
-                const time = "<?=$time?>"; // Or replace with actual time if dynamic from JS
-                const fileName = generateFileName(time);
-
-                try {
-                    const canvas = await html2canvas(pageElement, {
-                        useCORS: true,
-                        scale: 2,
-                        backgroundColor: '#ffffff'
-                    });
-
-                    // PNG blob
-                    const pngDataUrl = canvas.toDataURL('image/png');
-                    const pngBlob = dataURLtoBlob(pngDataUrl);
-
-                    // PDF blob
-                    const { jsPDF } = window.jspdf;
-                    const pdf = new jsPDF('p', 'mm', 'a4');
-                    const imgWidth = 210;
-                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                    pdf.addImage(pngDataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
-                    const pdfBlob = pdf.output('blob');
-
-                    // Prepare FormData
-                    const formData = new FormData();
-                    formData.append('png_file', pngBlob, fileName + '.png');
-                    formData.append('pdf_file', pdfBlob, fileName + '.pdf');
-                    formData.append('result_id', resultId); 
-                    
-
-                    // POST to your server
-                    const response = await fetch('http://localhost:8080/save-lottery-files', {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    const result = await response.json();
-                    console.log('Upload result:', result);
-
-                    if (response.ok) {
-                        alert('Files uploaded successfully!');
-                    } else {
-                        alert('Upload failed. Please check console.');
-                    }
-
-                } catch (error) {
-                    console.error('Error in generateAndUpload:', error);
-                    alert('Something went wrong during generation or upload.');
-                }
-            }
-
+        function generateBoth() {
             setTimeout(() => {
                 generateAndUpload()
             }, 2000);
+        }
 
-            // Utility: Convert DataURL to Blob
-            function dataURLtoBlob(dataURL) {
-                const arr = dataURL.split(',');
-                const mime = arr[0].match(/:(.*?);/)[1];
-                const bstr = atob(arr[1]);
-                let n = bstr.length;
-                const u8arr = new Uint8Array(n);
-                while (n--) {
-                    u8arr[n] = bstr.charCodeAt(n);
-                }
-                return new Blob([u8arr], { type: mime });
+        const resultId = "<?=$resultId?>";
+
+        async function generateAndUpload() {
+            const pageElement = document.querySelector('.page');
+
+            if (!pageElement) {
+                alert('No element with class "page" found!');
+                return;
             }
-            </script>
+
+            const time = "<?=$time?>"; // Or replace with actual time if dynamic from JS
+            const fileName = generateFileName(time);
+
+            try {
+                const canvas = await html2canvas(pageElement, {
+                    useCORS: true,
+                    scale: 2,
+                    backgroundColor: '#ffffff'
+                });
+
+                // PNG blob
+                const pngDataUrl = canvas.toDataURL('image/png');
+                const pngBlob = dataURLtoBlob(pngDataUrl);
+
+                // PDF blob
+                const {
+                    jsPDF
+                } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                pdf.addImage(pngDataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
+                const pdfBlob = pdf.output('blob');
+
+                // Prepare FormData
+                const formData = new FormData();
+                formData.append('png_file', pngBlob, fileName + '.png');
+                formData.append('pdf_file', pdfBlob, fileName + '.pdf');
+                formData.append('result_id', resultId);
+
+
+                // POST to your server
+                const response = await fetch('http://localhost:8080/save-lottery-files', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                console.log('Upload result:', result);
+
+                if (response.ok) {
+                    alert('Files uploaded successfully!');
+                } else {
+                    alert('Upload failed. Please check console.');
+                }
+
+            } catch (error) {
+                console.error('Error in generateAndUpload:', error);
+                alert('Something went wrong during generation or upload.');
+            }
+        }
+
+        // Utility: Convert DataURL to Blob
+        function dataURLtoBlob(dataURL) {
+            const arr = dataURL.split(',');
+            const mime = arr[0].match(/:(.*?);/)[1];
+            const bstr = atob(arr[1]);
+            let n = bstr.length;
+            const u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new Blob([u8arr], {
+                type: mime
+            });
+        }
+        </script>
 </body>
 
 </html>

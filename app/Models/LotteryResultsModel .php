@@ -19,6 +19,7 @@ class LotteryResultsModel extends Model
         'draw_time',
         'status',
         'pdf_path',
+        'result_image',
         'pdf_generated_at',
         'publish_time',
         'created_by',
@@ -40,6 +41,7 @@ class LotteryResultsModel extends Model
         'draw_time' => 'required|regex_match[/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/]',
         'status' => 'required|in_list[scheduled,draft,published,archive]',
         'pdf_path' => 'permit_empty|string|max_length[255]',
+        'result_image' => 'permit_empty|string|max_length[255]',
         'pdf_generated_at' => 'permit_empty|valid_date',
         'publish_time' => 'permit_empty|valid_date',
         'created_by' => 'permit_empty|is_natural_no_zero'
