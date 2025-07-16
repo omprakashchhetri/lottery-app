@@ -443,4 +443,80 @@ class LotteryController extends BaseController
             return redirect('admin/admin-dashboard');
         }
     }
+
+    public function updateLotteryResultFiles()
+    {
+        try {
+            $request = \Config\Services::request();
+            $db = \Config\Database::connect();
+            helper(['filesystem', 'form']);
+
+            $resultId = $request->getPost('result_id');
+            if (!$resultId) {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Missing result_id'
+                ])->setStatusCode(400);
+            }
+
+            // Validate that record exists
+            $existing = $db->table('lottery_results')->getWhere(['id' => $resultId])->getRow();
+            if (!$existing) {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Result record not found'
+                ])->setStatusCode(404);
+            }
+
+            // Handle file uploads
+            $pngFile = $request->getFile('png_file');
+            $pdfFile = $request->getFile('pdf_file');
+            $uploadDir = WRITEPATH . 'uploads/';
+            $updateFields = [];
+
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
+            if ($pngFile && $pngFile->isValid() && !$pngFile->hasMoved()) {
+                $pngName = 'lottery_result_' . $resultId . '.png'; // or just $resultId . '.png'
+                $pngFile->move($uploadDir, $pngName);
+                $updateFields['result_image'] = 'uploads/' . $pngName;
+            }
+
+            if ($pdfFile && $pdfFile->isValid() && !$pdfFile->hasMoved()) {
+                $pdfName = 'lottery_result_' . $resultId . '.pdf'; // or just $resultId . '.png'
+                $pdfFile->move($uploadDir, $pdfName);
+                $updateFields['pdf_path'] = 'uploads/' . $pdfName;
+                $updateFields['pdf_generated_at'] = date('Y-m-d H:i:s');
+            }
+
+            if (!empty($updateFields)) {
+                $updateFields['updated_at'] = date('Y-m-d H:i:s');
+                $db->table('lottery_results')->update($updateFields, ['id' => $resultId]);
+            } else {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'No valid files uploaded'
+                ])->setStatusCode(400);
+            }
+
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Files uploaded and result updated',
+                'data' => [
+                    'result_id' => $resultId,
+                    'pdf_path' => $updateFields['pdf_path'] ?? null,
+                    'image_path' => $updateFields['image_path'] ?? null
+                ]
+            ]);
+
+        } catch (\Exception $e) {
+            log_message('error', 'Update error: ' . $e->getMessage());
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Internal server error'
+            ])->setStatusCode(500);
+        }
+    }
 }
