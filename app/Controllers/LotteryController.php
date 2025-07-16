@@ -519,4 +519,42 @@ class LotteryController extends BaseController
             ])->setStatusCode(500);
         }
     }
+
+    public function updateToggleStatus()
+    {
+        $db = \Config\Database::connect();
+        $request = \Config\Services::request();
+
+        // Read POST data
+        $id = $request->getPost('id');
+        $status = $request->getPost('status');
+
+        if (!$id || !in_array($status, ['0', '1'])) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Invalid request'
+            ])->setStatusCode(400);
+        }
+
+        // Convert status to string value
+        $statusText = $status == '1' ? 'published' : 'draft';
+
+        // Update the record
+        $builder = $db->table('lottery_results');
+        $builder->where('id', $id);
+        $update = $builder->update(['status' => $statusText]);
+
+        if ($update) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => "Result status updated to $statusText"
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to update status'
+            ])->setStatusCode(500);
+        }
+    }
+
 }

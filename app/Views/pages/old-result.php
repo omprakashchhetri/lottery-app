@@ -14,12 +14,17 @@
                 </div>
                 <div class="result-content">
                     <div class="col-lg-3 col-md-5 col-6 mx-auto">
-                        <select name="" id="" class="form-control text-center border-warning"
-                            placeholder="Select the date">
+                        <select name="old_results" id="old_results" class="form-control text-center border-warning"
+                            placeholder="Select the date" onchange="downloadPdf(this.value)">
                             <option value="">Select the option</option>
-                            <option value="">02-07-2025</option>
-                            <option value="">02-07-2025</option>
-                            <option value="">02-07-2025</option>
+                            <?php if (isset($oldResults) && !empty($oldResults)): ?>
+                            <?php foreach ($oldResults as $result): ?>
+                            <option value="<?= $result->pdf_path ?>">
+                                <?= date('d-m-Y', strtotime($result->draw_date)) ?> -
+                                <?= date('g:i A', strtotime($result->draw_time)) ?>
+                            </option>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                     </div>
                 </div>
@@ -39,3 +44,14 @@
         </div>
     </div>
 </div>
+
+<script>
+function downloadPdf(pdfPath) {
+    if (pdfPath && pdfPath !== '') {
+        // Extract filename from path
+        const filename = pdfPath.split('/').pop();
+        // Use your existing download route
+        window.location.href = '<?= base_url('files/download/') ?>' + filename;
+    }
+}
+</script>

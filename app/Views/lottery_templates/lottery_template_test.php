@@ -147,6 +147,7 @@
         font-weight: normal;
         text-decoration: none;
         font-size: 12px;
+        white-space: nowrap;
         margin: 0;
         line-height: 0.5;
         padding: 0;
@@ -256,6 +257,14 @@
         border-bottom: 13mm solid #d51717;
         width: 55mm;
         top: 6px;
+    }
+
+    .green .section-img-block-main.blue-col {
+        border-bottom: 13mm solid #4492d6;
+    }
+
+    .green .section-img-block-main.green-col {
+        border-bottom: 13mm solid #54bb2e;
     }
 
     .numbers-wrapper {
@@ -393,9 +402,9 @@
     #downloadBtn {
         position: fixed;
         bottom: 10%;
-        left: 50%;
-        translate: -50%;
-        background-color: #f86e44ff;
+        left: 60%;
+        translate: -60%;
+        background-color: #4498f8ff;
         padding: 10px 30px;
         font-size: 18px;
         font-weight: 500;
@@ -406,13 +415,14 @@
         display: flex;
         align-items: center;
         gap: 5px;
+        cursor: pointer;
     }
 
     #generateBtn {
         position: fixed;
         bottom: 10%;
-        left: 30%;
-        translate: -30%;
+        left: 40%;
+        translate: -40%;
         background-color: #f86e44ff;
         padding: 10px 30px;
         font-size: 18px;
@@ -424,6 +434,7 @@
         display: flex;
         align-items: center;
         gap: 5px;
+        cursor: pointer;
     }
 
     /* Print Styles */
@@ -472,6 +483,14 @@
             border-bottom: 13mm solid #d51717 !important;
             width: 55mm;
             top: 6px;
+        }
+
+        .green .section-img-block-main.blue-col {
+            border-bottom: 13mm solid #4492d6;
+        }
+
+        .green .section-img-block-main.green-col {
+            border-bottom: 13mm solid #54bb2e;
         }
 
         .fifth-price-header {
@@ -575,7 +594,13 @@
             margin: 10px auto;
         }
 
-        #downloadBtn,
+        #downloadBtn {
+            top: 100px;
+            bottom: unset;
+            left: 300px;
+            right: unset;
+        }
+
         #generateBtn {
             top: 100px;
             bottom: unset;
@@ -596,7 +621,7 @@
 <body>
     <?php 
     // print_r($lotteryData);
-    $resultId = $lotteryData['data']['result_id'];
+        $resultId = $lotteryData['data']['result_id'];
         $first = $lotteryData['data']['lottery_data']['section1'][0];
         $secondData = $lotteryData['data']['lottery_data']['section2'];
         $thirdData = $lotteryData['data']['lottery_data']['section3'];
@@ -627,8 +652,8 @@
                 d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z">
             </path>
         </svg>
-        <span>Generate</span></button>
-
+        <span>Generate</span>
+    </button>
     <div class="page">
         <!-- Header Image Section -->
         <div class="header-wrapper">
@@ -696,7 +721,7 @@
                         <img src="<?=base_url()?>assets/images/3rd-price-label.png" alt="">
                     </div>
                     <div class="section-img-block"></div>
-                    <div class="section-img-block-main"></div>
+                    <div class="section-img-block-main blue-col"></div>
                     <div class="numbers-wrapper">
                         <?php foreach($thirdData as $thirdNum) { ?>
                         <span class="top-number-text draw-number"><?=$thirdNum?></span>
@@ -708,7 +733,7 @@
                         <img src="<?=base_url()?>assets/images/4th-price-label.png" alt="">
                     </div>
                     <div class="section-img-block"></div>
-                    <div class="section-img-block-main"></div>
+                    <div class="section-img-block-main green-col"></div>
                     <div class="numbers-wrapper">
                         <?php foreach($forthData as $forthNum) { ?>
                         <span class="top-number-text draw-number"><?=$forthNum?></span>
@@ -853,11 +878,17 @@
 
         async function generateAndUpload() {
             const pageElement = document.querySelector('.page');
+            const generateBtn = document.getElementById('generateBtn');
 
             if (!pageElement) {
                 alert('No element with class "page" found!');
                 return;
             }
+
+            // ⏳ Set loading state
+            const originalBtnText = generateBtn.innerHTML;
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = 'Processing...';
 
             const time = "<?=$time?>"; // Or replace with actual time if dynamic from JS
             const fileName = generateFileName(time);
@@ -869,11 +900,9 @@
                     backgroundColor: '#ffffff'
                 });
 
-                // PNG blob
                 const pngDataUrl = canvas.toDataURL('image/png');
                 const pngBlob = dataURLtoBlob(pngDataUrl);
 
-                // PDF blob
                 const {
                     jsPDF
                 } = window.jspdf;
@@ -883,15 +912,12 @@
                 pdf.addImage(pngDataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
                 const pdfBlob = pdf.output('blob');
 
-                // Prepare FormData
                 const formData = new FormData();
                 formData.append('png_file', pngBlob, fileName + '.png');
                 formData.append('pdf_file', pdfBlob, fileName + '.pdf');
                 formData.append('result_id', resultId);
 
-
-                // POST to your server
-                const response = await fetch('http://localhost:8080/save-lottery-files', {
+                const response = await fetch('<?=base_url()?>save-lottery-files', {
                     method: 'POST',
                     body: formData
                 });
@@ -904,12 +930,16 @@
                 } else {
                     alert('Upload failed. Please check console.');
                 }
-
             } catch (error) {
                 console.error('Error in generateAndUpload:', error);
                 alert('Something went wrong during generation or upload.');
+            } finally {
+                // ✅ Revert button to original state
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = originalBtnText;
             }
         }
+
 
         // Utility: Convert DataURL to Blob
         function dataURLtoBlob(dataURL) {

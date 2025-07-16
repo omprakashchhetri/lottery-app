@@ -35,19 +35,38 @@ class Dashboard extends BaseController
         if (!auth()->loggedIn()) {
             return redirect()->to('/login');
         }
-
+        $db = \Config\Database::connect();
         $user = auth()->user(); // Get current logged-in user
+        date_default_timezone_set('Asia/Kolkata'); // Set timezone to IST
 
-        $data = [
-            'templates' => $this->templateModel->getTemplatesWithTotalPrizes(),
-            'stats' => $this->templateModel->getTemplateStats(),
-            'lottery_types' => LotteryTemplatesModel::getLotteryTypes()
+        $startOfDay = date('Y-m-d 00:00:00');
+        $endOfDay = date('Y-m-d 23:59:59');
+        $current = date('Y-m-d h:i:s');
+        $results = $db->table('lottery_results')
+            ->where('created_at >=', $startOfDay)
+            ->where('created_at <=', $endOfDay)
+            ->get()
+            ->getResult();
+
+
+        $resultArray = [
+            '1pm-result' => null,
+            '8pm-result' => null
         ];
+
+        // Populate resultArray based on draw_time
+        foreach ($results as $result) {
+            if ($result->draw_time == '13:00:00') {
+                $resultArray['1pm-result'] = $result;
+            } elseif ($result->draw_time == '20:00:00') {
+                $resultArray['8pm-result'] = $result;
+            }
+        }
+
 
         $passToView = [
             'title'=> 'Admin Dashboard',
-            'lottery_data' => $data,
-
+            'resultArray' => $resultArray,
         ];
 
 

@@ -109,6 +109,7 @@
 
         <div class="app-content">
             <div class="">
+                <input type="hidden" name="" id="appBaseUrl" value="<?=base_url()?>">
                 <!-- Header Section starts -->
                 <header class="header-main">
                     <div class="container-fluid">

@@ -40,8 +40,8 @@
                                         <div class="date-time-wrapper text-end">
                                             <div class="form-selectgroup">
                                                 <label class="select-items">
-                                                    <input checked="" class="select-input" name="select-options"
-                                                        type="radio" />
+                                                    <input checked="" class="select-input" value="1pm"
+                                                        name="select-options" type="radio" />
                                                     <span class="select-box">
                                                         <span class="selectitem">
                                                             <i class="ti ti-clock"></i> 1 PM Result
@@ -49,7 +49,8 @@
                                                     </span>
                                                 </label>
                                                 <label class="select-items">
-                                                    <input class="select-input" name="select-options" type="radio" />
+                                                    <input class="select-input" value="8pm" name="select-options"
+                                                        type="radio" />
                                                     <span class="select-box">
                                                         <span class="selectitem">
                                                             <i class="ti ti-clock"></i> 8 PM Result

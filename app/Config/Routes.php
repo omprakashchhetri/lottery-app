@@ -8,11 +8,17 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/old-results', 'Home::old_results');
 
+$routes->get('files/image/(:any)', 'Home::showImage/$1');
+$routes->get('files/download/(:any)', 'Home::downloadPdf/$1');
+
 $routes->get('download-pdf/(:any)', 'PdfGenerator::download/$1');
 $routes->post('pdf-upload-endpoint', 'PdfGenerator::uploadPdf');
 $routes->post('save-lottery-results', 'LotteryController::saveLotteryResults');
+$routes->post('update-toggle-status', 'LotteryController::updateToggleStatus');
 
-$routes->post('save-lottery-files', 'LotteryController::updateLotteryResultFiles');
+
+
+$routes->post('save-lottery-results', 'LotteryController::saveLotteryResults');
 
 $routes->group('admin', function ($routes) {
 

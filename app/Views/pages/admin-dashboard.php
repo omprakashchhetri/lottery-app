@@ -1,6 +1,6 @@
 <!-- Body main section starts -->
 <main>
-    <?php //echo"<pre>";print_r($lottery_data)?>
+    <?php // echo"<pre>";print_r($resultArray)?>
     <div class="container-fluid">
         <!-- Breadcrumb start -->
         <div class="row m-1">
@@ -100,47 +100,78 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-center mb-3 gap-3 flex-wrap">
-                    <?php if(!empty($resultArray['1pm-result'])) {?>
-                    <a href="<?=base_url('admin/add-result')?>"
+                    <!-- 1 PM Result -->
+                    <?php if (empty($resultArray['1pm-result'])): ?>
+                    <a href="<?= base_url('admin/add-result?time=1pm') ?>"
                         class="current-date-result p-3 bg-outline-primary b-r-22">
                         <div class="pending-result">
                             <small class="badge text-light-danger">Pending</small>
-                            <div class="text-primary fs-5"><span><i class="ti ti-plus"></i></span><span
-                                    class="ms-2">Create 1 PM</span></div>
+                            <div class="text-primary fs-5">
+                                <span><i class="ti ti-plus"></i></span><span class="ms-2">Create 1 PM</span>
+                            </div>
                         </div>
                     </a>
-                    <?php } else { ?>
-                    <a href="<?=base_url('admin/add-result')?>"
-                        class="current-date-result p-3 bg-outline-primary b-r-22">
-                        <div class="published-result">
-                            <small class="badge text-light-success">Published</small>
-                            <div class="fs-5 text-primary"><span><i class="ti ti-edit"></i></span><span class="ms-2">1
-                                    PM
-                                    Result</span></div>
+                    <?php else: ?>
+                    <!-- <a href="<?= base_url('admin/edit-result/'.$resultArray['1pm-result']->id) ?>"
+                        class="current-date-result p-3 bg-outline-primary b-r-22"> -->
+                    <a href="javascript:void()" class="current-date-result p-3 bg-outline-primary b-r-22">
+                        <div
+                            class="<?= $resultArray['1pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>">
+                            <div class="d-flex align-items-center justify-content-between w-100">
+                                <small
+                                    class="badge <?= $resultArray['1pm-result']->status === 'published' ? 'text-light-success' : 'text-light-warning' ?>">
+                                    <?= ucfirst($resultArray['1pm-result']->status) ?>
+                                </small>
+                                <label class="switch">
+                                    <input type="checkbox" class="toggle-status"
+                                        data-record="<?=$resultArray['1pm-result']->id?>"
+                                        <?= $resultArray['1pm-result']->status === 'published' ? 'checked' : '' ?> />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="fs-5 text-primary">
+                                <span><i class="ti ti-edit"></i></span><span class="ms-2">1 PM Result</span>
+                            </div>
                         </div>
                     </a>
-                    <?php }?>
-                    <?php if(empty($resultArray['8pm-result'])) {?>
+                    <?php endif; ?>
 
-                    <a href="<?=base_url('admin/add-result')?>"
+
+                    <!-- 8 PM Result -->
+                    <?php if (empty($resultArray['8pm-result'])): ?>
+                    <a href="<?= base_url('admin/add-result?time=8pm') ?>"
                         class="current-date-result p-3 bg-outline-primary b-r-22">
                         <div class="pending-result">
                             <small class="badge text-light-danger">Pending</small>
-                            <div class="text-primary fs-5"><span><i class="ti ti-plus"></i></span><span
-                                    class="ms-2">Create 8 PM</span></div>
+                            <div class="text-primary fs-5">
+                                <span><i class="ti ti-plus"></i></span><span class="ms-2">Create 8 PM</span>
+                            </div>
                         </div>
                     </a>
-                    <?php } else { ?>
-                    <a href="<?=base_url('admin/add-result')?>"
-                        class="current-date-result p-3 bg-outline-primary b-r-22">
-                        <div class="published-result">
-                            <small class="badge text-light-success">Published</small>
-                            <div class="fs-5 text-primary"><span><i class="ti ti-edit"></i></span><span class="ms-2">8
-                                    PM
-                                    Result</span></div>
+                    <?php else: ?>
+                    <!-- <a href="<?= base_url('admin/edit-result/'.$resultArray['8pm-result']->id) ?>" class="current-date-result p-3 bg-outline-primary b-r-22"> -->
+                    <a href="javascript:void()" class="current-date-result p-3 bg-outline-primary b-r-22">
+                        <div
+                            class="<?= $resultArray['8pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>">
+                            <div class="d-flex align-items-center justify-content-between w-100">
+                                <small
+                                    class="badge <?= $resultArray['8pm-result']->status === 'published' ? 'text-light-success' : 'text-light-warning' ?>">
+                                    <?= ucfirst($resultArray['8pm-result']->status) ?>
+                                </small>
+                                <label class="switch">
+                                    <input type="checkbox" class="toggle-status"
+                                        data-record="<?=$resultArray['8pm-result']->id?>"
+                                        <?= $resultArray['8pm-result']->status === 'published' ? 'checked' : '' ?> />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="fs-5 text-primary">
+                                <span><i class="ti ti-edit"></i></span><span class="ms-2">8 PM Result</span>
+                            </div>
                         </div>
                     </a>
-                    <?php }?>
+                    <?php endif; ?>
+
                 </div>
             </div>
         </div>
