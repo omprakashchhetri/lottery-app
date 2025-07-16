@@ -12,6 +12,8 @@ $routes->get('download-pdf/(:any)', 'PdfGenerator::download/$1');
 $routes->post('pdf-upload-endpoint', 'PdfGenerator::uploadPdf');
 $routes->post('save-lottery-results', 'LotteryController::saveLotteryResults');
 
+$routes->post('save-lottery-files', 'LotteryController::updateLotteryResultFiles');
+
 $routes->group('admin', function ($routes) {
 
     // Load all other Shield routes
