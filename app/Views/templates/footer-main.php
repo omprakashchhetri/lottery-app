@@ -82,9 +82,7 @@ function getFormattedDate() {
         }
     };
 
-    return `<span class="text-primary">${day}${suffix(
-                    day
-                    )}</span> ${month} ${year}`;
+    return `<span class="text-primary">${day}${suffix(day)}</span> ${month} ${year}`;
 }
 
 document.getElementById("date-display").innerHTML = getFormattedDate();
@@ -132,6 +130,31 @@ $(document).on('change', '.toggle-status', function() {
         }
     });
 });
+$(document).on('click', '.delete-result-btn', function() {
+    const resultId = $(this).data('id');
+
+    if (!confirm('Are you sure you want to delete this result?')) return;
+
+    $.ajax({
+        url: '<?= base_url("admin/delete-result") ?>',
+        method: 'POST',
+        data: {
+            id: resultId
+        },
+        success: function(response) {
+            if (response.status === 'success') {
+                alert(response.message);
+                location.reload(); // or remove DOM element manually
+            } else {
+                alert('Failed: ' + response.message);
+            }
+        },
+        error: function() {
+            alert('Something went wrong while deleting the result.');
+        }
+    });
+});
+
 <?php } ?>
                </script>
                <?php if($title == 'Add Result') { ?>

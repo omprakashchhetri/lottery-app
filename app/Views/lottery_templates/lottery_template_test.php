@@ -96,9 +96,9 @@
     }
 
     .draw-date-top.draw-8pm {
-        font-size: 27pt;
-        top: 140px;
-        right: 18%;
+        font-size: 21pt;
+        top: 145px;
+        right: 37mm;
     }
 
     .draw-number-count.draw-8pm {
@@ -630,6 +630,8 @@
         $date_short = $lotteryData['data']['draw_date_short'];
         $date_full = $lotteryData['data']['draw_date_full'];
         $time = $lotteryData['data']['draw_time'];
+        $formattedTime = strtolower(str_replace(' ', '', $time));
+        $onePmCount = $lotteryResultCount[$formattedTime];
     ?>
     <button id="downloadBtn" onclick="downloadBoth()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down"
@@ -659,14 +661,14 @@
         <div class="header-wrapper">
             <?php if($time == '1 PM'){ ?>
             <span class="first-number"><?=$first?></span>
-            <span class="draw-number-count">001</span>
+            <span class="draw-number-count"><?=$onePmCount?></span>
             <span class="draw-date-top"><?=$date_full?></span>
             <img src="<?=base_url()?>assets/images/main-header-1pm.jpg" alt="Header Image" class="header-image" />
             <?php } else if($time == '8 PM') { ?>
             <!-- 8pm header -->
             <span class="first-number"><?=$first?></span>
-            <span class="draw-number-count draw-8pm">001</span>
-            <span class="draw-date-top draw-8pm">30/12/25</span>
+            <span class="draw-number-count draw-8pm"><?=$onePmCount?></span>
+            <span class="draw-date-top draw-8pm"><?=$date_full?></span>
             <img src="<?=base_url()?>assets/images/main-header-8pm.jpg" alt="Header Image" class="header-image" />
             <?php } ?>
         </div>

@@ -6,6 +6,40 @@ use App\Controllers\BaseController;
 
 class LotteryController extends BaseController
 {
+
+    // Lottery View and generate page
+    public function view_result($resultId) {
+        $lotteryResultData = $this->getLotteryResult($resultId);
+        if(!empty($lotteryResultData)) {
+            $lotteryResultCount = $this-> countPublishedResults();
+            return view('lottery_templates/lottery_template_test', ['lotteryData' => $lotteryResultData, 'lotteryResultCount'=>$lotteryResultCount]);
+        } else {
+            return redirect('admin/admin-dashboard');
+        }
+    }
+
+    public function countPublishedResults()
+    {
+        $db = \Config\Database::connect();
+
+        // Count 1 PM published results
+        $onePmCount = $db->table('lottery_results')
+            ->where('draw_time', '13:00:00')
+            ->where('status', 'published')
+            ->countAllResults();
+
+        // Count 8 PM published results
+        $eightPmCount = $db->table('lottery_results')
+            ->where('draw_time', '20:00:00')
+            ->where('status', 'published')
+            ->countAllResults();
+
+        return [
+            '1pm' => str_pad($onePmCount, 3, '0', STR_PAD_LEFT),
+            '8pm' => str_pad($eightPmCount, 3, '0', STR_PAD_LEFT)
+        ];
+    }
+
     /**
      * Get lottery result data for editing
      * 
@@ -435,14 +469,6 @@ class LotteryController extends BaseController
         }
     }
 
-    public function view_result($resultId) {
-        $lotteryResultData = $this->getLotteryResult($resultId);
-        if(!empty($lotteryResultData)) {
-            return view('lottery_templates/lottery_template_test', ['lotteryData' => $lotteryResultData]);
-        } else {
-            return redirect('admin/admin-dashboard');
-        }
-    }
 
     public function updateLotteryResultFiles()
     {
@@ -473,19 +499,20 @@ class LotteryController extends BaseController
             $pdfFile = $request->getFile('pdf_file');
             $uploadDir = WRITEPATH . 'uploads/';
             $updateFields = [];
+            $timeStamp = time();
 
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
             }
 
             if ($pngFile && $pngFile->isValid() && !$pngFile->hasMoved()) {
-                $pngName = 'lottery_result_' . $resultId . '.png'; // or just $resultId . '.png'
+                $pngName = 'lottery_result_' . $resultId . '_'. $timeStamp .'.png'; // or just $resultId . '.png'
                 $pngFile->move($uploadDir, $pngName);
                 $updateFields['result_image'] = 'uploads/' . $pngName;
             }
 
             if ($pdfFile && $pdfFile->isValid() && !$pdfFile->hasMoved()) {
-                $pdfName = 'lottery_result_' . $resultId . '.pdf'; // or just $resultId . '.png'
+                $pdfName = 'lottery_result_' . $resultId . '_'. $timeStamp .'.pdf'; // or just $resultId . '.png'
                 $pdfFile->move($uploadDir, $pdfName);
                 $updateFields['pdf_path'] = 'uploads/' . $pdfName;
                 $updateFields['pdf_generated_at'] = date('Y-m-d H:i:s');
@@ -519,4 +546,77 @@ class LotteryController extends BaseController
             ])->setStatusCode(500);
         }
     }
+    public function updateToggleStatus()
+    {
+        $db = \Config\Database::connect();
+        $request = \Config\Services::request();
+
+        // Read POST data
+        $id = $request->getPost('id');
+        $status = $request->getPost('status');
+
+        if (!$id || !in_array($status, ['0', '1'])) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Invalid request'
+            ])->setStatusCode(400);
+        }
+
+        // Convert status to string value
+        $statusText = $status == '1' ? 'published' : 'draft';
+
+        // Update the record
+        $builder = $db->table('lottery_results');
+        $builder->where('id', $id);
+        $update = $builder->update(['status' => $statusText]);
+
+        if ($update) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => "Result status updated to $statusText"
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to update status'
+            ])->setStatusCode(500);
+        }
+    }
+
+    // AJAX Auxilary Methods
+    public function deleteResult()
+    {
+        $db = \Config\Database::connect();
+        $request = \Config\Services::request();
+
+        $id = $request->getPost('id');
+
+        if (!$id) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Missing result ID'
+            ]);
+        }
+
+        $db->transStart();
+
+        $db->table('lottery_prizes')->where('result_id', $id)->delete();
+        $db->table('lottery_results')->where('id', $id)->delete();
+
+        $db->transComplete();
+
+        if ($db->transStatus() === false) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to delete result and prizes'
+            ]);
+        }
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'message' => 'Result and associated prizes deleted successfully'
+        ]);
+    }
+
+
 }

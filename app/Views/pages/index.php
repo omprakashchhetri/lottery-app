@@ -3,7 +3,7 @@
     <div class="body-container">
         <div class="heading-wrapper p-0">
             <h4 class="bg-primary text-center font-body heading-1">
-                MEGHALAYA STATE LOTTERIES
+                MEGHALAYA STATE LOTTERY
             </h4>
         </div>
         <div class="heading-wrapper">
@@ -11,7 +11,7 @@
         </div>
         <div class="heading-wrapper p-0">
             <h4 class="bg-primary text-center font-body heading-3">
-                MEGHALAYA WEEKLY LOTTERIES
+                MEGHALAYA WEEKLY LOTTERY
             </h4>
         </div>
         <div class="para-wrapper">

@@ -114,7 +114,8 @@
                     <?php else: ?>
                     <!-- <a href="<?= base_url('admin/edit-result/'.$resultArray['1pm-result']->id) ?>"
                         class="current-date-result p-3 bg-outline-primary b-r-22"> -->
-                    <a href="javascript:void()" class="current-date-result p-3 bg-outline-primary b-r-22">
+                    <a href="javascript:void()"
+                        class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
                         <div
                             class="<?= $resultArray['1pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>">
                             <div class="d-flex align-items-center justify-content-between w-100">
@@ -133,6 +134,9 @@
                                 <span><i class="ti ti-edit"></i></span><span class="ms-2">1 PM Result</span>
                             </div>
                         </div>
+                        <button data-id="<?=$resultArray['1pm-result']->id?>"
+                            class="delete-result-btn text-white border-0 px-3 py-4 rounded-1 bg-light-danger action-btn"><i
+                                class="ti ti-trash text-danger f-s-18"></i></button>
                     </a>
                     <?php endif; ?>
 
@@ -150,7 +154,8 @@
                     </a>
                     <?php else: ?>
                     <!-- <a href="<?= base_url('admin/edit-result/'.$resultArray['8pm-result']->id) ?>" class="current-date-result p-3 bg-outline-primary b-r-22"> -->
-                    <a href="javascript:void()" class="current-date-result p-3 bg-outline-primary b-r-22">
+                    <a href="javascript:void()"
+                        class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
                         <div
                             class="<?= $resultArray['8pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>">
                             <div class="d-flex align-items-center justify-content-between w-100">
@@ -169,6 +174,9 @@
                                 <span><i class="ti ti-edit"></i></span><span class="ms-2">8 PM Result</span>
                             </div>
                         </div>
+                        <button data-id="<?=$resultArray['8pm-result']->id?>"
+                            class="delete-result-btn text-white border-0 px-3 py-4 rounded-1 bg-light-danger action-btn right"><i
+                                class="ti ti-trash text-danger f-s-18"></i></button>
                     </a>
                     <?php endif; ?>
 
