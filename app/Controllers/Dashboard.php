@@ -39,15 +39,12 @@ class Dashboard extends BaseController
         $user = auth()->user(); // Get current logged-in user
         date_default_timezone_set('Asia/Kolkata'); // Set timezone to IST
 
-        $startOfDay = date('Y-m-d 00:00:00');
-        $endOfDay = date('Y-m-d 23:59:59');
-        $current = date('Y-m-d h:i:s');
+        $currentDate = date('Y-m-d');
+        
         $results = $db->table('lottery_results')
-            ->where('created_at >=', $startOfDay)
-            ->where('created_at <=', $endOfDay)
+            ->where('draw_date', $currentDate)
             ->get()
             ->getResult();
-
 
         $resultArray = [
             '1pm-result' => null,
@@ -63,17 +60,14 @@ class Dashboard extends BaseController
             }
         }
 
-
         $passToView = [
             'title'=> 'Admin Dashboard',
-            'resultArray' => $resultArray,
+            'resultArray' => $resultArray,            
         ];
-
 
         return view('templates/header-main', $passToView)
         . view('pages/admin-dashboard', ['user' => $user])
         . view('templates/footer-main');
-        
     }
    function add_result($resultId = 0) {
         // Only logged-in users can access
