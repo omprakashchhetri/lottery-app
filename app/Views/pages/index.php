@@ -60,7 +60,7 @@
                 </div>
                 <div class="heading-wrapper">
                     <h2 class="text-center font-body heading-5">
-                        <strong>MORNING (01:00 P.M)</strong>
+                        <strong>AFTERNOON (01:00 P.M)</strong>
                     </h2>
                 </div>
                 <div class="result-content">
@@ -127,7 +127,7 @@
             </div>
             <div class="para-wrapper">
                 <p class="draw-terms-para para-color font-body">
-                    One times a day, a First Prize of Rs. 1 Crore is up for grabs in
+                    One times a day, a First Prize of Rs. 75 Lakhs is up for grabs in
                     the Meghalaya Future Daily Lottery. Every day of the week has a
                     distinct name for the draws. For instance, the draws on Sunday
                     are referred to as Future Brook, the draws on Monday as Future
@@ -145,10 +145,10 @@
                     1:00 PM Morning Result.
                 </p>
                 <p class="draw-terms-para para-color font-body">
-                    Check Today Result 1 PM today Meghalaya State Lottery , Bhagya
-                    Shree Lottery Result 1:00 PM. As you know lottery draw (1:00 PM)
+                    Check Today Result 1 PM today Meghalaya State Lottery , Singham
+                    Lottery Result 1:00 PM. As you know lottery draw (1:00 PM)
                     has been rescheduled and now being updated at 1:00 PM. You may
-                    check Bhagya Shree Lottery morning result here at 1:00 PM. Today
+                    check Singham Lottery morning result here at 1:00 PM. Today
                     result will also be updated here on this page. Stay connected
                     with us to check your today's draw result of the day. Those who
                     have tickets for the draw (1:00 PM) stay connected with us.

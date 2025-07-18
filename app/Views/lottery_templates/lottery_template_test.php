@@ -26,6 +26,13 @@
         background: #f5f5f5;
     }
 
+    /* Force all text to be bold */
+    body,
+    body * {
+        font-weight: 1000 !important;
+    }
+
+
     .page {
         width: 210mm;
         min-width: 210mm;
@@ -65,10 +72,10 @@
         font-style: normal;
         font-weight: normal;
         text-decoration: none;
-        font-size: 38pt;
+        font-size: 42pt;
         position: absolute;
         top: 50.5mm;
-        right: 36mm;
+        right: 39mm !important;
     }
 
     .draw-number-count {
@@ -89,14 +96,14 @@
         font-style: normal;
         font-weight: normal;
         text-decoration: none;
-        font-size: 26pt;
+        font-size: 28pt;
         position: absolute;
         top: 37.4mm;
         right: 34mm;
     }
 
     .draw-date-top.draw-8pm {
-        font-size: 21pt;
+        font-size: 23pt;
         top: 145px;
         right: 37mm;
     }
@@ -623,6 +630,7 @@
     // print_r($lotteryData);
         $resultId = $lotteryData['data']['result_id'];
         $first = $lotteryData['data']['lottery_data']['section1'][0];
+        $first_short = substr(substr($lotteryData['data']['lottery_data']['section1'][0], 3), -5);;
         $secondData = $lotteryData['data']['lottery_data']['section2'];
         $thirdData = $lotteryData['data']['lottery_data']['section3'];
         $forthData = $lotteryData['data']['lottery_data']['section4'];
@@ -645,13 +653,13 @@
         </svg>
         <span>Download</span></button>
     <button id="generateBtn" onclick="generateBoth()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down"
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
             viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1z">
+            <path
+                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0">
             </path>
-            <path fill-rule="evenodd"
-                d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z">
+            <path
+                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z">
             </path>
         </svg>
         <span>Generate</span>
@@ -703,7 +711,7 @@
                   font-size: 15px;
                   font-weight: 800;
                   margin-inline: 5px;
-                "><?=$first?></span>(All Remaining Series Of 1st Prize No.)
+                "><?=$first_short?></span>(All Remaining Series Of 1st Prize No.)
                     </h3>
                 </div>
                 <div class="section section-inner">
