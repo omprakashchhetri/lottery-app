@@ -840,7 +840,7 @@
                 const {
                     jsPDF
                 } = window.jspdf;
-                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4', compress: true });
 
                 const imgWidth = 210; // A4 width in mm
                 const pageHeight = 297; // A4 height in mm
