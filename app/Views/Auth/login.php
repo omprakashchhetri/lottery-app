@@ -75,8 +75,8 @@
                                         <label class="form-label" for="password">
                                             <?= lang('Auth.password') ?>
                                         </label>
-                                        <a class="link-primary-dark float-end" href="<?= url_to('magic-link') ?>">Forgot
-                                            Password ?</a>
+                                        <!-- <a class="link-primary-dark float-end" href="<?= url_to('magic-link') ?>">Forgot
+                                            Password ?</a> -->
                                         <input class="form-control" id="password" name="password"
                                             placeholder="Enter Your Password" type="password" required />
                                     </div>

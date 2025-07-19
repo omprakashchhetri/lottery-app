@@ -916,7 +916,7 @@
                 const {
                     jsPDF
                 } = window.jspdf;
-                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4', compress: true });
                 const imgWidth = 210;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 pdf.addImage(pngDataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
