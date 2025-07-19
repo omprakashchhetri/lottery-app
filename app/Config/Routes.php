@@ -12,8 +12,11 @@ $routes->get('files/image/(:any)', 'Home::showImage/$1');
 $routes->get('files/download/(:any)', 'Home::downloadPdf/$1');
 
 $routes->get('download-pdf/(:any)', 'PdfGenerator::download/$1');
+$routes->get('lottery-print', 'Dashboard::lottery_print');
+$routes->get('add-lottery', 'Dashboard::add_lottery');
 $routes->post('pdf-upload-endpoint', 'PdfGenerator::uploadPdf');
 $routes->post('save-lottery-results', 'LotteryController::saveLotteryResults');
+
 
 
 $routes->post('save-lottery-files', 'LotteryController::updateLotteryResultFiles');

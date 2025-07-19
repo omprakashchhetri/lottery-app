@@ -97,7 +97,7 @@
                 </div>
                 <div class="heading-wrapper">
                     <h2 class="text-center font-body heading-5">
-                        <strong>EVENING (08:00 P.M)</strong>
+                        <strong>NIGHT (08:00 P.M)</strong>
                     </h2>
                 </div>
                 <div class="result-content">

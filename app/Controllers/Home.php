@@ -118,11 +118,11 @@ class Home extends BaseController
         if ($previousResult) {
             $message = 'Showing previous result. ';
             if (!$currentResult) {
-                $message .= 'Today\'s result not yet created.';
+                $message .= 'Today\'s result will be available soon...';
             } elseif ($currentResult->status == 'draft') {
-                $message .= 'Today\'s result is being processed.';
+                $message .= 'Today\'s result will be available soon...';
             } else {
-                $message .= 'Today\'s result not available.';
+                $message .= 'Today\'s result will be available soon!.';
             }
             
             return [
@@ -136,11 +136,11 @@ class Home extends BaseController
         
         // No previous result available either
         if (!$currentResult) {
-            $message = 'Result not yet created.';
+            $message = 'Results will be available soon...';
         } elseif ($currentResult->status == 'draft') {
-            $message = 'Result is being processed...';
+            $message = 'Results will be available soon...';
         } else {
-            $message = 'Result not available.';
+            $message = 'Results will be available soon...';
         }
         
         return [

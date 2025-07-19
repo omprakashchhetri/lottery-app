@@ -108,4 +108,14 @@ class Dashboard extends BaseController
             ])
             . view('templates/footer-main');
     }
+
+    // Print out layout function
+    public function lottery_print() {
+        return view('lottery_templates/lottery-paper-print');
+    }
+
+    public function add_lottery() {
+        return view('pages/add-lottery');
+    }
+
 }
