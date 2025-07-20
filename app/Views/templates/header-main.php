@@ -104,6 +104,12 @@
                             Add Ticket
                         </a>
                     </li>
+                    <li class="no-sub">
+                        <a href="<?=base_url('admin/create-transaction')?>">
+                            <i class="iconoir-cash"></i>
+                            Add Transaction
+                        </a>
+                    </li>
                 </ul>
             </div>
 
