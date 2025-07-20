@@ -54,7 +54,6 @@ function formatTime($time) {
     @media print {
         * {
             -webkit-print-color-adjust: exact !important;
-            color-adjust: exact !important;
             print-color-adjust: exact !important;
         }
 
@@ -95,8 +94,8 @@ function formatTime($time) {
 
     .print-controls {
         position: fixed;
-        top: 10px;
-        right: 10px;
+        top: 5mm;
+        right: 50%;
         z-index: 1000;
         background: white;
         padding: 10px;
@@ -108,7 +107,7 @@ function formatTime($time) {
     .print-controls button {
         margin: 0 5px;
         padding: 8px 16px;
-        background: #007bff;
+        background: #00be5cff;
         color: white;
         border: none;
         border-radius: 4px;
@@ -644,7 +643,7 @@ function formatTime($time) {
         ticket.querySelector('.draw-day-display').textContent = dayName;
 
         // Update day/night
-        const dayNight = data.time === '8pm' ? 'NIGHT' : 'DAY';
+        const dayNight = data.time === '8pm' ? 'NIGHT' : 'MORNING';
         ticket.querySelector('.day-night-display').textContent = dayNight;
 
         // Update side time

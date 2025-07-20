@@ -304,7 +304,7 @@ function saveLottery() {
 
     console.log('Lottery Data:', formData);
     alert('Data saved! Ready to redirect to print page.');
-    window.location.href = "<?=base_url('lottery-print')?>";
+    window.location.href = "<?=base_url('admin/lottery-print')?>";
 
     // You can replace the above with your actual POST request and redirect logic
     // Example:

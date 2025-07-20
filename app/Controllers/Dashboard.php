@@ -111,11 +111,18 @@ class Dashboard extends BaseController
 
     // Print out layout function
     public function lottery_print() {
+         // Only logged-in users can access
+        if (!auth()->loggedIn()) {
+            return redirect()->to('/login');
+        }
         return view('lottery_templates/lottery-paper-print');
     }
 
     public function add_lottery() {
-
+        if (!auth()->loggedIn()) {
+            return redirect()->to('/login');
+        }
+        
         $passToView = ['title' => 'Create Lottery'];
 
         return view('templates/header-main', $passToView)

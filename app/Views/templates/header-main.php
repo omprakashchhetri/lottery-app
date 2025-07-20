@@ -101,6 +101,12 @@
                             Add Result
                         </a>
                     </li>
+                    <li class="no-sub">
+                        <a href="<?=base_url('admin/add-lottery')?>">
+                            <i class="iconoir-google-docs"></i>
+                            Add Ticket
+                        </a>
+                    </li>
                 </ul>
             </div>
 

@@ -77,10 +77,11 @@ input:checked + .slider:before {
 
 .action-btn {
   position: absolute;
-  left: -55px;
-}
-.action-btn {
-  position: absolute;
   left: unset;
   right: -55px;
+}
+.action-btn-view {
+  position: absolute;
+  left: -55px;
+  right: unset;
 }

@@ -67,7 +67,7 @@
     }
 
     .first-number {
-        color: #007434;
+        color: #f00;
         font-family: 'Arial Black', sans-serif;
         font-style: normal;
         font-weight: normal;
@@ -180,7 +180,7 @@
     }
 
     .fifth-section .draw-number {
-        font-weight: 600 !important;
+        font-weight: 1000 !important;
         display: block;
         color: black;
         font-family: "Arial Rounded MT Bold", sans-serif;
@@ -188,7 +188,7 @@
         font-weight: 500;
         line-height: 1.2;
         text-decoration: none;
-        font-size: 16pt;
+        font-size: 18pt;
         width: 100%;
     }
 
@@ -629,6 +629,7 @@
     <?php 
     // print_r($lotteryData);
         $resultId = $lotteryData['data']['result_id'];
+        $status = $lotteryData['data']['status'];
         $first = $lotteryData['data']['lottery_data']['section1'][0];
         $first_short = substr(substr($lotteryData['data']['lottery_data']['section1'][0], 3), -5);;
         $secondData = $lotteryData['data']['lottery_data']['section2'];
@@ -840,7 +841,12 @@
                 const {
                     jsPDF
                 } = window.jspdf;
-                const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4', compress: true });
+                const pdf = new jsPDF({
+                    orientation: 'p',
+                    unit: 'mm',
+                    format: 'a4',
+                    compress: true
+                });
 
                 const imgWidth = 210; // A4 width in mm
                 const pageHeight = 297; // A4 height in mm
@@ -916,7 +922,12 @@
                 const {
                     jsPDF
                 } = window.jspdf;
-                const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4', compress: true });
+                const pdf = new jsPDF({
+                    orientation: 'p',
+                    unit: 'mm',
+                    format: 'a4',
+                    compress: true
+                });
                 const imgWidth = 210;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 pdf.addImage(pngDataUrl, 'PNG', 0, 0, imgWidth, imgHeight);

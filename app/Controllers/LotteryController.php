@@ -108,6 +108,7 @@ class LotteryController extends BaseController
                 'status' => 'success',
                 'data' => [
                     'result_id' => $result->id,
+                    'status' => $result->status,
                     'draw_date_short' => $drawDate1,
                     'draw_date_full' => $drawDate2,
                     'draw_time' => $drawTime,

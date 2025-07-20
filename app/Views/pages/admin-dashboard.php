@@ -99,7 +99,7 @@
         <!-- Create Buttons Sections Starts -->
         <div class="row">
             <div class="col-12">
-                <div class="d-flex align-items-center justify-content-center mb-3 gap-3 flex-wrap">
+                <div class="d-flex align-items-center justify-content-around mb-3 gap-3 flex-wrap">
                     <!-- 1 PM Result -->
                     <?php if (empty($resultArray['1pm-result'])): ?>
                     <a href="<?= base_url('admin/add-result?time=1pm') ?>"
@@ -116,6 +116,10 @@
                         class="current-date-result p-3 bg-outline-primary b-r-22"> -->
                     <a href="javascript:void()"
                         class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
+                        <button
+                            onclick="window.location.href='<?= base_url('admin/view-result/' . $resultArray['1pm-result']->id) ?>'"
+                            class="view-result-btn text-white border-0 px-3 py-4 rounded-1 bg-light-success action-btn-view">
+                            <i class="ti ti-eye text-success f-s-18"></i></button>
                         <div
                             class="<?= $resultArray['1pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>">
                             <div class="d-flex align-items-center justify-content-between w-100">
@@ -156,6 +160,10 @@
                     <!-- <a href="<?= base_url('admin/edit-result/'.$resultArray['8pm-result']->id) ?>" class="current-date-result p-3 bg-outline-primary b-r-22"> -->
                     <a href="javascript:void()"
                         class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
+                        <button
+                            onclick="window.location.href='<?= base_url('admin/view-result/' . $resultArray['8pm-result']->id) ?>'"
+                            class="view-result-btn text-white border-0 px-3 py-4 rounded-1 bg-light-success action-btn-view">
+                            <i class="ti ti-eye text-success f-s-18"></i></button>
                         <div
                             class="<?= $resultArray['8pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>">
                             <div class="d-flex align-items-center justify-content-between w-100">
