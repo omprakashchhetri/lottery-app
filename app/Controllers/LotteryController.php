@@ -433,6 +433,62 @@ class LotteryController extends BaseController
         }
     }
 
+    public function uploadAdImage()
+    {
+        try {
+            $request = \Config\Services::request();
+            $db = \Config\Database::connect();
+            
+            // Get the uploaded image file
+            $imageFile = $request->getFile('image_file');
+            
+            if (!$imageFile || !$imageFile->isValid() || $imageFile->hasMoved()) {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'No valid image file uploaded'
+                ])->setStatusCode(400);
+            }
+            
+            // Create images directory if it doesn't exist
+            $uploadDir = WRITEPATH . 'images/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+            
+            // Generate unique filename
+            $timeStamp = time();
+            $extension = $imageFile->getExtension();
+            $imageName = 'preview_' . $timeStamp . '.' . $extension;
+            
+            // Move file to images directory
+            $imageFile->move($uploadDir, $imageName);
+            
+            // Update database - row with id 1
+            $updateData = [
+                'preview_image' => $imageName,
+                'updated_at' => date('Y-m-d H:i:s')
+            ];
+            
+            $db->table('lottery_results')->update($updateData, ['id' => 1]);
+            
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Image uploaded successfully',
+                'data' => [
+                    'image_name' => $imageName,
+                    'image_path' => 'images/' . $imageName
+                ]
+            ]);
+            
+        } catch (\Exception $e) {
+            log_message('error', 'Image upload error: ' . $e->getMessage());
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Upload failed'
+            ])->setStatusCode(500);
+        }
+    }
+
     // AJAX Auxilary Methods
     public function deleteResult()
     {

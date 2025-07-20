@@ -115,12 +115,13 @@
                     <?php else: ?>
                     <!-- <a href="<?= base_url('admin/edit-result/'.$resultArray['1pm-result']->id) ?>"
                         class="current-date-result p-3 bg-outline-primary b-r-22"> -->
-                    <a href="javascript:void()"
-                        class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
+                    <div class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
                         <button data-id="<?=$resultArray['1pm-result']->id?>"
                             onclick="window.location.href='<?= base_url('admin/edit-result/' . $resultArray['1pm-result']->id) ?>'"
-                            class="text-white border-0 px-3 py-4 rounded-1 bg-light-warning action-edit-btn"><i
-                                class="ti ti-edit text-warning"></i></button>
+                            class="text-white border-0 px-3 py-4 rounded-1 bg-light-warning action-edit-btn">
+                            <i class="ti ti-edit text-warning"></i>
+                        </button>
+
                         <div class="<?= $resultArray['1pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>"
                             style="min-width: 150px">
                             <div class="d-flex align-items-center justify-content-between w-100">
@@ -136,19 +137,23 @@
                                 </label>
                             </div>
                             <div class="fs-5 text-primary">
-                                <span class="ms-2">1 PM Result</span>
+                                <span class="ms-2">8 PM Result</span>
                             </div>
                         </div>
+
                         <div class="d-flex gap-1">
                             <button data-id="<?=$resultArray['1pm-result']->id?>"
-                                class="delete-result-btn text-white border-0 px-3 py-1 rounded-start bg-light-danger action-btn"><i
-                                    class="ti ti-trash text-danger f-s-18"></i></button>
+                                class="delete-result-btn text-white border-0 px-3 py-1 rounded-start bg-light-danger action-btn right">
+                                <i class="ti ti-trash text-danger f-s-18"></i>
+                            </button>
                             <button
                                 onclick="window.location.href='<?= base_url('admin/view-result/' . $resultArray['1pm-result']->id) ?>'"
                                 class="view-result-btn text-white border-0 px-3 py-1 rounded-end bg-light-success action-btn-view">
-                                <i class="ti ti-eye text-success f-s-18"></i></button>
+                                <i class="ti ti-eye text-success f-s-18"></i>
+                            </button>
                         </div>
-                    </a>
+                    </div>
+
                     <?php endif; ?>
 
 
@@ -165,11 +170,13 @@
                     </a>
                     <?php else: ?>
                     <!-- <a href="<?= base_url('admin/edit-result/'.$resultArray['8pm-result']->id) ?>" class="current-date-result p-3 bg-outline-primary b-r-22"> -->
-                    <a href="javascript:void()"
-                        class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
+                    <div class="current-date-result p-3 bg-outline-primary b-r-22 position-relative">
                         <button data-id="<?=$resultArray['8pm-result']->id?>"
-                            class="text-white border-0 px-3 py-4 rounded-1 bg-light-warning action-edit-btn"><i
-                                class="ti ti-edit text-warning"></i></button>
+                            onclick="window.location.href='<?= base_url('admin/edit-result/' . $resultArray['8pm-result']->id) ?>'"
+                            class="text-white border-0 px-3 py-4 rounded-1 bg-light-warning action-edit-btn">
+                            <i class="ti ti-edit text-warning"></i>
+                        </button>
+
                         <div class="<?= $resultArray['8pm-result']->status === 'published' ? 'published-result' : 'draft-result' ?>"
                             style="min-width: 150px">
                             <div class="d-flex align-items-center justify-content-between w-100">
@@ -188,16 +195,20 @@
                                 <span class="ms-2">8 PM Result</span>
                             </div>
                         </div>
+
                         <div class="d-flex gap-1">
                             <button data-id="<?=$resultArray['8pm-result']->id?>"
-                                class="delete-result-btn text-white border-0 px-3 py-1 rounded-start bg-light-danger action-btn right"><i
-                                    class="ti ti-trash text-danger f-s-18"></i></button>
+                                class="delete-result-btn text-white border-0 px-3 py-1 rounded-start bg-light-danger action-btn right">
+                                <i class="ti ti-trash text-danger f-s-18"></i>
+                            </button>
                             <button
                                 onclick="window.location.href='<?= base_url('admin/view-result/' . $resultArray['8pm-result']->id) ?>'"
                                 class="view-result-btn text-white border-0 px-3 py-1 rounded-end bg-light-success action-btn-view">
-                                <i class="ti ti-eye text-success f-s-18"></i></button>
+                                <i class="ti ti-eye text-success f-s-18"></i>
+                            </button>
                         </div>
-                    </a>
+                    </div>
+
                     <?php endif; ?>
 
                 </div>
