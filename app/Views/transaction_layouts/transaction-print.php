@@ -461,28 +461,28 @@
 
                 <div class="form-group">
                     <label for="amount">Amount:</label>
-                    <input type="text" id="amount" name="amount" placeholder="Enter amount (e.g., Nu. 1.00)" required>
+                    <input type="number" id="amount" name="amount" placeholder="Enter amount (e.g., Nu. 1.00)" required>
                 </div>
 
                 <div class="form-group">
                     <label for="jrnlNo">Jrnl. No:</label>
-                    <input type="text" id="jrnlNo" name="jrnlNo" placeholder="Enter journal number" required>
+                    <input type="number" id="jrnlNo" name="jrnlNo" placeholder="Enter journal number" required>
                 </div>
 
                 <div class="form-group">
                     <label for="rrno">RRNO:</label>
-                    <input type="text" id="rrno" name="rrno" placeholder="Enter RRNO" required>
+                    <input type="number" id="rrno" name="rrno" placeholder="Enter RRNO" required>
                 </div>
 
                 <div class="form-group">
                     <label for="fromAccount" id="fromAccountLabel">From Account No:</label>
-                    <input type="text" id="fromAccount" name="fromAccount" placeholder="Enter from account number"
+                    <input type="number" id="fromAccount" name="fromAccount" placeholder="Enter from account number"
                         required>
                 </div>
 
                 <div class="form-group" id="toAccountGroup">
                     <label for="toAccount" id="toAccountLabel">To Account No:</label>
-                    <input type="text" id="toAccount" name="toAccount" placeholder="Enter to account number" required>
+                    <input type="number" id="toAccount" name="toAccount" placeholder="Enter to account number" required>
                 </div>
 
                 <div class="form-group">
@@ -667,7 +667,7 @@
             document.querySelector('.trans-jrnl').textContent = `${data.jrnlNo}`;
             document.querySelector('.trans-from-account').textContent = maskAccountNumber(data.fromAccount);
             document.querySelector('.trans-to-account').textContent = maskAccountNumber(data.toAccount);
-            document.querySelector('.trans-purpose').textContent = `${data.purpose || ''}`;
+            document.querySelector('.trans-purpose').textContent = `${data.beneficiaryName || ''}`;
             document.querySelector('.trans-date').textContent = `${date}`;
             document.querySelector('.trans-time').textContent = `${time}`;
 
@@ -680,7 +680,7 @@
         }
 
         // Populate all fields
-        document.getElementById('receiptAmount').textContent = `: Nu. ${data.amount}`;
+        document.getElementById('receiptAmount').textContent = `: Nu. ${data.amount}.00`;
         document.getElementById('receiptJrnl').textContent = `: ${data.jrnlNo}`;
         document.getElementById('receiptRrno').textContent = `: ${data.rrno}`;
         document.getElementById('receiptFromAccount').textContent = `: ${maskAccountNumber(data.fromAccount)}`;
