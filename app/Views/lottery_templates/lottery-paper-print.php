@@ -506,7 +506,7 @@ function formatTime($time) {
                         <p class="info-draw-day draw-day-display">THURSDAY</p>
                     </div>
                     <div class="info-right">
-                        <div class="lottery-name">MEGHALAYA STATE LOTTERY</div>
+                        <div class="lottery-name">MEGHALAYA STATE LOTTERIES</div>
                         <div class="singham-title">SINGHAM</div>
                         <div class="subtitle">JACKPOT <span class="day-night-display">DAY</span> DAILY LOTTERY</div>
                     </div>

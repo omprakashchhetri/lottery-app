@@ -37,6 +37,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="clock-wrapper d-flex align-items-center position-relative bg-light-primary rounded-2 p-3 mb-4"
                             style="height: 90%; min-height: 150px">
+
                             <div class="clock-box" style="scale: 2; position: unset; margin-left: 40px">
                                 <div class="clock">
                                     <div class="hour" id="hour"></div>
@@ -46,6 +47,16 @@
                             </div>
                             <div class="w-100">
                                 <h2 class="fw-bold text-end" id="date-display"></h2>
+                            </div>
+                            <div class="website-link">
+                                <a class=" d-flex text-primary pt-2" href="<?=base_url()?>" target="_blank">
+                                    <?=base_url()?>
+                                </a>
+                                <div class="d-flex-center px-3 py-2 rounded-1 bg-white mb-3"
+                                    style="width: 20px; aspect-ratio: 1">
+                                    <i class="ti ti-link f-s-20 text-primary">
+                                    </i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,7 +239,7 @@
                                     <tr>
                                         <th>Result ID</th>
                                         <th>Status</th>
-                                        <th>Draw Date (Full)</th>
+                                        <th>Draw Date</th>
                                         <th>Draw Time</th>
                                         <th>Action</th>
                                     </tr>
