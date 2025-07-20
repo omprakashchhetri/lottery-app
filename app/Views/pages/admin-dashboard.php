@@ -137,7 +137,7 @@
                                 </label>
                             </div>
                             <div class="fs-5 text-primary">
-                                <span class="ms-2">8 PM Result</span>
+                                <span class="ms-2">1 PM Result</span>
                             </div>
                         </div>
 

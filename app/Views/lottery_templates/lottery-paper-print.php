@@ -640,6 +640,7 @@ function formatTime($time) {
 
         // Update day
         const dayName = getDayName(data.date);
+        console.log(dayName);
         ticket.querySelector('.draw-day-display').textContent = dayName;
 
         // Update day/night
@@ -700,13 +701,15 @@ function formatTime($time) {
         if (!dateString) return 'THURSDAY';
 
         try {
-            const date = new Date(dateString);
+            const [day, month, year] = dateString.split('-');
+            const date = new Date(`${year}-${month}-${day}`); // converts to YYYY-MM-DD
             const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
             return days[date.getDay()];
         } catch (e) {
             return 'THURSDAY';
         }
     }
+
 
     // Function to generate PDF
     function generatePDF() {
