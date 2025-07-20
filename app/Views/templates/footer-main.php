@@ -100,7 +100,7 @@ function getFormattedDate() {
 <?php if($title == 'Admin Dashboard' || $title == 'Add Result') { ?>
 document.getElementById("date-display").innerHTML = getFormattedDate();
 <?php } ?>
-<?php if($title == 'Admin Dashboard') { ?>
+<?php if($title == 'Admin Dashboard' ) { ?>
 
 function updateClock() {
     const now = new Date();
@@ -124,6 +124,8 @@ function updateClock() {
 // Update clock every second
 setInterval(updateClock, 1000);
 updateClock();
+<?php } ?>
+<?php if($title == 'Admin Dashboard' || $title == 'Edit Result') { ?>
 $(document).on('change', '.toggle-status', function() {
     const isChecked = $(this).is(':checked') ? 1 : 0;
     const recordId = $(this).data('record');
@@ -168,7 +170,6 @@ $(document).on('click', '.delete-result-btn', function() {
         }
     });
 });
-
 
 <?php } ?>
                </script>

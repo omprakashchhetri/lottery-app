@@ -146,7 +146,7 @@ class Dashboard extends BaseController
             return redirect()->back()->with('error', 'Lottery result not found');
         }
 
-        $passToView = ['title' => 'Edit Lottery'];        
+        $passToView = ['title' => 'Edit Result'];        
         $lotteryData = $this->getResultWithPrizes($resultId);
         if(empty($lotteryData)) {
             return redirect('admin/admin-dashboard');

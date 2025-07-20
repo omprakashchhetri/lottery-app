@@ -19,11 +19,16 @@
                                 </a>
                             </li>
                             <li class="active">
-                                <a class="f-s-14 f-w-500" href="#">Update Result</a>
+                                <a class="f-s-14 f-w-500" href="#">Update</a>
                             </li>
                         </ul>
                     </div>
-                    <button class="btn btn-md btn-primary" id="saveChangesBtn">Save</button>
+                    <div class="d-flex gap-2 flex-wrap justify-content-end">
+                        <button data-id="<?=$resultId?>"
+                            class="delete-result-btn text-white border-0 px-3 py-1 rounded-1 bg-light-danger"><i
+                                class="ti ti-trash text-danger"></i></button>
+                        <button class="btn btn-md btn-primary" id="saveChangesBtn">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,14 +37,25 @@
         <div class="row">
             <!-- Draw Time Selection -->
             <div class="col-12">
-                <div class="d-flex align-items-center justify-content-between flex-wrap px-2">
-                    <div class="d-flex mb-2" style="max-width: 400px;">
-                        <div class="d-flex align-items-center bg-white p-2 rounded-1 gap-2">
-                            <i class="ti ti-calendar text-primary fs-5"></i>
-                            <h6 class="m-0" id=""><?=date('d M Y' , strtotime($lottery_data['draw_date']))?>
-                            </h6>
+                <div class="d-flex align-items-end justify-content-between flex-wrap px-2">
+                    <div class="d-flex flex-column mb-2" style="max-width: 400px;">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <small
+                                class="badge <?= $lottery_data['status'] === 'published' ? 'text-light-success' : 'text-light-warning' ?>">
+                                <?= ucfirst($lottery_data['status']) ?>
+                            </small>
+                            <label class="switch">
+                                <input type="checkbox" class="toggle-status" data-record="<?=$resultId?>"
+                                    <?= $lottery_data['status'] === 'published' ? 'checked' : '' ?> />
+                                <span class="slider round"></span>
+                            </label>
                         </div>
-                        <div>
+                        <div class="d-flex">
+                            <div class="d-flex align-items-center bg-white p-2 rounded-1 gap-2">
+                                <i class="ti ti-calendar text-primary fs-5"></i>
+                                <h6 class="m-0" id=""><?=date('d M Y' , strtotime($lottery_data['draw_date']))?>
+                                </h6>
+                            </div>
                             <button class="btn btn-light-primary icon-btn b-r-4" type="button"
                                 onclick="window.open('<?= base_url('admin/view-result/' . $resultId) ?>', '_blank')">
                                 <i class="ti ti-eye"></i>

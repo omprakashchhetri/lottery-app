@@ -76,11 +76,16 @@ input:checked + .slider:before {
 }
 
 .action-btn {
-  position: absolute;
-  left: unset;
-  right: -55px;
+  /* position: absolute;
+  left: -55px;
+  right: unset; */
 }
 .action-btn-view {
+  /* position: absolute;
+  left: unset;
+  right: -55px; */
+}
+.action-edit-btn {
   position: absolute;
   left: -55px;
   right: unset;
