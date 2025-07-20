@@ -47,6 +47,10 @@
     <!-- simplebar css-->
     <link href="<?=base_url()?>assets/vendor-assets/simplebar/simplebar.css" rel="stylesheet" type="text/css" />
 
+    <?php if($title == 'Create Lottery') { ?>
+    <link rel="stylesheet" href="<?=base_url('assets/plugins/flatpickr/flatpickr.min.css')?>">
+    <?php } ?>
+
     <!-- App css-->
     <link href="<?=base_url()?>assets/css/main-style.css" rel="stylesheet" type="text/css" />
 

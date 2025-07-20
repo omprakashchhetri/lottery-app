@@ -115,7 +115,12 @@ class Dashboard extends BaseController
     }
 
     public function add_lottery() {
-        return view('pages/add-lottery');
+
+        $passToView = ['title' => 'Create Lottery'];
+
+        return view('templates/header-main', $passToView)
+            . view('pages/add-lottery')
+            . view('templates/footer-main');
     }
 
 }

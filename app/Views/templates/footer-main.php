@@ -59,6 +59,15 @@ jQuery(function() {
 
                <!-- Customizer js-->
                <script src="<?=base_url()?>assets/js/customizer.js"></script>
+               <?php if($title == 'Create Lottery') { ?>
+               <script src="<?=base_url('assets/plugins/flatpickr/flatpickr.js')?>"></script>
+               <script>
+flatpickr('#select-date-display', {
+    dateFormat: 'd-m-Y', // Example: 19-07-2025
+    defaultDate: 'today', // Optional: sets today's date by default
+});
+               </script>
+               <?php } ?>
                <script>
 function getFormattedDate() {
     const now = new Date();
@@ -84,8 +93,9 @@ function getFormattedDate() {
 
     return `<span class="text-primary">${day}${suffix(day)}</span> ${month} ${year}`;
 }
-
+<?php if($title == 'Admin Dashboard' || $title == 'Add Result') { ?>
 document.getElementById("date-display").innerHTML = getFormattedDate();
+<?php } ?>
 <?php if($title == 'Admin Dashboard') { ?>
 
 function updateClock() {
@@ -154,6 +164,7 @@ $(document).on('click', '.delete-result-btn', function() {
         }
     });
 });
+
 
 <?php } ?>
                </script>

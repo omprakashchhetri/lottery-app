@@ -60,7 +60,7 @@
                 </div>
                 <div class="heading-wrapper">
                     <h2 class="text-center font-body heading-5">
-                        <strong>AFTERNOON (01:00 P.M)</strong>
+                        <strong>MORNING (01:00 P.M)</strong>
                     </h2>
                 </div>
                 <div class="result-content">
