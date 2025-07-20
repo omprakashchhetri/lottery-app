@@ -273,8 +273,8 @@ function formatTime($time) {
         margin: 0;
         font-weight: bold;
         text-align: center;
-        word-spacing: 1mm;
-        letter-spacing: 0.2mm;
+        word-spacing: 0mm;
+        letter-spacing: 0.15mm;
         margin-bottom: -0.5mm;
     }
 
@@ -305,7 +305,10 @@ function formatTime($time) {
         text-align: center;
         padding-bottom: .5mm;
         margin-bottom: 0;
-        letter-spacing: .1mm;
+        letter-spacing: .25mm;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
     }
 
     .prize-section {

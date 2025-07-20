@@ -35,6 +35,7 @@ $routes->group('admin', function ($routes) {
     // $routes->post('delete-result', 'LotteryController::deleteResult');
     $routes->post('update-prize-series', 'Dashboard::updatePrizeSeries', ['filter' => 'login']);
     // $routes->get('add-result/(:segment)', 'Dashboard::add_result/$1', ['filter' => 'login']);
+    $routes->get('create-transaction', 'Transaction::create_transaction', ['filter' => 'login']);
     $routes->get('generate-pdf', 'PdfGenerator::generateLotteryResult');
     $routes->post('delete-result', 'LotteryController::deleteResult', ['filter'=>'login']);
 });
