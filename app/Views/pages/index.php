@@ -3,7 +3,7 @@
     <div class="body-container">
         <div class="heading-wrapper p-0">
             <h4 class="bg-primary text-center font-body heading-1">
-                MEGHALAYA STATE LOTTERY
+                MEGHALAYA STATE LOTTERIES
             </h4>
         </div>
         <div class="heading-wrapper">
@@ -17,7 +17,7 @@
         <div class="para-wrapper">
             <p class="font-body para-color para-align">
                 Stay updated with the latest results and information about
-                MEGHALAYA State Lottery. Your gateway to winning opportunities
+                Meghalaya State Lotteries. Your gateway to winning opportunities
                 awaits.
             </p>
         </div>
@@ -141,11 +141,11 @@
                 </p>
                 <p class="draw-terms-para para-color font-body">
                     the most current lottery results. So, respected customers,
-                    please accept these results for the Meghalaya State Lottery's
+                    please accept these results for the Meghalaya State Lotteries
                     1:00 PM Morning Result.
                 </p>
                 <p class="draw-terms-para para-color font-body">
-                    Check Today Result 1 PM today Meghalaya State Lottery , Singham
+                    Check Today Result 1 PM today Meghalaya State Lotteries , Singham
                     Lottery Result 1:00 PM. As you know lottery draw (1:00 PM)
                     has been rescheduled and now being updated at 1:00 PM. You may
                     check Singham Lottery morning result here at 1:00 PM. Today
