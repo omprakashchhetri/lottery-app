@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?=$title?></title>
-    <link rel="icon" href="<?=base_url()?>assets/images/icon.jpg" />
+    <link rel="icon" href="<?=base_url()?>assets/images/logo.png" />
     <link rel="stylesheet" href="<?=base_url()?>assets/plugins/bootstrap-5.3.7-dist/css/bootstrap.min.css" />
     <!-- Google Fonts -->
     <link
@@ -64,7 +64,8 @@
                                 <a class="nav-link font-nav_item active" aria-current="page" href="#">Games</a>
                             </li>
                             <li class="nav-link">
-                                <a class="common-button custom-btn tnc-btn font-button" href="#" target="_blank">Terms
+                                <a class="common-button custom-btn tnc-btn font-button"
+                                    href="<?=base_url('document/Terms&Conditions.pdf')?>" target="_blank">Terms
                                     &amp; Conditions</a>
                             </li>
                         </ul>

@@ -157,7 +157,8 @@
                 </p>
             </div>
             <div class="tnc-section content-wrapper">
-                <a class="common-button custom-btn tnc-btn tnc-main-btn font-button" href="#" target="_blank">Terms
+                <a class="common-button custom-btn tnc-btn tnc-main-btn font-button"
+                    href="<?=base_url('document/Terms&Conditions.pdf')?>" target="_blank">Terms
                     &amp; Conditions</a>
             </div>
         </div>

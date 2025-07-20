@@ -186,7 +186,7 @@
         font-family: "Arial Rounded MT Bold", sans-serif;
         font-style: normal;
         font-weight: 500;
-        line-height: 1.2;
+        line-height: 1.1;
         text-decoration: none;
         font-size: 18pt;
         width: 100%;
@@ -672,13 +672,15 @@
             <span class="first-number"><?=$first?></span>
             <span class="draw-number-count"><?=$onePmCount?></span>
             <span class="draw-date-top"><?=$date_full?></span>
-            <img src="<?=base_url()?>assets/images/main-header-1pm.jpg" alt="Header Image" class="header-image" />
+            <img src="<?=base_url()?>assets/images/main-header-1pm-result.jpg" alt="Header Image"
+                class="header-image" />
             <?php } else if($time == '8 PM') { ?>
             <!-- 8pm header -->
             <span class="first-number"><?=$first?></span>
             <span class="draw-number-count draw-8pm"><?=$onePmCount?></span>
             <span class="draw-date-top draw-8pm"><?=$date_full?></span>
-            <img src="<?=base_url()?>assets/images/main-header-8pm.jpg" alt="Header Image" class="header-image" />
+            <img src="<?=base_url()?>assets/images/main-header-8pm-result.jpg" alt="Header Image"
+                class="header-image" />
             <?php } ?>
         </div>
 

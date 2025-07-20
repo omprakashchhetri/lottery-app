@@ -76,7 +76,7 @@
                                                 <span class="input-group-text b-r-left text-bg-primary"
                                                     id="basic-addon1"><i class="iconoir-component"></i></span>
                                                 <input aria-describedby="basic-addon1" aria-label="12A 12345"
-                                                    class="form-control b-r-right py-3 section1-input"
+                                                    class="form-control b-r-right py-3 section1-input" maxlength="9"
                                                     placeholder="12A 12345" type="text" />
                                             </div>
                                         </div>
@@ -101,7 +101,7 @@
                                                     <span class="input-group-text b-r-left text-bg-primary"
                                                         id="basic-addon-sec2<?=$i?>"><?=$i?></i></span>
                                                     <input aria-describedby="basic-addon-sec2<?=$i?>" aria-label="12345"
-                                                        class="form-control b-r-right section2-input"
+                                                        class="form-control b-r-right section2-input" maxlength="5"
                                                         placeholder="12345" type="text" />
                                                 </div>
                                             </div>
@@ -129,7 +129,7 @@
                                                         id="basic-addon-sec3<?=$i?>"><?=$i?></i></span>
                                                     <input aria-describedby="basic-addon-sec3<?=$i?>" aria-label="1234"
                                                         class="form-control b-r-right section3-input" placeholder="1234"
-                                                        type="text" />
+                                                        type="text" maxlength="4" />
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -156,7 +156,7 @@
                                                         id="basic-addon-sec4<?=$i?>"><?=$i?></i></span>
                                                     <input aria-describedby="basic-addon-sec4<?=$i?>" aria-label="1234"
                                                         class="form-control b-r-right section4-input" placeholder="1234"
-                                                        type="text" />
+                                                        maxlength="4" type="text" />
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -183,7 +183,7 @@
                                                         id="basic-addon-sec5<?=$i?>"><?=$i?></i></span>
                                                     <input aria-describedby="basic-addon-sec5<?=$i?>" aria-label="1234"
                                                         class="form-control b-r-right section5-input" placeholder="1234"
-                                                        type="text" />
+                                                        maxlength="4" type="text" />
                                                 </div>
                                             </div>
                                             <?php } ?>

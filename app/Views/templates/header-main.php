@@ -5,16 +5,13 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta content="IE=edge" http-equiv="X-UA-Compatible" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Multipurpose, super flexible, powerful, clean modern responsive bootstrap 5 admin template"
+    <meta content="Maghalaya, Maghalaya State Lotteries, State Lotteries, Maghalaya State Lotteries"
         name="description" />
-    <meta
-        content="admin template, axelit admin template, dashboard template, flat admin template, responsive admin template, web app"
-        name="keywords" />
-    <meta content="la-themes" name="author" />
-    <link href="<?=base_url()?>assets/images/logo/favicon.png" rel="icon" type="image/x-icon" />
-    <link href="<?=base_url()?>assets/images/logo/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <meta content="Maghalaya, Maghalaya State Lotteries, State Lotteries, Maghalaya State Lotteries" name="keywords" />
+    <link href="<?=base_url()?>assets/images/admin-icon.png" rel="icon" type="image/x-icon" />
+    <link href="<?=base_url()?>assets/images/admin-icon.png" rel="shortcut icon" type="image/x-icon" />
 
-    <title><?=$title?></title>
+    <title><?=!empty($title) ? $title : 'Meghalaya Lotteries'?></title>
 
     <!--font-awesome-css-->
     <link href="<?=base_url()?>assets/vendor-assets/fontawesome/css/all.css" rel="stylesheet" />

@@ -47,7 +47,11 @@
                <!-- data table js-->
                <script>
 jQuery(function() {
-    jQuery("#example").DataTable();
+    jQuery("#example").DataTable({
+        order: [
+            [0, 'desc']
+        ] // Sort the first column (Result ID) in descending order
+    });
 });
                </script>
 
