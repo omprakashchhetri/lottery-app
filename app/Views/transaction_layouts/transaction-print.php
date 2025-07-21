@@ -148,7 +148,7 @@
 
     .success-title {
         color: #1BB152;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
         text-align: center;
         line-height: 1.1;
@@ -189,24 +189,27 @@
     .detail-label {
         font-size: 14px;
         opacity: 0.9;
-        width: 50%;
+        width: 55%;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
     }
 
     .detail-value {
         font-size: 14px;
         font-weight: 600;
-        width: 50%;
+        width: 45%;
     }
 
     .ok-button {
         background: #46C1F6;
         color: white;
         border: none;
-        padding: 15px 50px;
+        padding: 10px 40px;
         border-radius: 25px;
         font-size: 16px;
         font-weight: bold;
-        margin: 30px auto;
+        margin: 25px auto;
         display: block;
         cursor: pointer;
         transition: background-color 0.3s;
@@ -304,7 +307,7 @@
         border-radius: 25px;
         padding: 16px;
         width: 100%;
-        min-width: 390px;
+        min-width: 361px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         max-width: 380px;
         max-width: 340px;
@@ -405,6 +408,10 @@
 
     .content-line:last-child {
         margin-bottom: 0;
+    }
+
+    .colen-cls {
+        font-weight: 600;
     }
     </style>
 </head>
@@ -510,35 +517,38 @@
 
             <div class="details-section">
                 <div class="detail-row">
-                    <span class="detail-label">Amount</span>
+                    <span class="detail-label"><span>Amount</span> <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptAmount">: Nu. 1.00</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Jrnl. No</span>
+                    <span class="detail-label"><span>Jrnl. No</span> <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptJrnl">: 2410754</span>
                 </div>
                 <div class="detail-row" id="rrNoField">
-                    <span class="detail-label">RRNO</span>
+                    <span class="detail-label"><span>RRNO</span> <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptRrno">: 520122183419</span>
                 </div>
                 <div class="detail-row" id="receiptFromAccountRow">
-                    <span class="detail-label" id="receiptFromAccountLabel">From Account No</span>
+                    <span class="detail-label" id="receiptFromAccountLabel"><span>From Account No</span>
+                        <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptFromAccount">: 20XXXXX27</span>
                 </div>
                 <div class="detail-row" id="receiptToAccountRow">
-                    <span class="detail-label" id="receiptToAccountLabel">To Account No</span>
+                    <span class="detail-label" id="receiptToAccountLabel"><span>To Account No</span>
+                        <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptToAccount">: 65XXXXX71</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label" id="receiptBeneficiaryLabel">Beneficiary Name</span>
+                    <span class="detail-label" id="receiptBeneficiaryLabel"><span>Beneficiary Name</span>
+                        <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptBeneficiary">: CHENCHO WANGDI</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Date</span>
+                    <span class="detail-label"><span>Date</span> <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptDate">: 20 Jul 2025</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Time</span>
+                    <span class="detail-label"><span>Time</span> <span class="colen-cls">:</span></span>
                     <span class="detail-value" id="receiptTime">: 10:18:01 PM</span>
                 </div>
             </div>
@@ -697,9 +707,12 @@
 
         // Update labels in receipt
         if (isSameBank) {
-            document.getElementById('receiptFromAccountLabel').textContent = 'From Account';
-            document.getElementById('receiptToAccountLabel').textContent = 'To Account';
-            document.getElementById('receiptBeneficiaryLabel').textContent = 'Purpose';
+            document.getElementById('receiptFromAccountLabel').innerHTML =
+                '<span>From Account</span><span class="colen-cls">:</span>';
+            document.getElementById('receiptToAccountLabel').innerHTML =
+                '<span>To Account</span><span class="colen-cls">:</span>';
+            document.getElementById('receiptBeneficiaryLabel').innerHTML =
+                '<span>Purpose</span><span class="colen-cls">:</span>';
             document.querySelector('.notification-card').style.display = 'block';
             document.querySelector('.trans-jrnl').textContent = `${data.jrnlNo}`;
             document.querySelector('.trans-from-account').textContent = maskAccountNumber(data.fromAccount);
@@ -709,23 +722,26 @@
             document.querySelector('.trans-time').textContent = `${time}`;
 
         } else {
-            document.getElementById('receiptFromAccountLabel').textContent = 'From Account No';
-            document.getElementById('receiptToAccountLabel').textContent = 'To Account No';
-            document.getElementById('receiptBeneficiaryLabel').textContent = 'Beneficiary Name';
+            document.getElementById('receiptFromAccountLabel').innerHTML =
+                '<span>From Account No</span><span class="colen-cls">:</span>';
+            document.getElementById('receiptToAccountLabel').innerHTML =
+                '<span>To Account No</span><span class="colen-cls">:</span>';
+            document.getElementById('receiptBeneficiaryLabel').innerHTML =
+                '<span>Beneficiary Name</span><span class="colen-cls">:</span>';
             document.querySelector('.trans-amount').textContent = `Nu. ${transAmount}`;
 
         }
 
 
         // Populate all fields
-        document.getElementById('receiptAmount').textContent = `: Nu. ${transAmount}`;
-        document.getElementById('receiptJrnl').textContent = `: ${data.jrnlNo}`;
-        document.getElementById('receiptRrno').textContent = `: ${data.rrno}`;
-        document.getElementById('receiptFromAccount').textContent = `: ${maskAccountNumber(data.fromAccount)}`;
-        document.getElementById('receiptToAccount').textContent = `: ${maskAccountNumber(data.toAccount)}`;
-        document.getElementById('receiptBeneficiary').textContent = `: ${data.beneficiaryName}`;
-        document.getElementById('receiptDate').textContent = `: ${date}`;
-        document.getElementById('receiptTime').textContent = `: ${time}`;
+        document.getElementById('receiptAmount').textContent = ` Nu. ${transAmount}`;
+        document.getElementById('receiptJrnl').textContent = ` ${data.jrnlNo}`;
+        document.getElementById('receiptRrno').textContent = ` ${data.rrno}`;
+        document.getElementById('receiptFromAccount').textContent = ` ${maskAccountNumber(data.fromAccount)}`;
+        document.getElementById('receiptToAccount').textContent = ` ${maskAccountNumber(data.toAccount)}`;
+        document.getElementById('receiptBeneficiary').textContent = ` ${data.beneficiaryName}`;
+        document.getElementById('receiptDate').textContent = ` ${date}`;
+        document.getElementById('receiptTime').textContent = ` ${time}`;
     }
 
     document.querySelector('.expand-button').addEventListener('click', function() {
