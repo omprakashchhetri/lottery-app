@@ -640,7 +640,7 @@
         $date_full = $lotteryData['data']['draw_date_full'];
         $time = $lotteryData['data']['draw_time'];
         $formattedTime = strtolower(str_replace(' ', '', $time));
-        $onePmCount = $lotteryResultCount[$formattedTime];
+        $onePmCount = $lotteryResultCount[$formattedTime] + 55;
     ?>
     <button id="downloadBtn" onclick="downloadBoth()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down"

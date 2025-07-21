@@ -49,7 +49,7 @@
                                 <h2 class="fw-bold text-end" id="date-display"></h2>
                             </div>
                             <div class="website-link">
-                                <a class=" d-flex text-primary pt-2" href="<?=base_url()?>" target="_blank">
+                                <a class="f-s-11 d-flex text-primary pt-2" href="<?=base_url()?>" target="_blank">
                                     <?=base_url()?>
                                 </a>
                                 <div class="d-flex-center px-3 py-2 rounded-1 bg-white mb-3"

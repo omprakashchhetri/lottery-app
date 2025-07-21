@@ -197,7 +197,7 @@
 
     .detail-value {
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 700;
         width: 45%;
     }
 
@@ -313,7 +313,7 @@
         max-width: 340px;
         margin: 0 auto;
         position: fixed;
-        top: 30px;
+        top: 20px;
         left: 50%;
         translate: -50%;
         display: none;
