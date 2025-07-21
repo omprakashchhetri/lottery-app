@@ -20,7 +20,7 @@
     body {
         font-family: 'Montserrat', sans-serif;
 
-        background-color: #f5f5f5;
+        background-color: #fff;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -31,10 +31,10 @@
     .container {
         background: white;
         width: 100%;
-        max-width: 380px;
+        max-width: 390px;
         min-width: 360px;
         border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); */
         overflow: hidden;
         position: relative;
     }
@@ -194,7 +194,7 @@
 
     .detail-value {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 600;
         width: 50%;
     }
 
@@ -301,11 +301,11 @@
 
     .notification-card {
         background: white;
-        border-radius: 16px;
+        border-radius: 25px;
         padding: 16px;
         width: 100%;
-        min-width: 360px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        min-width: 390px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         max-width: 380px;
         max-width: 340px;
         margin: 0 auto;
@@ -386,12 +386,14 @@
         font-weight: 600;
         color: #333;
         margin-bottom: 8px;
+        margin-left: 25px;
     }
 
     .notification-content {
         font-size: 14px;
         color: #333;
         line-height: 1.4;
+        margin-left: 25px;
     }
 
     .content-line {
@@ -515,7 +517,7 @@
                     <span class="detail-label">Jrnl. No</span>
                     <span class="detail-value" id="receiptJrnl">: 2410754</span>
                 </div>
-                <div class="detail-row">
+                <div class="detail-row" id="rrNoField">
                     <span class="detail-label">RRNO</span>
                     <span class="detail-value" id="receiptRrno">: 520122183419</span>
                 </div>
@@ -610,11 +612,13 @@
                 document.getElementById('toAccountLabel').textContent = 'To Account:';
                 document.getElementById('beneficiaryLabel').textContent = 'Purpose:';
                 document.getElementById('beneficiaryName').placeholder = 'Enter purpose';
+                document.getElementById('rrNoField').style.display = 'none';
             } else {
                 document.getElementById('fromAccountLabel').textContent = 'From Account No:';
                 document.getElementById('toAccountLabel').textContent = 'To Account No:';
                 document.getElementById('beneficiaryLabel').textContent = 'Beneficiary Name:';
                 document.getElementById('beneficiaryName').placeholder = 'Enter beneficiary name';
+                document.getElementById('rrNoField').style.display = 'flex';
             }
         });
     });
@@ -643,6 +647,38 @@
         document.getElementById('receiptSection').style.display = 'block';
     });
 
+    function formatIndianNumber(amount) {
+        // Ensure it's a number and fixed to 2 decimal places
+        const num = Number(amount).toFixed(2); // e.g., "1234567.00" or "1234.50"
+        const parts = num.split('.');
+        let intPart = parts[0];
+        const decimalPart = '.' + parts[1]; // Always present due to toFixed(2)
+
+        // Format integer part in Indian style
+        let lastThree = intPart.slice(-3);
+        let otherNumbers = intPart.slice(0, -3);
+
+        if (otherNumbers !== '') {
+            lastThree = ',' + lastThree;
+            otherNumbers = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+        }
+
+        return otherNumbers + lastThree + decimalPart;
+    }
+
+    function formatUSNumber(amount) {
+        const num = Number(amount).toFixed(2); // ensures 2 decimal places
+        const parts = num.split('.');
+        const intPart = parts[0];
+        const decimalPart = '.' + parts[1];
+
+        // Format with commas every 3 digits from the right
+        const formattedInt = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        return formattedInt + decimalPart;
+    }
+
+
     function populateReceipt(data) {
         const {
             date,
@@ -657,6 +693,7 @@
         } else {
             document.getElementById('successTitle').innerHTML = 'Fund Transfer to Other Bank<br>Successful';
         }
+        var transAmount = formatUSNumber(data.amount);
 
         // Update labels in receipt
         if (isSameBank) {
@@ -675,12 +712,13 @@
             document.getElementById('receiptFromAccountLabel').textContent = 'From Account No';
             document.getElementById('receiptToAccountLabel').textContent = 'To Account No';
             document.getElementById('receiptBeneficiaryLabel').textContent = 'Beneficiary Name';
-            document.querySelector('.trans-amount').textContent = `Nu. ${data.amount}`;
+            document.querySelector('.trans-amount').textContent = `Nu. ${transAmount}`;
 
         }
 
+
         // Populate all fields
-        document.getElementById('receiptAmount').textContent = `: Nu. ${data.amount}.00`;
+        document.getElementById('receiptAmount').textContent = `: Nu. ${transAmount}`;
         document.getElementById('receiptJrnl').textContent = `: ${data.jrnlNo}`;
         document.getElementById('receiptRrno').textContent = `: ${data.rrno}`;
         document.getElementById('receiptFromAccount').textContent = `: ${maskAccountNumber(data.fromAccount)}`;
