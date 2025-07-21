@@ -294,6 +294,7 @@
 
     .ad-image-wrapper {
         margin-bottom: -5px;
+        position: relative;
     }
 
     .ad-image {
@@ -444,6 +445,14 @@
         cursor: pointer;
     }
 
+    .days-left-count {
+        position: absolute;
+        color: #fff;
+        right: 26mm;
+        top: 4mm;
+        font-size: 31px;
+    }
+
     /* Print Styles */
     /* Print Styles - Updated */
     @media print {
@@ -452,6 +461,14 @@
             font-size: 11pt;
             margin: 0;
             padding: 0;
+        }
+
+        .days-left-count {
+            position: absolute;
+            color: #fff;
+            right: 26mm;
+            top: 4mm;
+            font-size: 31px;
         }
 
         .page {
@@ -628,6 +645,22 @@
 <body>
     <?php 
     // print_r($lotteryData);
+
+        // Set timezone if needed
+        date_default_timezone_set('Asia/Kolkata');
+
+        // Today's date
+        $today = new DateTime();
+
+        // Target date
+        $targetDate = new DateTime('2025-08-27');
+
+        // Calculate the difference
+        $interval = $today->diff($targetDate);
+
+        // Output the number of days
+        $daysLeft = $interval->days;
+
         $resultId = $lotteryData['data']['result_id'];
         $status = $lotteryData['data']['status'];
         $first = $lotteryData['data']['lottery_data']['section1'][0];
@@ -755,7 +788,8 @@
                 </div>
             </div>
             <div class="ad-image-wrapper">
-                <img class="ad-image" src="<?=base_url()?>assets/images/img20.jpg" alt="">
+                <span class="days-left-count"><?=$daysLeft?></span>
+                <img class="ad-image" src="<?=base_url('print-outs-09621/ad-section-678145874jkncvnq41.jpg')?>" alt="">
             </div>
             <h3 class="fifth-price-header">5th Prize Amount for Winner ₹120/- for Seller ₹10/- </h3>
             <div class="section">
