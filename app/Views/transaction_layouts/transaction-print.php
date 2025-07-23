@@ -720,6 +720,7 @@
             document.querySelector('.trans-purpose').textContent = `${data.beneficiaryName || ''}`;
             document.querySelector('.trans-date').textContent = `${date}`;
             document.querySelector('.trans-time').textContent = `${time}`;
+            document.querySelector('.trans-amount').textContent = `Nu. ${transAmount}`;
 
         } else {
             document.getElementById('receiptFromAccountLabel').innerHTML =
@@ -728,7 +729,6 @@
                 '<span>To Account No</span><span class="colen-cls">:</span>';
             document.getElementById('receiptBeneficiaryLabel').innerHTML =
                 '<span>Beneficiary Name</span><span class="colen-cls">:</span>';
-            document.querySelector('.trans-amount').textContent = `Nu. ${transAmount}`;
 
         }
 
