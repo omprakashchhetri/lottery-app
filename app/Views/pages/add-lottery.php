@@ -101,6 +101,48 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Name and State Toggle Section -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text b-r-left text-bg-primary">
+                                            <i class="ti ti-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="nameDisplay" value="Singham"
+                                            readonly />
+                                        <div class="input-group-text b-r-right">
+                                            <div class="form-check form-switch mb-0">
+                                                <input class="form-check-input" type="checkbox" id="nameToggle">
+                                                <label class="form-check-label ms-2" for="nameToggle"
+                                                    id="nameLabel">Tirupati</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">State</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text b-r-left text-bg-primary">
+                                            <i class="ti ti-map-pin"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="stateDisplay" value="Kerala"
+                                            readonly />
+                                        <div class="input-group-text b-r-right">
+                                            <div class="form-check form-switch mb-0">
+                                                <input class="form-check-input" type="checkbox" id="stateToggle">
+                                                <label class="form-check-label ms-2" for="stateToggle"
+                                                    id="stateLabel">Meghalaya</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,6 +215,32 @@ let sectionCounter = 1;
 document.getElementById('priceToggle').addEventListener('change', function() {
     const label = document.getElementById('priceLabel');
     label.textContent = this.checked ? 'Crore' : 'Lakh';
+});
+
+// Toggle name
+document.getElementById('nameToggle').addEventListener('change', function() {
+    const display = document.getElementById('nameDisplay');
+    const label = document.getElementById('nameLabel');
+    if (this.checked) {
+        display.value = 'Tirupati';
+        label.textContent = 'Singham';
+    } else {
+        display.value = 'Singham';
+        label.textContent = 'Tirupati';
+    }
+});
+
+// Toggle state
+document.getElementById('stateToggle').addEventListener('change', function() {
+    const display = document.getElementById('stateDisplay');
+    const label = document.getElementById('stateLabel');
+    if (this.checked) {
+        display.value = 'Meghalaya';
+        label.textContent = 'Kerala';
+    } else {
+        display.value = 'Kerala';
+        label.textContent = 'Meghalaya';
+    }
 });
 
 // Generate random lottery number
@@ -276,6 +344,8 @@ function saveLottery() {
         drawNumber: document.getElementById('drawNumber').value,
         priceAmount: document.getElementById('priceAmount').value,
         priceUnit: document.getElementById('priceToggle').checked ? 'Crore' : 'Lakh',
+        name: document.getElementById('nameDisplay').value,
+        state: document.getElementById('stateDisplay').value,
         lotteryNumbers: []
     };
 

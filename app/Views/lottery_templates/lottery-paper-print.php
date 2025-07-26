@@ -434,6 +434,7 @@ function formatTime($time) {
     .qr-section {
         text-align: center;
         width: 13mm;
+        max-width: 11mm;
     }
 
     .qr-section img {
@@ -612,6 +613,7 @@ function formatTime($time) {
         }
     }
 
+    // Updated updateTicketData function to handle name and state
     function updateTicketData(ticket, data, lottery) {
         // Update lottery numbers
         ticket.querySelectorAll('.lottery-number-display').forEach(el => {
@@ -653,6 +655,27 @@ function formatTime($time) {
         // Update side time
         const sideTime = data.time === '8pm' ? '8 P.M.' : '1 P.M.';
         ticket.querySelector('.side-time-display').textContent = sideTime;
+
+        // NEW: Update name (Singham/Tirupati)
+        const nameToDisplay = data.name || 'SINGHAM';
+        ticket.querySelectorAll('.singham-title').forEach(el => {
+            el.textContent = nameToDisplay.toUpperCase();
+        });
+        ticket.querySelectorAll('.side-text').forEach(el => {
+            const sideTimeText = data.time === '8pm' ? '8 P.M.' : '1 P.M.';
+            el.innerHTML =
+                `${nameToDisplay.toUpperCase()} <span class="side-time-display">${sideTimeText}</span>`;
+        });
+
+        // NEW: Update state (Kerala/Meghalaya)
+        const stateToDisplay = data.state || 'MEGHALAYA';
+        ticket.querySelectorAll('.lottery-name').forEach(el => {
+            el.textContent = `${stateToDisplay.toUpperCase()} STATE LOTTERIES`;
+        });
+        ticket.querySelectorAll('.bottom-text').forEach(el => {
+            el.innerHTML =
+                `DIRECTOR <br>${stateToDisplay.toUpperCase()} <br>STATE<br>LOTTERY<div class="border-bottom"></div>`;
+        });
     }
 
     function showDefaultTicket() {
