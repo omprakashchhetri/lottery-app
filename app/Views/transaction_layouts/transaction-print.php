@@ -59,6 +59,7 @@
         margin-inline: auto;
         padding-top: 20px;
         padding-bottom: 25px;
+        display: none;
     }
 
     /* Form Styles */
@@ -320,10 +321,36 @@
         z-index: 10;
     }
 
+    .glassy-blue {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 8px;
+        /* color: white; */
+
+        background: linear-gradient(to right,
+                rgba(213, 204, 204, 0.2) 0%,
+                rgba(0, 123, 255, 0.1) 50%,
+                rgba(213, 204, 204, 0.2) 100%);
+
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+        /* Optional: frosted border */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        /* Optional: soft shadow */
+
+    }
+
+
     .notification-header {
         display: flex;
         align-items: center;
         margin-bottom: 12px;
+    }
+
+    .notification-header-2 {
+        margin: 0;
     }
 
     .app-icon {
@@ -337,8 +364,22 @@
         flex-shrink: 0;
     }
 
-    .app-icon img {
+    .app-icon img,
+    .app-icon-2 img {
         width: 100%;
+    }
+
+    .app-icon-2 {
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        border-radius: 8px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* margin-right: 8px; */
+        flex-shrink: 0;
     }
 
     .app-name {
@@ -399,6 +440,29 @@
         margin-left: 25px;
     }
 
+    .notification-title-2 {
+        font-weight: 600;
+        margin-bottom: 0;
+        font-size: 12px;
+        margin-left: 0;
+    }
+
+    .notification-content-2 {
+        margin-left: 0;
+    }
+
+    .notification-content-3 {
+        margin-left: 15px;
+        width: 100%;
+    }
+
+    .truncate {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .content-line {
         margin-bottom: 2px;
         font-size: 12px;
@@ -424,7 +488,7 @@
             </div>
         </div>
 
-        <div class="notification-card">
+        <div data-notify="1" class="notification-card">
             <div class="notification-header">
                 <div class="app-icon"><img src="<?=base_url('assets/images/mbob-teytds.png')?>" alt=""></div>
                 <span class="app-name">mBoB</span>
@@ -449,6 +513,34 @@
                 <div class="content-line">Time : <span class="trans-time">10:13:40 PM</span></div>
             </div>
         </div>
+        <div data-notify="2" class="notification-card">
+            <div class="notification-title-2">BOB</div>
+            <div class="notification-content-2">
+                <div class="content-line truncate">Fund Transfer to BoB Successful Amount : <span
+                        class="trans-amount">Nu.
+                        1.00</span> Jrnl. No : <span class="trans-jrnl">2404440</span></div>
+            </div>
+        </div>
+        <div data-notify="3" class="notification-card glassy-blue">
+            <div style="display: flex; align-items: center;">
+                <div class="notification-header-2">
+                    <div class="app-icon-2"><img src="<?=base_url('assets/images/mbob-teytds.png')?>" alt=""></div>
+                </div>
+
+                <div class="notification-content-3">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="content-line" style="font-weight: 600;">Fund Transfer to BoB Successful</div>
+                        <div class="notification-icon">
+                            <span class="time-badge">now</span>
+                        </div>
+                    </div>
+                    <div class="content-line">Amount : <span class="trans-amount">Nu. 1.00</span></div>
+                    <div class="content-line">Jrnl. No : <span class="trans-jrnl">2404440</span></div>
+                </div>
+
+            </div>
+
+        </div>
         <!-- Form Section -->
         <div id="formSection" class="form-container">
             <div class="form-title">Fund Transfer Details</div>
@@ -464,6 +556,24 @@
                         <div class="radio-option">
                             <input type="radio" id="sameBank" name="transferType" value="same">
                             <label for="sameBank">Same Bank (BoB)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="notificationGroup" style="display: none;">
+                    <label>Notification Type:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="notif1" name="notificationType" value="1" checked>
+                            <label for="notif1">Notification 1</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="notif2" name="notificationType" value="2">
+                            <label for="notif2">Notification 2</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="notif3" name="notificationType" value="3">
+                            <label for="notif3">Notification 3</label>
                         </div>
                     </div>
                 </div>
@@ -507,7 +617,9 @@
         <!-- Receipt Section -->
         <div id="receiptSection" class="receipt-container">
             <div style="text-align: center;">
-                <img class="check-icon" src="<?=base_url('assets/images/check-done-transaction.png')?>" alt="">
+                <img class="check-icon completed" src="<?=base_url('assets/images/check-done-transaction.png')?>"
+                    alt="">
+                <img class="check-icon incompleted" src="<?=base_url('assets/images/check-incomp.png')?>" alt="">
             </div>
 
             <div class="success-title" id="successTitle">
@@ -615,15 +727,22 @@
     document.querySelectorAll('input[name="transferType"]').forEach(radio => {
         radio.addEventListener('change', function() {
             const isSameBank = this.value === 'same';
+            const notificationGroup = document.getElementById('notificationGroup');
 
-            // Update labels
             if (isSameBank) {
+                // Show notification options
+                notificationGroup.style.display = 'block';
+
+                // Update labels
                 document.getElementById('fromAccountLabel').textContent = 'From Account:';
                 document.getElementById('toAccountLabel').textContent = 'To Account:';
                 document.getElementById('beneficiaryLabel').textContent = 'Purpose:';
                 document.getElementById('beneficiaryName').placeholder = 'Enter purpose';
                 document.getElementById('rrNoField').style.display = 'none';
             } else {
+                // Hide notification options
+                notificationGroup.style.display = 'none';
+
                 document.getElementById('fromAccountLabel').textContent = 'From Account No:';
                 document.getElementById('toAccountLabel').textContent = 'To Account No:';
                 document.getElementById('beneficiaryLabel').textContent = 'Beneficiary Name:';
@@ -641,6 +760,7 @@
         const formData = new FormData(this);
         const data = {
             transferType: formData.get('transferType'),
+            notificationType: formData.get('notificationType') || '1',
             amount: formData.get('amount'),
             jrnlNo: formData.get('jrnlNo'),
             rrno: formData.get('rrno'),
@@ -697,6 +817,18 @@
 
         const isSameBank = data.transferType === 'same';
 
+        // Handle check icon display
+        const completedIcon = document.querySelector('.check-icon.completed');
+        const incompletedIcon = document.querySelector('.check-icon.incompleted');
+
+        if (isSameBank && data.notificationType === '3') {
+            completedIcon.style.display = 'none';
+            incompletedIcon.style.display = 'block';
+        } else {
+            completedIcon.style.display = 'block';
+            incompletedIcon.style.display = 'none';
+        }
+
         // Update success title
         if (isSameBank) {
             document.getElementById('successTitle').innerHTML = 'Fund Transfer to BoB Successful';
@@ -713,14 +845,31 @@
                 '<span>To Account</span><span class="colen-cls">:</span>';
             document.getElementById('receiptBeneficiaryLabel').innerHTML =
                 '<span>Purpose</span><span class="colen-cls">:</span>';
-            document.querySelector('.notification-card').style.display = 'block';
-            document.querySelector('.trans-jrnl').textContent = `${data.jrnlNo}`;
-            document.querySelector('.trans-from-account').textContent = maskAccountNumber(data.fromAccount);
-            document.querySelector('.trans-to-account').textContent = maskAccountNumber(data.toAccount);
-            document.querySelector('.trans-purpose').textContent = `${data.beneficiaryName || ''}`;
-            document.querySelector('.trans-date').textContent = `${date}`;
-            document.querySelector('.trans-time').textContent = `${time}`;
-            document.querySelector('.trans-amount').textContent = `Nu. ${transAmount}`;
+
+            // Show selected notification
+            document.querySelectorAll('.notification-card').forEach(card => {
+                card.style.display = 'none';
+            });
+            document.querySelector(`[data-notify="${data.notificationType}"]`).style.display = 'block';
+
+            // Update notification content
+            const selectedNotification = document.querySelector(`[data-notify="${data.notificationType}"]`);
+            selectedNotification.querySelectorAll('.trans-jrnl').forEach(el => {
+                if (data.notificationType === '3') {
+                    el.textContent = `${data.jrnlNo}...`;
+                } else {
+                    el.textContent = `${data.jrnlNo}`;
+                }
+            });
+            selectedNotification.querySelectorAll('.trans-from-account').forEach(el => el.textContent =
+                maskAccountNumber(data.fromAccount));
+            selectedNotification.querySelectorAll('.trans-to-account').forEach(el => el.textContent = maskAccountNumber(
+                data.toAccount));
+            selectedNotification.querySelectorAll('.trans-purpose').forEach(el => el.textContent =
+                `${data.beneficiaryName || ''}`);
+            selectedNotification.querySelectorAll('.trans-date').forEach(el => el.textContent = `${date}`);
+            selectedNotification.querySelectorAll('.trans-time').forEach(el => el.textContent = `${time}`);
+            selectedNotification.querySelectorAll('.trans-amount').forEach(el => el.textContent = `Nu. ${transAmount}`);
 
         } else {
             document.getElementById('receiptFromAccountLabel').innerHTML =
@@ -745,8 +894,11 @@
     }
 
     document.querySelector('.expand-button').addEventListener('click', function() {
-        const notif = document.querySelector('.notification-card');
-        notif.style.display = (notif.style.display === 'none' || notif.style.display === '') ? 'block' : 'none';
+        const notif = document.querySelector('.notification-card[style*="block"]');
+        if (notif) {
+            notif.style.display = (notif.style.display === 'none' || notif.style.display === '') ? 'block' :
+                'none';
+        }
     });
 
 
@@ -755,11 +907,18 @@
         document.getElementById('transferForm').reset();
         // Reset to default (Other Bank)
         document.getElementById('otherBank').checked = true;
+        // Hide notification options
+        document.getElementById('notificationGroup').style.display = 'none';
         // Reset labels to default
         document.getElementById('fromAccountLabel').textContent = 'From Account No:';
         document.getElementById('toAccountLabel').textContent = 'To Account No:';
         document.getElementById('beneficiaryLabel').textContent = 'Beneficiary Name:';
         document.getElementById('beneficiaryName').placeholder = 'Enter beneficiary name';
+
+        // Hide all notifications
+        document.querySelectorAll('.notification-card').forEach(card => {
+            card.style.display = 'none';
+        });
 
         // Show form, hide receipt
         document.getElementById('receiptSection').style.display = 'none';
